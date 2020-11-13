@@ -18,7 +18,9 @@
               crossorigin="anonymous">
         <!--GoogleFonts-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
-
+        <base href="/">
+        <!--My Css-->
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
     {% block extra_css %}
@@ -38,13 +40,14 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
                 integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
                 crossorigin="anonymous"></script>
-
+        <!-- Stripe -->
+        <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
 
     {% block extra_js %}
     {% endblock %}
 
-    <title>Fitness4You</title>
+    <title>Fitness4You {% block extra_title %}{% endblock %}</title>
 </head>
 <body>
 <h1>Hello, world!</h1>

@@ -8,38 +8,45 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% endblock %}
 
+    <!--FavIcon-->
+    <link rel="shorcut icon" type="image/x-ico" href="{{ MEDIA_URL }}favicon.ico">
+
     {% block extra_meta %}
     {% endblock %}
 
     {% block css %}
-        <!--Bootstrap-->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-              crossorigin="anonymous">
+        <!-- FontAwesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+        <!--Animation-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+        <!--Materializecss-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
         <!--GoogleFonts-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
+
+        <!--My-Styles-->
         <base href="/">
-        <!--My Css-->
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+        <!--My-Queries-->
+        <link rel="stylesheet" href="{% static 'css/queries.css' %}" type="text/css" />
+
     {% endblock %}
 
     {% block extra_css %}
     {% endblock %}
 
-    {% block js %}
-        <!--Fontawesome-->
-        <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
-        <!--Jquery-->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-        <!--Popper-->
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-                crossorigin="anonymous"></script>
-        <!--Bootstrap-->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-                crossorigin="anonymous"></script>
+    {% block corejs %}
+        <!-- Jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!-- Materializecss -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
         <!-- Stripe -->
         <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
@@ -49,16 +56,99 @@
 
     <title>Fitness4You {% block extra_title %}{% endblock %}</title>
 </head>
-<body>
-<h1>Hello, world!</h1>
+
+<body class="black">
+
+<!--NavBar-->
+<nav class="custom-navbar">
+    <div class="nav-wrapper black">
+        {% comment %}<a href="#" class="brand-logo"><img src="{{ MEDIA_URL }}exercise-2029430_1280 (1).png" class="logo" alt="logo"></a>{% endcomment %}
+        <a href="#" class="brand-logo">FITNESS<img src={% static 'images/logo/exercise-red-tree-pose.png' %} class="logo" alt="logo">YOU</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#">Home</a></li>
+{#            <li><a href="{% url 'services' %}">Services</a></li>#}
+{#            <li><a href="{% url 'prices' %}">Prices</a></li>#}
+{#            <li><a href="{% url 'mechendise' %}">Merchendise</a></li>#}
+{#            <li><a href="{% url 'account_logout' %}">Account</a></li>#}
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li><a href="#">Home</a></li>
+{#            <li><a href="{% url 'services' %}">Services</a></li>#}
+{#            <li><a href="{% url 'prices' %}">Prices</a></li>#}
+{#            <li><a href="{% url 'mechendise' %}">Merchendise</a></li>#}
+{#            <li><a href="{% url 'account_logout' %}">Account</a></li>#}
+
+        </ul>
+    </div>
+</nav>
+
+
+{% if messages %}
+    <div class="message-container">
+        {% for message in messages %}
+            {% with message.level as level %}
+                {% if level == 40 %}
+                    {% include 'includes/toasts/toast_error.html' %}
+                {% elif level == 30 %}
+                    {% include 'includes/toasts/toast_warning.html' %}
+                {% elif level == 25 %}
+                    {% include 'includes/toasts/toast_success.html' %}
+                {% else %}
+                    {% include 'includes/toasts/toast_info.html' %}
+                {% endif %}
+            {% endwith %}
+        {% endfor %}
+    </div>
+{% endif %}
+
 
 {% block page_header %}
 {% endblock %}
 
-{% block content %}
-{% endblock %}
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+
+<!--Footer-->
+<footer class="page-footer black teal ">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">About me</h5>
+                <p class="grey-text text-lighten-4">I'm a junior system developer with a passion for ocean conservation.</p>
+
+            </div>
+            <div class="col l3 s12">
+            </div>
+            <div class="col l3 s12">
+                <div class="footer-links flex-center">
+                    <a class="white-text waves-effect" href="https://www.facebook.com/profile.php?id=100007278138587" target="blank"><i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
+                    <a class="white-text waves-effect" href="https://github.com/ArloysMacias" target="blank"><i class="fab fa-github fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
+                    <a class="white-text waves-effect" href="https://www.linkedin.com/in/arloys-macias-rojas-ba6307128/?locale=en_US"><i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
+                    <a class="white-text waves-effect" href="https://www.researchgate.net/profile/Arloys_Rojas"><i class="fab fa-researchgate fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Copyright -->
+    <div class="footer-copyright">
+        <div class="container">
+            © 2020 Copyright <a class="brown-text text-lighten-3" href="http://materializecss.com">Arloys Macias
+            Rojas</a>
+        </div>
+    </div>
+</footer>
 
 {% block postloadjs %}
+    <!-- Myscript -->
+    <script src="{% static 'js/myscript.js' %}"></script>
+
+    <script type="text/javascript">
+        $('.toast').toast('show');
+    </script>
 {% endblock %}
 </body>
 </html>

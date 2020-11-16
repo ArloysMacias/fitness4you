@@ -2,5 +2,149 @@
 {% load static %}
 
 {% block content %}
-    <h1 class="display-4 text-success">Works</h1>
+    <!--Parallax-->
+    <div id="index-banner" class="parallax-container parallax-background ">
+        <div class="section no-pad-bot">
+            <div class="container left">
+                <br><br><br><br><br><br><br><br>
+                <h1 class="header center white-text text-lighten-2"><strong>GET FIT <span class="red-text">&</span>
+                    HEALTHY</strong></h1>
+                <div class="row center">
+                    <h5 class="header col s12 light">Build your body with a professional touch</h5>
+                </div>
+                <div class="row center">
+                    <a href="#" id="download-button"
+                       class="animate__animated animate__fadeInDown btn-large waves-effect waves-light red lighten-1">Get
+                        Started</a>
+                </div>
+                <br><br>
+            </div>
+        </div>
+        <div class="parallax">
+            {#        <img src="{{MEDIA_URL}}womenpress.jpg" alt="background">#}
+            <img src="{% static 'images/background/background2.jpg' %}" alt="background">
+        </div>
+    </div>
+
+    <!--What we offer-->
+    <div class="container">
+        <h5 class="center red-text">WHY CHOSE US?</h5>
+        <h2 class="center">What we offer</h2>
+        <div class="section">
+            <!--   Icon Section   -->
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <img class="materialboxed" width="400" src="{% static 'images/WhatWeOffer/classes.jpg' %}">
+                        <h5 class="center">GROUP CLASSES</h5>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <img class="materialboxed" width="400" src="{% static 'images/WhatWeOffer/calisthenics.jpg' %}">
+                        <h5 class="center">CALISTHENICS</h5>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <img class="materialboxed" width="400" src="{% static 'images/WhatWeOffer/boxing.jpg' %}">
+                        <h5 class="center">BOXING</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <img class="materialboxed" width="400" src="{% static 'images/WhatWeOffer/pt.jpg' %}">
+                        <h5 class="center">PERSONAL TRAINER</h5>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <img class="materialboxed" width="400" src="{% static 'images/WhatWeOffer/massage2.jpg' %}">
+                        <h5 class="center">MASSAGE</h5>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <img class="materialboxed" width="400" src="{% static 'images/WhatWeOffer/nutritionist.jpg' %}">
+                        <h5 class="center">NUTRITIONIST</h5>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!--Parallax-->
+    <div id="index-banner" class="parallax-container parallax-background">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <br><br><br><br><br><br>
+                <h2 class="header center white-text text-lighten-2">Become a member to get more deals</h2>
+                <div class="row center">
+                    <h5 class="header col s12 light">FIND HEALTH AND BEAUTY WITH US</h5>
+                </div>
+                <div class="row center">
+                    <a href="#" id="download-button"
+                       class="animate__animated animate__bounce btn-large waves-effect waves-light red lighten-1">Get
+                        Started</a>
+                </div>
+                <br><br>
+
+            </div>
+        </div>
+        <div class="parallax"><img
+                src={% static 'images/becomeAmember/kettlebell-3290296_1920.jpg' %} alt="BecomeMember">
+        </div>
+    </div>
+
+    <!--Popular products-->
+    <div class="container">
+        <div class="section mar">
+            <div class="row">
+                <div class="col s12">
+                    <div class="section">
+                        <div class="col s12">
+                            <h3 class="center">POPULAR PRODUCTS</h3>
+                            <div class="col s12 m6 l4">
+                                <div class="card z-depth-5">
+                                    <div class="card-image waves-effect waves-block waves-light"><a href=""><img
+                                            class="materialboxed" width="400"
+                                            src="{% static 'images/WhatWeOffer/massage.jpg' %}"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l4">
+                                <div class="card z-depth-5">
+                                    <div class="card-image waves-effect waves-block waves-light"><a href=""><img
+                                            class="materialboxed" width="400"
+                                            src="{% static 'images/WhatWeOffer/massage.jpg' %}"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l4">
+                                <div class="card z-depth-5 white">
+                                    <div class="card-image waves-effect waves-block waves-light">
+                                        <a href=""><img class="materialboxed" width="400"
+                                                        src="{% static 'images/WhatWeOffer/massage.jpg' %}"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    <script src="{% static 'home/js/materialize.js' %}"></script>
 {% endblock %}

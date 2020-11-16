@@ -1,0 +1,64 @@
+/* ------------------------------------------------*/
+/* BASIC SETUP */
+/* ------------------------------------------------*/
+body{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    color: white;
+}
+main {
+    flex: 1 0 auto;
+}
+
+/* ------------------------------------------------*/
+/* NAVBAR */
+/* ------------------------------------------------*/
+.logo{
+    width: 21px; margin-top: 2px;
+}
+nav .brand-logo{
+    font-size: 26px;
+}
+
+/* ------------------------------------------------*/
+/* WHAT WE OFFER */
+/* ------------------------------------------------*/
+
+/* ------------------------------------------------*/
+/* PARALLAX */
+/* ------------------------------------------------*/
+.parallax-container {
+    height: 100vh;
+}
+.parallax-background {
+    background-color: #0e0e0e9e;
+}
+.btn-large{
+    opacity: 0.7;
+}
+.btn-large:hover {
+    opacity: 1
+}
+/*.parallax-container img {*/
+/*    height: 42rem;*/
+/*}*/
+
+/* ------------------------------------------------*/
+/* POPULAR PRODUCTS */
+/* ------------------------------------------------*/
+
+
+/* ------------------------------------------------*/
+/* FOOTER */
+/* ------------------------------------------------*/
+.footer-links{
+    text-align: center;
+    margin-top: 30px
+}
+.footer-links a i{
+    margin: 5px 5px;
+}
+.footer-copyright{
+    text-align: center;
+}

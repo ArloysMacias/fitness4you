@@ -10,13 +10,6 @@ body{
 main {
     flex: 1 0 auto;
 }
-
-.side-nav li>a {
-    color: white;
-}
-.side-nav li>a:hover {
-    background-color: rgb(121 33 28);
-}
 /* ------------------------------------------------*/
 /* NAVBAR */
 /* ------------------------------------------------*/
@@ -27,6 +20,28 @@ nav .brand-logo{
     font-size: 26px;
 }
 
+.side-nav>li>a:hover{
+    background-color: darkred;
+}
+
+/**dropdown menu in mobile/
+/*.dropdown-content {*/
+/*    background-color: #000;*/
+/*}*/
+
+/*.dropdown-content li>a, .dropdown-content li>span {*/
+/*    font-size: 16px;*/
+/*    color: #ef5350;*/
+/*}*/
+
+/*.dropdown-content li:hover, .dropdown-content li.active, .dropdown-content li.selected {*/
+/*    background-color: #fff;*/
+/*}*/
+
+.dropdown-content-mobile{
+    margin-left: 40px;
+    background: rgba(155, 160, 159, 0.77);
+}
 /* ------------------------------------------------*/
 /* COVER PAGE */
 /* ------------------------------------------------*/

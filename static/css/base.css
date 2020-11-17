@@ -11,6 +11,12 @@ main {
     flex: 1 0 auto;
 }
 
+.side-nav li>a {
+    color: white;
+}
+.side-nav li>a:hover {
+    background-color: rgb(121 33 28);
+}
 /* ------------------------------------------------*/
 /* NAVBAR */
 /* ------------------------------------------------*/
@@ -22,15 +28,12 @@ nav .brand-logo{
 }
 
 /* ------------------------------------------------*/
-/* WHAT WE OFFER */
-/* ------------------------------------------------*/
-
-/* ------------------------------------------------*/
-/* PARALLAX */
+/* COVER PAGE */
 /* ------------------------------------------------*/
 .parallax-container {
     height: 100vh;
 }
+
 .parallax-background {
     background-color: #0e0e0e9e;
 }
@@ -40,9 +43,41 @@ nav .brand-logo{
 .btn-large:hover {
     opacity: 1
 }
-/*.parallax-container img {*/
-/*    height: 42rem;*/
-/*}*/
+.btn{
+    opacity: 0.7;
+}
+.btn:hover {
+    opacity: 1
+}
+section{
+    height: 100vh;
+}
+
+/* ------------------------------------------------*/
+/* WHAT WE OFFER */
+/* ------------------------------------------------*/
+#what_we_offer{
+    margin-top: 20vh;
+}
+
+/* ------------------------------------------------*/
+/* BECOME A MEMBER */
+/* ------------------------------------------------*/
+.become_a_member_container{
+    margin-top: 38vh;
+}
+
+/* ------------------------------------------------*/
+/* CHOSE YOUR PLAN */
+/* ------------------------------------------------*/
+#choose_your_plan{
+    margin-top: 20vh;
+    height: 80vh;
+}
+.card .card-content {
+    padding: 0px;
+}
+
 
 /* ------------------------------------------------*/
 /* POPULAR PRODUCTS */

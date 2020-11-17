@@ -7,11 +7,11 @@
 /** Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
     * {
-        font-size: 103%;
+        font-size: 101%;
     }
 
     nav .brand-logo {
-        left: 85%;
+        left: 77%;
     }
 
     .table-picture{

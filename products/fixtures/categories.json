@@ -1,0 +1,74 @@
+[
+  {
+    "pk": 1,
+    "model": "products.category",
+    "fields": {
+      "name": "bcaa",
+      "friendly_name": "BCAA"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "products.category",
+    "fields": {
+      "name": "build_muscle_products",
+      "friendly_name": "Build Muscle Products"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "products.category",
+    "fields": {
+      "name": "improve_workout_products",
+      "friendly_name": "Improve Workout Products"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "products.category",
+    "fields": {
+      "name": "amino_acpks",
+      "friendly_name": "Amino Acpks"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "products.category",
+    "fields": {
+      "name": "whey_protein_isolate",
+      "friendly_name": "Whey Protein Isolate"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "products.category",
+    "fields": {
+      "name": "creatine_monohydrate",
+      "friendly_name": "Creatine Monohydrate"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "products.category",
+    "fields": {
+      "name": "multivitamins",
+      "friendly_name": "Multivitamins"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "products.category",
+    "fields": {
+      "name": "whey_protein",
+      "friendly_name": "Whey Protein"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "products.category",
+    "fields": {
+      "name": "betaine_anhydrous",
+      "friendly_name": "Betaine Anhydrous"
+    }
+  }
+]

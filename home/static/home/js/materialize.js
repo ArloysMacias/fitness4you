@@ -10,6 +10,7 @@ $(document).ready(function(){
     $('.dropdown-buttonh').dropdown();
     $('.parallax').parallax();
 
+
     // //Toast
     // $('.toast').toast('show');
 

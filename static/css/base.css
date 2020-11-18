@@ -19,15 +19,13 @@ main {
 nav .brand-logo{
     font-size: 26px;
 }
-
+/* mobile */
 #mobile-demo{
     border: 0px;
 }
-
 .side-nav li>a:hover {
     background-color: rgba(114, 114, 114, 0.65) !important;
 }
-
 
 /* desktop */
 #dropdown1,#dropdown2{
@@ -42,6 +40,9 @@ nav .brand-logo{
 }
 #mobile-demo li>a{
     font-size: large;
+}
+.w-auto{
+    width: 100%;
 }
 /* ------------------------------------------------*/
 /* COVER PAGE */

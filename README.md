@@ -1,9 +1,9 @@
 # fitness4you
 
-####Error:
+#### Error:
 Files in the media folder do not load properly
 
-####Solution:
+#### Solution:
 Include the following line of code in the setting.py file
 
 ...
@@ -17,7 +17,7 @@ Include the following line of code in the setting.py file
 ‘django.template.context_processors.media’, in your settings.py
 
 
-####Error:
+#### Error:
 
 AttributeError at /admin/login/
 'ellipsis' object has no attribute 'rsplit'
@@ -57,7 +57,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
-####Data Base:
+#### Data Base:
 
 ![Data Base](https://github.com/ArloysMacias/fitness4you/blob/master/media/DataBaseDiagram/DataBase.png)
 

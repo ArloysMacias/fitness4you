@@ -56,6 +56,8 @@ AUTHENTICATION_BACKENDS = [
     ...
 ]
 
+
 ####Data Base:
+
 ![Data Base](https://github.com/ArloysMacias/fitness4you/blob/master/media/DataBaseDiagram/DataBase.png)
 

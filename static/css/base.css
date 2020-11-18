@@ -20,27 +20,26 @@ nav .brand-logo{
     font-size: 26px;
 }
 
-.side-nav>li>a:hover{
-    background-color: darkred;
+/* desktop */
+#dropdown1,#dropdown2{
+    top: 60px!important;
 }
 
-/**dropdown menu in mobile/
-/*.dropdown-content {*/
-/*    background-color: #000;*/
-/*}*/
-
-/*.dropdown-content li>a, .dropdown-content li>span {*/
-/*    font-size: 16px;*/
-/*    color: #ef5350;*/
-/*}*/
-
-/*.dropdown-content li:hover, .dropdown-content li.active, .dropdown-content li.selected {*/
-/*    background-color: #fff;*/
-/*}*/
-
-.dropdown-content-mobile{
-    margin-left: 40px;
-    background: rgba(155, 160, 159, 0.77);
+/* mobile */
+#dropdown3{
+    top: 144px!important;
+}
+#dropdown3 li>a>i{
+    color: red;
+}
+#dropdown4{
+    top: 192px!important;
+}
+.side-nav li>a>i{
+    color: red!important;
+}
+#mobile-demo li>a{
+    font-size: large;
 }
 /* ------------------------------------------------*/
 /* COVER PAGE */

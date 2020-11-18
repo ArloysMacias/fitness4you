@@ -45,6 +45,9 @@
     /*    height: 44vw;*/
     /*}*/
 
+    i.medium{
+        font-size: 5rem;
+    }
     body {
         display: flex;
         min-height: 100vh;

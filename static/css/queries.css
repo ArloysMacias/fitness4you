@@ -31,11 +31,13 @@
         font-size: 19px;
     }
 
-    /*.fake-content{*/
-    /*    height: 56vw;*/
-    /*}*/
+    #what_we_offer{
+        margin-top: 20vh;
+    }
 
-
+    #choose_your_plan{
+        margin-top: 15vh;
+    }
 }
 
 /** Extra large devices (large desktops, 1200px and up) */

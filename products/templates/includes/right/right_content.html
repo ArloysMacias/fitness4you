@@ -1,17 +1,32 @@
-<section id="right-content" class="right-content">
-    <div class="container black-text">
+<section id="right-content">
+<div class="container-fluid">
+    <div class="row">
         {% for product in products %}
-            <div class="row">
-                <div class="col ">
-                    <p>
-                        {{ product.products_name }}
-                    </p>
+            <div class="col s6 m6 l4 xl3">
+                <div class="card">
+                    <div id="card-image-container" class="card-image">
+                        {% if product.image_url %}
+                            <img src="{{ product.image_url }}" alt="product-image">
+                        {% else %}
+                            <img src="{{ MEDIA_URL }}images/products_images/no-image.png" alt="no-images">
+                        {% endif %}
+                        <span class="card-title small black-text">{{ product.brand_name }}</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i
+                                class="material-icons">add_shopping_cart</i></a>
+                    </div>
+                    <div id="card-content-container" class="card-content">
+                        <p>€{{ product.price }}</p>
+                        {% if product.overall_rating %}
+                            <small class=" text-lighten-5">{{ product.overall_rating }}</small>
+                        {% else %}
+                            <small class="text-lighten-1">No Rating</small>
+                        {% endif %}
+                        <p>{{ product.brand_name }}</p>
+                    </div>
                 </div>
-                <div class="col"><p>{{ product.price }}</p></div>
-                <div class="col">{{ product.brand_name }}</div>
-                <div class="col">{{ product.category }}</div>
-                <div class="col">{{ product.image }}</div>
             </div>
         {% endfor %}
     </div>
+</div>
+
 </section>

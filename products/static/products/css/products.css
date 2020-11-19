@@ -1,16 +1,38 @@
 .header-container{
-    padding-top: 90px;
-    padding-bottom: 4px;
+    padding-top: 58px;
 }
 section{
     height: 29vh ;
 }
-#right-content{
-    padding-left: 100px;
+
+.product-container{
+    width: 100%;
 }
+
 #rating-section{
     height: 24vh;
 }
 #category-section{
     height: 24vh;
+}
+.overlay{
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    background: white;
+    z-index: -1;
+}
+
+#card-image-container{
+    height: 341px;
+    width: 168px;
+}
+#card-image-container > img {
+    width: 148px;
+    height: 200px;
+}
+#card-content-container{
+    height: 141px;
 }

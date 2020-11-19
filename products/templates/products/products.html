@@ -12,32 +12,32 @@
 
 <!--Header-->
 {% block page_header %}
-    <div class="white">
-        <div class="container black-text header-container">
-            <div class="row">
-                <div class="col">
-                    <h1>Products</h1>
-                </div>
+    <div class="container black-text header-container">
+        <div class="row">
+            <div class="col">
+                <h1>Products</h1>
             </div>
         </div>
     </div>
 {% endblock %}
 
 {% block content %}
-
+    <div class="overlay "></div>
     <!-- Page Layout here -->
-    <div class="white black-text">
+    <div class="black-text">
+        <form action="">
             <div class="row">
-                <div class="col s1"></div>
-                <div class="col s2 hide-on-med-and-down">
+                <div class="col m1"></div>
+                <div class="col m2 hide-on-med-and-down">
                     <!-- Left filter -->
                     {% include 'includes/left filter/left_filter.html' %}
                 </div>
-                <div class="col s1"></div>
-                <div class="col s18">
+                <div class="col m1"></div>
+                <div class="col m8 s12">
                     {% include 'includes/right/right_content.html' %}
                 </div>
             </div>
+        </form>
     </div>
 {% endblock %}
 

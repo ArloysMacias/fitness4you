@@ -13,3 +13,11 @@ def all_products(request):
     }
 
     return render(request, 'products/products.html', context)
+
+
+def fix_products_name(product_name):
+    """A method to fix the product name"""
+
+    result = product_name.replace(".", " ")
+
+    return result.strip()

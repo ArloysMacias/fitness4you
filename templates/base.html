@@ -16,7 +16,9 @@
 
     {% block css %}
         <!-- FontAwesome -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+              integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+              crossorigin="anonymous">
 
         <!--Animation-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -36,7 +38,7 @@
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
         <!--My-Queries-->
-        <link rel="stylesheet" href="{% static 'css/queries.css' %}" type="text/css" />
+        <link rel="stylesheet" href="{% static 'css/queries.css' %}" type="text/css"/>
 
         <!--FavIcon-->
         <link rel="shortcut icon" href="{{ MEDIA_URL }}images/icon/favicon.ico" type="image/x-icon">
@@ -69,42 +71,45 @@
 
 <body class="black">
 
-<!--NavBar-->
-<nav style="position: fixed; z-index: 9999">
-    <div class="nav-wrapper black">
-        {% comment %}<a href="#" class="brand-logo"><img src="{{ MEDIA_URL }}exercise-2029430_1280 (1).png" class="logo" alt="logo"></a>{% endcomment %}
-        <a href="#" class="brand-logo">FITNESS<img src={{ MEDIA_URL }}images/logo/exercise-red-tree-pose.png class="logo" alt="logo">YOU</a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-        {% include 'includes/main-nav.html' %}
-        {% include 'includes/mobile-nav.html' %}
-    </div>
-</nav>
-
-
-
-{% if messages %}
-    <div class="message-container">
-        {% for message in messages %}
-            {% with message.level as level %}
-                {% if level == 40 %}
-                    {% include 'includes/toasts/toast_error.html' %}
-                {% elif level == 30 %}
-                    {% include 'includes/toasts/toast_warning.html' %}
-                {% elif level == 25 %}
-                    {% include 'includes/toasts/toast_success.html' %}
-                {% else %}
-                    {% include 'includes/toasts/toast_info.html' %}
-                {% endif %}
-            {% endwith %}
-        {% endfor %}
-    </div>
-{% endif %}
-
-
-{% block page_header %}
-{% endblock %}
-
 <main>
+
+    <!--Messages-->
+    {% if messages %}
+        <div class="message-container">
+            {% for message in messages %}
+                {% with message.level as level %}
+                    {% if level == 40 %}
+                        {% include 'includes/toasts/toast_error.html' %}
+                    {% elif level == 30 %}
+                        {% include 'includes/toasts/toast_warning.html' %}
+                    {% elif level == 25 %}
+                        {% include 'includes/toasts/toast_success.html' %}
+                    {% else %}
+                        {% include 'includes/toasts/toast_info.html' %}
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!--NavBar-->
+    <header>
+        <nav style="position: fixed; z-index: 9999">
+            <div class="nav-wrapper black">
+                {% comment %}<a href="#" class="brand-logo"><img src="{{ MEDIA_URL }}exercise-2029430_1280 (1).png" class="logo" alt="logo"></a>{% endcomment %}
+                <a href="#" class="brand-logo">FITNESS<img src={{ MEDIA_URL }}images/logo/exercise-red-tree-pose.png
+                                                           class="logo" alt="logo">YOU</a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                {% include 'includes/main-nav.html' %}
+                {% include 'includes/mobile-nav.html' %}
+            </div>
+        </nav>
+    </header>
+
+    <!--Header-->
+    {% block page_header %}
+    {% endblock %}
+
     {% block content %}
     {% endblock %}
 
@@ -122,17 +127,23 @@
         <div class="row">
             <div class="col l6 s12">
                 <h5 class="white-text">About me</h5>
-                <p class="grey-text text-lighten-4">I'm a junior system developer with a passion for ocean conservation.</p>
+                <p class="grey-text text-lighten-4">I'm a junior system developer with a passion for ocean
+                    conservation.</p>
 
             </div>
             <div class="col l3 s12">
             </div>
             <div class="col l3 s12">
                 <div class="footer-links flex-center">
-                    <a class="white-text waves-effect" href="https://www.facebook.com/profile.php?id=100007278138587" target="blank"><i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
-                    <a class="white-text waves-effect" href="https://github.com/ArloysMacias" target="blank"><i class="fab fa-github fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
-                    <a class="white-text waves-effect" href="https://www.linkedin.com/in/arloys-macias-rojas-ba6307128/?locale=en_US"><i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
-                    <a class="white-text waves-effect" href="https://www.researchgate.net/profile/Arloys_Rojas"><i class="fab fa-researchgate fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
+                    <a class="white-text waves-effect" href="https://www.facebook.com/profile.php?id=100007278138587"
+                       target="blank"><i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
+                    <a class="white-text waves-effect" href="https://github.com/ArloysMacias" target="blank"><i
+                            class="fab fa-github fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
+                    <a class="white-text waves-effect"
+                       href="https://www.linkedin.com/in/arloys-macias-rojas-ba6307128/?locale=en_US"><i
+                            class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
+                    <a class="white-text waves-effect" href="https://www.researchgate.net/profile/Arloys_Rojas"><i
+                            class="fab fa-researchgate fa-lg white-text mr-md-5 mr-3 fa-2x"></i></a>
                 </div>
             </div>
         </div>

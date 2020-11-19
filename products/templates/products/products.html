@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!--Header-->
+{% block page_header %}
+    <div class="container">
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row">
+            <div class="col">
+                <h1>Products</h1>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% for product in products %}
+            <div class="row black white-text">
+                    <div class="col ">
+                        <p>
+                            {{ product.products_name }}
+                        </p>
+                    </div>
+                <div class="col"><p>{{ product.price }}</p></div>
+                <div class="col">{{ product.brand_name }}</div>
+                <div class="col">{{ product.category }}</div>
+                <div class="col">{{ product.image }}</div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    <script src="{% static 'home/js/materialize.js' %}"></script>
+{% endblock %}

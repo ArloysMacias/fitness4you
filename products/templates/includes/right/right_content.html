@@ -1,0 +1,17 @@
+<section id="right-content" class="right-content">
+    <div class="container black-text">
+        {% for product in products %}
+            <div class="row">
+                <div class="col ">
+                    <p>
+                        {{ product.products_name }}
+                    </p>
+                </div>
+                <div class="col"><p>{{ product.price }}</p></div>
+                <div class="col">{{ product.brand_name }}</div>
+                <div class="col">{{ product.category }}</div>
+                <div class="col">{{ product.image }}</div>
+            </div>
+        {% endfor %}
+    </div>
+</section>

@@ -1,0 +1,16 @@
+.header-container{
+    padding-top: 90px;
+    padding-bottom: 4px;
+}
+section{
+    height: 29vh ;
+}
+#right-content{
+    padding-left: 100px;
+}
+#rating-section{
+    height: 24vh;
+}
+#category-section{
+    height: 24vh;
+}

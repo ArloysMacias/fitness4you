@@ -5,33 +5,24 @@
 
 /** Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-
+    #card-image-container > img {
+        width: 98%;
+        height: 70%;
+    }
     #right-content{
-        margin-left: 100px;
+        margin-left: 40px;
     }
-    #card-image-container{
-
-    }
-    /*card-image-container>img {*/
-    /*    width: 200px!important;*/
-    /*    height: 200px!important;*/
-    /*}*/
 }
 
 
 /** Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-    #right-content{
-        margin-left: 100px;
-    }
+
 
 }
 
 /** Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-    #right-content{
-        margin-left: 100px;
-    }
 }
 
 

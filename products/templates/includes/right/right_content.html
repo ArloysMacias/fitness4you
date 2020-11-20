@@ -3,14 +3,14 @@
     <div class="row">
         {% for product in products %}
             <div class="col s6 m6 l4 xl3">
-                <div class="card">
-                    <div id="card-image-container" class="card-image">
+                <div class="card hoverable waves-effect waves-block waves-light">
+                    <div id="card-image-container" class="card-image animate__animated animate__fadeIn">
                         {% if product.image_url %}
-                            <img src="{{ product.image_url }}" alt="product-image">
+                            <img class="activator" src="{{ product.image_url }}" alt="product-image">
                         {% else %}
-                            <img src="{{ MEDIA_URL }}images/products_images/no-image.png" alt="no-images">
+                            <img class="activator" src="{{ MEDIA_URL }}images/products_images/no-image.png" alt="no-images">
                         {% endif %}
-                        <span class="card-title small black-text">{{ product.brand_name }}</span>
+                        <span class="card-title small black-text">{{ product.product_name }}</span>
                         <a class="btn-floating halfway-fab waves-effect waves-light red"><i
                                 class="material-icons">add_shopping_cart</i></a>
                     </div>
@@ -21,7 +21,11 @@
                         {% else %}
                             <small class="text-lighten-1">No Rating</small>
                         {% endif %}
-                        <p>{{ product.brand_name }}</p>
+                        <p class="truncate">{{ product.brand_name }}</p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>{{ product.product_name }}</span>
+                        <p>{{ product.product_description }}</p>
                     </div>
                 </div>
             </div>

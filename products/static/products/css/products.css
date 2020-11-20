@@ -1,20 +1,6 @@
-.header-container{
-    padding-top: 58px;
-}
-section{
-    height: 29vh ;
-}
-
-.product-container{
-    width: 100%;
-}
-
-#rating-section{
-    height: 24vh;
-}
-#category-section{
-    height: 24vh;
-}
+/* ------------------------------------------------*/
+/* WHITE BACKGROUND over the black one in the base.html */
+/* ------------------------------------------------*/
 .overlay{
     height: 100%;
     width: 100%;
@@ -25,13 +11,25 @@ section{
     z-index: -1;
 }
 
+.card .card-title {
+    font-size: 18px;
+}
+
+.header-container{
+    padding-top: 58px;
+}
+
+/* ------------------------------------------------*/
+/* CARDS */
+/* ------------------------------------------------*/
 #card-image-container{
+    margin: 0 auto;
     height: 341px;
     width: 168px;
 }
 #card-image-container > img {
-    width: 148px;
-    height: 200px;
+    width: 100%;
+    height: 72%;
 }
 #card-content-container{
     height: 141px;

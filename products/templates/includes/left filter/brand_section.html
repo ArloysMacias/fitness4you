@@ -1,23 +1,35 @@
 <div id="brand-section" class="left-filter-section">
     <h5>BRAND</h5>
-    <p>
-        <input type="checkbox" class="filled-in" id="filled-in-box-efx" />
-        <label for="filled-in-box-efx">EFX Sports</label>
-    </p>
-    <p>
-        <input type="checkbox" class="filled-in" id="filled-in-box-mfit" />
-        <label for="filled-in-box-mfit">MFIT Supps</label>
-    </p>
-    <p>
-        <input type="checkbox" class="filled-in" id="filled-in-box-gaspari" />
-        <label for="filled-in-box-gaspari">Gaspari Nutrition</label>
-    </p>
-    <p>
-        <input type="checkbox" class="filled-in" id="filled-in-box-primeval" />
-        <label for="filled-in-box-primeval">Primeval Labs</label>
-    </p>
-    <p>
-        <input type="checkbox" class="filled-in" id="filled-in-box-nutraBio" />
-        <label for="filled-in-box-nutraBio">NutraBio</label>
-    </p>
+
+
+            <p>
+                <input type="checkbox" name="efxs" class="filled-in" id="filled-in-box-efx"/>
+                <label for="filled-in-box-efx"><a href="{% url 'products' %}?brand_name=MuscleTech">EFX Sports</a></label>
+            </p>
+
+
+    <a href="{% url 'products' %}?brand_name=MFIT Supps">
+        <p>
+            <input type="checkbox" name="mfit" class="filled-in" id="filled-in-box-mfit"/>
+            <label for="filled-in-box-mfit">MFIT Supps</label>
+        </p>
+    </a>
+    <a href="{% url 'products' %}?brand_name=Gaspari Nutrition">
+        <p>
+            <input type="checkbox" class="filled-in" id="filled-in-box-gaspari"/>
+            <label for="filled-in-box-gaspari">Gaspari Nutrition</label>
+        </p>
+    </a>
+    <a href="{% url 'products' %}?brand_name=Primeval Labs">
+        <p>
+            <input type="checkbox" class="filled-in" id="filled-in-box-primeval"/>
+            <label for="filled-in-box-primeval">Primeval Labs</label>
+        </p>
+    </a>
+    <a href="{% url 'products' %}?brand_name=NutraBio">
+        <p>
+            <input type="checkbox" class="filled-in" id="filled-in-box-nutraBio"/>
+            <label for="filled-in-box-nutraBio">NutraBio</label>
+        </p>
+    </a>
 </div>

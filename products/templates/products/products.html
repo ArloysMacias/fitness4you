@@ -25,12 +25,13 @@
     <div class="overlay "></div>
     <!-- Page Layout here -->
     <div class="black-text">
-        <form action="">
+        <form method="GET" action="{% url 'products' %}">
             <div class="row">
                 <div class="col m1"></div>
                 <div class="col m2 hide-on-med-and-down">
                     <!-- Left filter -->
                     {% include 'includes/left filter/left_filter.html' %}
+                    <button type="submit"> Filter</button>
                 </div>
                 <div class="col m8 s12">
                     {% include 'includes/right/right_content.html' %}

@@ -7,8 +7,12 @@ from .filters import ProductFilter
 
 
 def is_valid(form_parameter, request):
-    if form_parameter in request.GET and form_parameter != '' and form_parameter is not None:
-        return True
+    if request.GET:
+        if form_parameter in request.GET and form_parameter != '' and form_parameter is not None:
+            return True
+    elif request.POST:
+        if form_parameter in request.POST and form_parameter != '' and form_parameter is not None:
+            return True
     else:
         messages.error(request, f"The criteria {form_parameter} is not valid")
         return redirect('products')
@@ -20,7 +24,7 @@ def all_products(request):
 
     products = Product.objects.all()
     brands = Product.objects.all().values_list('brand_name', flat=True).distinct()
-    current_brands = None
+    brands_filtered = None
     # if request.GET:
     #     if is_valid('search', request):
     #         search = request.GET['search']
@@ -28,35 +32,35 @@ def all_products(request):
 
     # current_brands = brands.filter(brand_name__in=checked_brand)
 
-    # if request.method == "POST":
-    #     if request.POST.get('txtvalues'):
-    #         checked_brand = request.GET['txtvalues'].split[',']
-    #         current_brands = brands.filter(brand_name__icontains=checked_brand)
-    #         products = products.filter(brand_name__icontains=checked_brand)
-
     if request.GET:
-
         if is_valid('brand_name', request):
-                # brands = request.POST('brand_name')
-                # checked_brand = request.POST.get('txtvalues', False)
-                # brands = request.POST.get('brand_name')
-                brand_name = request.GET['brand_name']
-                products = products.filter(brand_name__icontains=brand_name)
+            brand_name = request.GET['brand_name']
+            products = products.filter(brand_name__icontains=brand_name)
+            brands_filtered = brands.filter(brand_name__icontains=brand_name)
 
     context = {
         'brands': brands,
         'products': products,
+        'brands_filtered': brands_filtered,
     }
 
     return render(request, 'products/products.html', context)
 
 
-def save_values(request):
-    if request.method == "POST":
-        if request.POST.get('brand_name'):
-            savedata = Product()
-            savedata.brand_name = request.GET['brand_name']
-            savedata.save()
-            return render(request, 'products/products.html')
-    else:
-        return render(request, 'products/products.html')
+def update_page(request):
+    products = Product.objects.all()
+    brands = Product.objects.all().values_list('brand_name', flat=True).distinct()
+    brands_filtered = None
+    if request.GET:
+        if is_valid('brand_name', request):
+            brand_name = request.GET['brand_name']
+            products = products.filter(brand_name__icontains=brand_name)
+            brands_filtered = brands.filter(brand_name__icontains=brand_name)
+
+    template = 'products/products.html'
+    context = {
+        'brands': brands,
+        'products': products,
+        'brands_filtered': brands_filtered,
+    }
+    return render(request, template, context)

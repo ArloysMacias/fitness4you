@@ -25,13 +25,13 @@
     <div class="overlay "></div>
     <!-- Page Layout here -->
     <div class="black-text">
-        <form method="GET" action="{% url 'products' %}">
+        <form method="GET" action="{% url 'products' %}" enctype="multipart/form-data">
+{#            {% csrf_token %}#}
             <div class="row">
                 <div class="col m1"></div>
                 <div class="col m2 hide-on-med-and-down">
                     <!-- Left filter -->
                     {% include 'includes/left filter/left_filter.html' %}
-                    <button type="submit"> Filter</button>
                 </div>
                 <div class="col m8 s12">
                     {% include 'includes/right/right_content.html' %}
@@ -44,4 +44,16 @@
 {% block postloadjs %}
     <script src="{% static 'home/js/materialize.js' %}"></script>
     <script src="{% static 'products/js/nouislider.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.chkvalues').click(function () {
+                var listBrandNames="";
+                $('.chkvalues:checked').each(function () {
+                    listBrandNames+=$(this).val()+","
+                });
+                listBrandNames=listBrandNames.substring(0,listBrandNames.length-1);
+                $('#txtvalues').val(listBrandNames)
+            })
+        })
+    </script>
 {% endblock %}

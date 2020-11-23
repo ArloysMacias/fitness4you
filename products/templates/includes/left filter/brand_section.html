@@ -1,35 +1,26 @@
+{#<div id="brand-section" class="left-filter-section">#}
+{#    <h5>BRAND</h5>#}
+{#        {% for brand_name in brands %}#}
+{#            <p>#}
+{#                <input type="checkbox" name="{{ brand_name }}" class="filled-in chkvalues"#}
+{#                       id="filled-in-box-{{ brand_name }}" value="{{ brand_name }}" {% comment %} onclick="return myfunction()"{% endcomment %} {% comment %}onchange="this.form.submit()" {% endcomment %} {% comment %}{% if current_brands %}checked="checked"{% endif %}{% endcomment %}/>#}
+{#                <label for="filled-in-box-{{ brand_name }}">{{ brand_name }}</label>#}
+{#            </p>#}
+{#        {% endfor %}#}
+{#        <a href="{% url 'products' %}?brand_name={{ brand_name }}">#}
+{#            <button>Submit</button>#}
+{#        </a>#}
+{#        <input type="text" id="txtvalues" value="">#}
+{#</div>#}
+
 <div id="brand-section" class="left-filter-section">
     <h5>BRAND</h5>
-
-
-            <p>
-                <input type="checkbox" name="efxs" class="filled-in" id="filled-in-box-efx"/>
-                <label for="filled-in-box-efx"><a href="{% url 'products' %}?brand_name=MuscleTech">EFX Sports</a></label>
-            </p>
-
-
-    <a href="{% url 'products' %}?brand_name=MFIT Supps">
+    {% for brand_name in brands %}
         <p>
-            <input type="checkbox" name="mfit" class="filled-in" id="filled-in-box-mfit"/>
-            <label for="filled-in-box-mfit">MFIT Supps</label>
+            <a href="{% url 'products' %}?brand_name={{ brand_name }}">
+                <input type="button" name="{{ brand_name }}" class="filled-in" id="filled-in-box-{{ brand_name }}"/>
+                <label for="filled-in-box-{{ brand_name }}">{{ brand_name }}</label>
+            </a>
         </p>
-    </a>
-    <a href="{% url 'products' %}?brand_name=Gaspari Nutrition">
-        <p>
-            <input type="checkbox" class="filled-in" id="filled-in-box-gaspari"/>
-            <label for="filled-in-box-gaspari">Gaspari Nutrition</label>
-        </p>
-    </a>
-    <a href="{% url 'products' %}?brand_name=Primeval Labs">
-        <p>
-            <input type="checkbox" class="filled-in" id="filled-in-box-primeval"/>
-            <label for="filled-in-box-primeval">Primeval Labs</label>
-        </p>
-    </a>
-    <a href="{% url 'products' %}?brand_name=NutraBio">
-        <p>
-            <input type="checkbox" class="filled-in" id="filled-in-box-nutraBio"/>
-            <label for="filled-in-box-nutraBio">NutraBio</label>
-        </p>
-    </a>
+    {% endfor %}
 </div>

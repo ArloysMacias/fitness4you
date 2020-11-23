@@ -8,7 +8,7 @@ body{
     color: white;
 }
 main {
-    flex: 1 0 auto;
+    flex: 1 0 auto!important;
 }
 /* ------------------------------------------------*/
 /* NAVBAR */
@@ -66,9 +66,9 @@ nav .brand-logo{
 .btn:hover {
     opacity: 1
 }
-section{
-    height: 100vh;
-}
+/*section{*/
+/*    height: 100vh;*/
+/*}*/
 
 /* ------------------------------------------------*/
 /* WHAT WE OFFER */

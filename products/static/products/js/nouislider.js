@@ -1,9 +1,3 @@
-function setGetParameter() {
-    var lower = document.getElementById('skip-value-lower').value;
-    var upper = document.getElementById('skip-value-upper').value;
-    window.location.href = "{% url 'products' %}" + "?skip-value-lower=" + lower + "&skip-value-upper=" + upper;
-};
-
 $(document).ready(function () {
     var slider = document.getElementById('test-slider');
     noUiSlider.create(slider, {
@@ -17,8 +11,8 @@ $(document).ready(function () {
         },
         // pips: {
         //     format: wNumb({
-        //         decimals: 2,
-        //         prefix: '$'
+        //         prefix: '$ ',
+        //         decimals: 3
         //     })
         // }
     });

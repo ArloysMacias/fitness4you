@@ -1,19 +1,16 @@
-<div id="category-section" class="left-filter-section">
-    <h5>CATEGORY</h5>
+<div id="brand-section" class="left-filter-section">
+    {% for category_name in categories_friendly_name %}
+        <p>
+            <input type="radio" name="category_group"
+                   onchange="if(this.checked) document.location.href='{% url 'products' %}?category={{ category_name }}';"
+                   id="{{ category_name }}" {% if category_selected == category_name %} checked {% endif %} />
+            <label for="{{ category_name }}">{{ category_name }}</label>
+        </p>
+    {% endfor %}
     <p>
-        <input type="checkbox" class="filled-in" id="filled-in-box-snws" />
-        <label for="filled-in-box-snws">Sport Nutrition and Workout Support</label>
-    </p>
-    <p>
-        <input type="checkbox" class="filled-in" id="filled-in-box-ee" />
-        <label for="filled-in-box-ee">Energy and Endurance</label>
-    </p>
-    <p>
-        <input type="checkbox" class="filled-in" id="filled-in-box-vhh" />
-        <label for="filled-in-box-vhh">Vitamins, Herbs and Heald</label>
-    </p>
-    <p>
-        <input type="checkbox" class="filled-in" id="filled-in-box-dwm" />
-        <label for="filled-in-box-dwm">Diet and Weight Management</label>
+        <input type="radio" name="category_group"
+               onchange="if(this.checked) document.location.href='{% url 'products' %}';"
+               id="all_products" {% if category_selected %}{% else %}checked{% endif %}/>
+        <label for="all_products">All Categories</label>
     </p>
 </div>

@@ -1,5 +1,5 @@
-<div id="brand-section" class="left-filter-section">
-    {% for category_name in categories_friendly_name %}
+<div id="category-section" class="left-filter-section">
+    {% for category_name in list_categories_friendly_name %}
         <p>
             <input type="radio" name="category_group"
                    onchange="if(this.checked) document.location.href='{% url 'products' %}?category={{ category_name }}';"

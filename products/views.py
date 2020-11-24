@@ -1,3 +1,4 @@
+from django.db.models.functions import Lower
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views.generic import ListView
 from .models import Product, Category
@@ -29,11 +30,11 @@ def all_products(request):
     overall_rating_filtered = {}
     overall_rating_selected = 0
 
-    categories_friendly_name = Category.objects.all().values_list('friendly_name', flat=True).distinct()
-    category_selected = None
-
     brands_column = products.values_list('brand_name', flat=True).distinct()
     brand_selected = {}
+
+    list_categories_friendly_name = categories.values_list('friendly_name', flat=True).distinct()
+    category_selected = None
 
     price_column = products.values_list('price', flat=True)
     lower_price = 0
@@ -59,13 +60,9 @@ def all_products(request):
             brand_selected = brands_column.filter(brand_name__icontains=brand_name).first()
 
         if is_valid('category', request):
-            category = request.GET['category'].lower().replace(' ', '_')
-            print(category)
-            products = products.filter(category__name__icontains=category)
-            print(products)
-            category_selected = categories.filter(name__icontains=category).first()
-            print(categories)
-            print(category_selected)
+            category_friendly = request.GET['category']
+            products = products.filter(category__friendly_name__exact=category_friendly)
+            category_selected = list_categories_friendly_name.filter(friendly_name__exact=category_friendly).first()
 
         if is_valid('skip-value-lower', request):
             if is_valid('skip-value-upper', request):
@@ -75,11 +72,11 @@ def all_products(request):
 
     context = {
         'products': products,
-        'categories_friendly_name': categories_friendly_name,
 
         'overall_rating_selected': overall_rating_selected,
         'overall_rating_filtered': overall_rating_filtered,
 
+        'list_categories_friendly_name': list_categories_friendly_name,
         'category_selected': category_selected,
 
         'brands': brands_column,

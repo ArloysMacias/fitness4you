@@ -1,16 +1,16 @@
 <div id="brand-section" class="left-filter-section">
-        {% for brand_name in brands %}
-            <p>
-                <input type="radio" name="brand_group"
-                       onchange="if(this.checked) document.location.href='{% url 'products' %}?brand_name={{ brand_name }}';"
-                       id="{{ brand_name }}" {% if brand_selected == brand_name %} checked {% endif %} />
-                <label for="{{ brand_name }}">{{ brand_name }}</label>
-            </p>
-        {% endfor %}
+    {% for brand_name in brands %}
         <p>
             <input type="radio" name="brand_group"
-                   onchange="if(this.checked) document.location.href='{% url 'products' %}';"
-                   id="all_products" {% if brand_selected %}{% else %}checked{% endif %}/>
-            <label for="all_products">All Brands</label>
+                   onchange="if(this.checked) document.location.href='{% url 'products' %}?brand_name={{ brand_name }}';"
+                   id="{{ brand_name }}" {% if brand_selected == brand_name %} checked {% endif %} />
+            <label for="{{ brand_name }}">{{ brand_name }}</label>
         </p>
+    {% endfor %}
+    <p>
+        <input type="radio" name="brand_group"
+               onchange="if(this.checked) document.location.href='{% url 'products' %}';"
+               id="all_products" {% if brand_selected %}{% else %}checked{% endif %}/>
+        <label for="all_products">All Brands</label>
+    </p>
 </div>

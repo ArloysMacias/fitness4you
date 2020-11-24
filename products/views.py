@@ -29,6 +29,7 @@ def all_products(request):
 
     overall_rating_column = products.values_list('overall_rating', flat=True).distinct()
     overall_rating_filtered = {}
+    overall_rating_selected = 0
 
     price_column = products.values_list('price', flat=True)
     lower_price = 0
@@ -57,6 +58,7 @@ def all_products(request):
             overall_rating_selected = float(request.GET['overall_rating'])
             products = products.filter(overall_rating__gte=overall_rating_selected)
             overall_rating_filtered = overall_rating_column.filter(overall_rating__gte=overall_rating_selected)
+            print(overall_rating_selected)
 
         if is_valid('skip-value-lower', request):
             if is_valid('skip-value-upper', request):
@@ -64,13 +66,16 @@ def all_products(request):
                 upper_price = float(request.GET['skip-value-upper'])
                 products = products.filter(Q(price__gte=lower_price) & Q(price__lte=upper_price))
                 price_range = price_column.filter(Q(price__gte=lower_price) & Q(price__lte=upper_price))
-                print(price_range)
 
     context = {
-        'brands': brands_column,
         'products': products,
+
+        'brands': brands_column,
         'brand_selected': brand_selected,
+
+        'overall_rating_selected': overall_rating_selected,
         'overall_rating_filtered': overall_rating_filtered,
+
         'prices': price_column,
         'lower_price': lower_price,
         'upper_price': upper_price,

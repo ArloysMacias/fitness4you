@@ -23,8 +23,22 @@ def all_products(request):
     """A view to show all products"""
 
     products = Product.objects.all()
-    brands = Product.objects.all().values_list('brand_name', flat=True).distinct()
-    brands_filtered = None
+
+    brands_column = products.values_list('brand_name', flat=True).distinct()
+    brands_filtered = {}
+
+    overall_rating_column = products.values_list('overall_rating', flat=True).distinct()
+    overall_rating_filtered = {}
+
+    price_column = products.values_list('price', flat=True)
+    lower_price = 0
+    upper_price = 0
+    #
+    # brands = Product.objects.all().values_list('brand_name', flat=True).distinct()
+    # brands_filtered = {
+    #
+    # }
+
     # if request.GET:
     #     if is_valid('search', request):
     #         search = request.GET['search']
@@ -33,34 +47,52 @@ def all_products(request):
     # current_brands = brands.filter(brand_name__in=checked_brand)
 
     if request.GET:
+
         if is_valid('brand_name', request):
             brand_name = request.GET['brand_name']
             products = products.filter(brand_name__icontains=brand_name)
-            brands_filtered = brands.filter(brand_name__icontains=brand_name)
+            brands_filtered = brands_column.filter(brand_name__icontains=brand_name)
+
+        if is_valid('overall_rating', request):
+            overall_rating_selected = float(request.GET['overall_rating'])
+            products = products.filter(overall_rating__gte=overall_rating_selected)
+            overall_rating_filtered = overall_rating_column.filter(overall_rating__gte=overall_rating_selected)
+
+        if is_valid('skip-value-lower', request):
+            if is_valid('skip-value-upper', request):
+                lower_price = float(request.GET['skip-value-lower'])
+                upper_price = float(request.GET['skip-value-upper'])
+                products = products.filter(Q(price__gte=lower_price) & Q(price__lte=upper_price))
+                price_range = price_column.filter(Q(price__gte=lower_price) & Q(price__lte=upper_price))
+                print(price_range)
 
     context = {
-        'brands': brands,
+        'brands': brands_column,
         'products': products,
         'brands_filtered': brands_filtered,
+        'overall_rating_filtered': overall_rating_filtered,
+        'prices': price_column,
+        'lower_price': lower_price,
+        'upper_price': upper_price,
     }
 
     return render(request, 'products/products.html', context)
 
 
-def update_page(request):
-    products = Product.objects.all()
-    brands = Product.objects.all().values_list('brand_name', flat=True).distinct()
-    brands_filtered = None
-    if request.GET:
-        if is_valid('brand_name', request):
-            brand_name = request.GET['brand_name']
-            products = products.filter(brand_name__icontains=brand_name)
-            brands_filtered = brands.filter(brand_name__icontains=brand_name)
-
-    template = 'products/products.html'
-    context = {
-        'brands': brands,
-        'products': products,
-        'brands_filtered': brands_filtered,
-    }
-    return render(request, template, context)
+# def update_page(request):
+#     products = Product.objects.all()
+#     brands = Product.objects.all().values_list('brand_name', flat=True).distinct()
+#     brands_filtered = None
+#     if request.GET:
+#         if is_valid('brand_name', request):
+#             brand_name = request.GET['brand_name']
+#             products = products.filter(brand_name__icontains=brand_name)
+#             brands_filtered = brands.filter(brand_name__icontains=brand_name)
+#
+#     template = 'products/products.html'
+#     context = {
+#         'brands': brands,
+#         'products': products,
+#         'brands_filtered': brands_filtered,
+#     }
+#     return render(request, template, context)

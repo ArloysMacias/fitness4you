@@ -1,14 +1,28 @@
 <div id="brand-section" class="left-filter-section">
-    <h5>BRAND</h5>
     {% for brand_name in brands %}
-        {% for brands_checked in brands_filtered %}
-            <p>
-                <input type="checkbox"
-                       onchange="if(this.checked) document.location.href='{% url 'products' %}?brand_name={{ brand_name }}';"
-                       class="filled-in" id="{{ brand_name }}" {% if brand_name == brands_checked %}
-                       checked {% endif %}/>
-                <label for="{{ brand_name }}">{{ brand_name }}</label>
-            </p>
-        {% endfor %}
+        {% if brands_filtered %}
+            {% for brands_checked in brands_filtered %}
+                <p>
+                    <input type="radio" name="brand_group"
+                           onchange="if(this.checked) document.location.href='{% url 'products' %}?brand_name={{ brand_name }}';"
+                            id="{{ brand_name }}" {% if brand_name == brands_checked %}
+                           checked {% endif %}/>
+                    <label for="{{ brand_name }}">{{ brand_name }}</label>
+                </p>
+            {% endfor %}
+            {% else %}
+                <p>
+                    <input type="radio" name="brand_group"
+                           onchange="if(this.checked) document.location.href='{% url 'products' %}?brand_name={{ brand_name }}';"
+                            id="{{ brand_name }}" />
+                    <label for="{{ brand_name }}">{{ brand_name }}</label>
+                </p>
+        {% endif %}
     {% endfor %}
+    <p>
+        <input type="radio" name="brand_group"
+               onchange="if(this.checked) document.location.href='{% url 'products' %}';"
+                id="all_products" {% if brands_filtered %}{% else %}checked{% endif %} />
+        <label for="all_products">All Brands</label>
+    </p>
 </div>

@@ -1,19 +1,68 @@
 <div id="rating-section" class="left-filter-section mar">
-    <h5>RATING</h5>
-    <p>
-        <input type="checkbox" class="filled-in" id="filled-in-box-9" />
-        <label for="filled-in-box-9">9 or Higher</label>
-    </p>
-    <p>
-        <input type="checkbox" class="filled-in" id="filled-in-box-8" />
-        <label for="filled-in-box-8">8 or Higher</label>
-    </p>
-    <p>
-        <input type="checkbox" class="filled-in" id="filled-in-box-7" />
-        <label for="filled-in-box-7">7 or Higher</label>
-    </p>
-    <p>
-        <input type="checkbox" class="filled-in" id="filled-in-box-6" />
-        <label for="filled-in-box-6">6 or Higher</label>
-    </p>
+        <p>
+            <input type="radio" name="rating_group" id="9_or_higher"
+                   onchange="if(this.checked) document.location.href='{% url 'products' %}?overall_rating={{9}}';"
+                   {% if overall_rating_filtered == 9 %}checked{% else %}{% endif %}>
+            <label for="9_or_higher">9 or Higher</label>
+        </p>
+        <p>
+            <input type="radio" name="rating_group" id="8_or_higher"
+                   onchange="if(this.checked) document.location.href='{% url 'products' %}?overall_rating={{8}}';"
+                   {% if overall_rating_filtered == 8 %}checked{% else %}{% endif %}>
+            <label for="8_or_higher">8 or Higher</label>
+        </p>
+        <p>
+            <input type="radio" name="rating_group" id="7_or_higher"
+                   onchange="if(this.checked) document.location.href='{% url 'products' %}?overall_rating={{7}}';"
+                   {% if overall_rating_filtered == 7 %}checked{% else %}{% endif %}>
+            <label for="7_or_higher">7 or Higher</label>
+        </p>
+        <p>
+            <input type="radio" name="rating_group" id="6_or_higher"
+                   onchange="if(this.checked) document.location.href='{% url 'products' %}?overall_rating={{6}}';"
+                   {% if overall_rating_filtered == 6 %}checked{% else %}{% endif %}>
+            <label for="6_or_higher">6 or Higher</label>
+        </p>
+        <p>
+            <input type="radio" name="rating_group" id="2_or_higher"
+                   onchange="if(this.checked) document.location.href='{% url 'products' %}?overall_rating={{2}}';"
+                   {% if overall_rating_filtered == 2 %}checked{% else %}{% endif %}>
+            <label for="2_or_higher">2 or Higher</label>
+        </p>
+        <p>
+            <input type="radio" name="rating_group" id="all_rating"
+                   onchange="if(this.checked) document.location.href='{% url 'products' %}?overall_rating={{0}}';"
+                    {% if overall_rating_filtered %}{% else %}checked{% endif %}>
+            <label for="all_rating">All Rating</label>
+        </p>
+
 </div>
+
+{#<div id="brand-section" class="left-filter-section">#}
+{#    {% for overall_rating in list_of_rating %}#}
+{#        {% if overall_rating_filtered %}#}
+{#            {% for overall_rating_checked in overall_rating_filtered %}#}
+{#                <p>#}
+{#                    <input type="radio" name="rating_group"#}
+{#                           onchange="if(this.checked) document.location.href='{% url 'products' %}?overall_rating={{ overall_rating }}';"#}
+{#                           id="{{ overall_rating }}" {% if overall_rating == overall_rating_checked %}#}
+{#                           checked {% endif %}/>#}
+{#                    <label for="{{ overall_rating }}">{{ overall_rating }}</label>#}
+{#                </p>#}
+{#            {% endfor %}#}
+{#        {% else %}#}
+{#            <p>#}
+{#                <input type="radio" name="rating_group"#}
+{#                       onchange="if(this.checked) document.location.href='{% url 'products' %}?overall_rating={{ overall_rating }}';"#}
+{#                       id="{{ overall_rating }}" />#}
+{#                <label for="{{ overall_rating }}">{{ overall_rating }}</label>#}
+{#            </p>#}
+{#        {% endif %}#}
+{#    {% endfor %}#}
+{#    <p>#}
+{#        <input type="radio" name="rating_group"#}
+{#               onchange="if(this.checked) document.location.href='{% url 'products' %}';"#}
+{#               id="all_products" {% if overall_rating_filtered %}{% else %}checked{% endif %} />#}
+{#        <label for="all_products">All Rating</label>#}
+{#    </p>#}
+{#</div>#}

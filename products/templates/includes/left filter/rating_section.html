@@ -37,32 +37,3 @@
         </p>
 
 </div>
-
-{#<div id="brand-section" class="left-filter-section">#}
-{#    {% for overall_rating in list_of_rating %}#}
-{#        {% if overall_rating_filtered %}#}
-{#            {% for overall_rating_checked in overall_rating_filtered %}#}
-{#                <p>#}
-{#                    <input type="radio" name="rating_group"#}
-{#                           onchange="if(this.checked) document.location.href='{% url 'products' %}?overall_rating={{ overall_rating }}';"#}
-{#                           id="{{ overall_rating }}" {% if overall_rating == overall_rating_checked %}#}
-{#                           checked {% endif %}/>#}
-{#                    <label for="{{ overall_rating }}">{{ overall_rating }}</label>#}
-{#                </p>#}
-{#            {% endfor %}#}
-{#        {% else %}#}
-{#            <p>#}
-{#                <input type="radio" name="rating_group"#}
-{#                       onchange="if(this.checked) document.location.href='{% url 'products' %}?overall_rating={{ overall_rating }}';"#}
-{#                       id="{{ overall_rating }}" />#}
-{#                <label for="{{ overall_rating }}">{{ overall_rating }}</label>#}
-{#            </p>#}
-{#        {% endif %}#}
-{#    {% endfor %}#}
-{#    <p>#}
-{#        <input type="radio" name="rating_group"#}
-{#               onchange="if(this.checked) document.location.href='{% url 'products' %}';"#}
-{#               id="all_products" {% if overall_rating_filtered %}{% else %}checked{% endif %} />#}
-{#        <label for="all_products">All Rating</label>#}
-{#    </p>#}
-{#</div>#}

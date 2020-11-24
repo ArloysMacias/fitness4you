@@ -25,7 +25,7 @@ def all_products(request):
     products = Product.objects.all()
 
     brands_column = products.values_list('brand_name', flat=True).distinct()
-    brands_filtered = {}
+    brand_selected = {}
 
     overall_rating_column = products.values_list('overall_rating', flat=True).distinct()
     overall_rating_filtered = {}
@@ -51,7 +51,7 @@ def all_products(request):
         if is_valid('brand_name', request):
             brand_name = request.GET['brand_name']
             products = products.filter(brand_name__icontains=brand_name)
-            brands_filtered = brands_column.filter(brand_name__icontains=brand_name)
+            brand_selected = brands_column.filter(brand_name__icontains=brand_name).first()
 
         if is_valid('overall_rating', request):
             overall_rating_selected = float(request.GET['overall_rating'])
@@ -69,7 +69,7 @@ def all_products(request):
     context = {
         'brands': brands_column,
         'products': products,
-        'brands_filtered': brands_filtered,
+        'brand_selected': brand_selected,
         'overall_rating_filtered': overall_rating_filtered,
         'prices': price_column,
         'lower_price': lower_price,

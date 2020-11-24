@@ -1,5 +1,5 @@
 <div id="price-section" class="left-filter-section">
     <div id="test-slider" onclick="setGetParameter()"></div>
-    <input type="number" id="skip-value-lower" value={{ lower_price }}>
-    <input type="number" id="skip-value-upper" value={{ upper_price }}>
+    <input type="number" id="skip-value-lower" {% if lower_price %}value={{ lower_price }}{% else %}value="10"{% endif %} >
+    <input type="number" id="skip-value-upper"{% if upper_price %}value={{ upper_price }}{% else %}value="100"{% endif %} >
 </div>

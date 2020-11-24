@@ -13,19 +13,19 @@
     </nav>
     <ul class="collapsible" data-collapsible="accordion">
         <li>
-            <div class="collapsible-header"><i class="material-icons">star_half</i>Rating</div>
+            <div class="collapsible-header {% if overall_rating_filtered %}active{% endif %}"><i class="material-icons">star_half</i>Rating</div>
             <div class="collapsible-body">{% include 'includes/left filter/rating_section.html' %}</div>
         </li>
         <li>
-            <div class="collapsible-header"><i class="material-icons">local_offer</i>Brand</div>
+            <div class="collapsible-header {% if brand_selected %}active{% endif %}"><i class="material-icons">local_offer</i>Brand</div>
             <div class="collapsible-body">{% include 'includes/left filter/brand_section.html' %}</div>
         </li>
         <li>
-            <div class="collapsible-header"><i class="material-icons">category</i>Category</div>
+            <div class="collapsible-header {% if category_filtered %}active{% endif %}"><i class="material-icons">category</i>Category</div>
             <div class="collapsible-body">{% include 'includes/left filter/category_section.html' %}</div>
         </li>
         <li>
-            <div class="collapsible-header"><i class="material-icons">monetization_on</i>Price</div>
+            <div class="collapsible-header {% if prices %}active{% endif %}"><i class="material-icons">monetization_on</i>Price</div>
             <div class="collapsible-body">{% include 'includes/left filter/price_section.html' %}</div>
         </li>
     </ul>

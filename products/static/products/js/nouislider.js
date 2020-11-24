@@ -3,7 +3,7 @@ $(document).ready(function () {
     noUiSlider.create(slider, {
         start: [document.getElementById('skip-value-lower').value, document.getElementById('skip-value-upper').value],
         connect: true,
-        step: 1,
+        step: 2,
         orientation: 'horizontal', // 'horizontal' or 'vertical'
         range: {
             'min': 0,

@@ -108,8 +108,8 @@
             {% endblock %}
 
             <!--Floating button back to the top-->
-            <div class="fixed-action-btn">
-                <a href="#nav" class="btn-floating btn-large red">
+            <div class="fixed-action-btn back_to_top">
+                <a class="btn-floating btn-large waves-effect waves-light red btt-link">
                     <i class="large material-icons">publish</i>
                 </a>
             </div>
@@ -153,5 +153,11 @@
             <!-- Myscript -->
             <script src="{% static 'js/myscript.js' %}"></script>
         {% endblock %}
+        {{ block.super }}
+        <script type="text/javascript">
+            $('.btt-link').click(function(e) {
+                window.scrollTo(0,0)
+            })
+        </script>
     </body>
 </html>

@@ -94,6 +94,8 @@
 #     return render(request, 'products/products.html', context)
 
 
+from decimal import Decimal
+from django.utils.formats import sanitize_separators
 from django.shortcuts import render, redirect
 from .models import Product, Category
 from django.contrib import messages
@@ -113,11 +115,21 @@ def is_valid(form_parameter, request):
 
 
 def updated_filter(parameter, request):
-    if request.GET:
-        if request.session[parameter]:
-            result = request.session[parameter]
-        else:
-            result = request.GET[parameter]
+    result = None
+    if type(parameter) == int:
+        result = 0
+    if type(parameter) == float:
+        result = sanitize_separators(0.0)
+    if type(parameter) == str:
+        result = ""
+
+    if is_valid(parameter, request):
+        if request.GET:
+            if request.session[parameter]:
+                result = request.session[parameter]
+            else:
+                result = request.GET.get(parameter)
+    print(result)
     return result
 
 
@@ -166,6 +178,20 @@ def all_products(request):
             request.session['filter_by_rating'] = 'Q(overall_rating__gte=overall_rating_selected)'
             request.session['overall_rating'] = 'overall_rating'
 
+            brand_name = updated_filter('brand_name',request)
+            brand_selected = brands_column.filter(brand_name__exact=brand_name).first()
+            filter_by_brand = Q(brand_name__exact=brand_name)
+            request.session['filter_by_brand'] = 'Q(brand_name__exact=brand_name)'
+
+            category_friendly = updated_filter('category', request)
+            category_selected = list_categories_friendly_name.filter(friendly_name__exact=category_friendly).first()
+            filter_by_category = Q(category__friendly_name__exact=category_friendly)
+            request.session['filter_by_category'] = 'Q(category__friendly_name__exact=category_friendly)'
+
+            lower_price = Decimal(updated_filter('skip-value-lower',request))
+            upper_price = Decimal(updated_filter('skip-value-upper',request))
+            filter_by_price = Q(price__gte=lower_price) & Q(price__lte=upper_price)
+
         if is_valid('brand_name', request):
             clicked = 'brand'
             brand_name = request.GET['brand_name']
@@ -173,6 +199,19 @@ def all_products(request):
             filter_by_brand = Q(brand_name__exact=brand_name)
             request.session['filter_by_brand'] = 'Q(brand_name__exact=brand_name)'
             request.session['brand_name'] = brand_selected
+
+            overall_rating_selected = float(updated_filter('overall_rating', request))
+            filter_by_rating = Q(overall_rating__gte=overall_rating_selected)
+            request.session['filter_by_rating'] = 'Q(overall_rating__gte=overall_rating_selected)'
+
+            category_friendly = updated_filter('category',request)
+            category_selected = list_categories_friendly_name.filter(friendly_name__exact=category_friendly).first()
+            filter_by_category = Q(category__friendly_name__exact=category_friendly)
+            request.session['filter_by_category'] = 'Q(category__friendly_name__exact=category_friendly)'
+
+            lower_price = Decimal(updated_filter('skip-value-lower',request))
+            upper_price = Decimal(updated_filter('skip-value-upper',request))
+            filter_by_price = Q(price__gte=lower_price) & Q(price__lte=upper_price)
 
         if is_valid('category', request):
             clicked = 'category'
@@ -182,12 +221,40 @@ def all_products(request):
             request.session['filter_by_category'] = 'Q(category__friendly_name__exact=category_friendly)'
             request.session['category'] = category_selected
 
+            overall_rating_selected = sanitize_separators(updated_filter('overall_rating', request))
+            filter_by_rating = Q(overall_rating__gte=overall_rating_selected)
+            request.session['filter_by_rating'] = 'Q(overall_rating__gte=overall_rating_selected)'
+
+            brand_name = updated_filter('brand_name',request)
+            brand_selected = brands_column.filter(brand_name__exact=brand_name).first()
+            filter_by_brand = Q(brand_name__exact=brand_name)
+            request.session['filter_by_brand'] = 'Q(brand_name__exact=brand_name)'
+
+            lower_price = Decimal(updated_filter('skip-value-lower',request))
+            upper_price = Decimal(updated_filter('skip-value-upper',request))
+            filter_by_price = Q(price__gte=lower_price) & Q(price__lte=upper_price)
+
         if is_valid('skip-value-lower', request):
             clicked = 'price'
-            lower_price = float(request.GET['skip-value-lower'])
-            upper_price = float(request.GET['skip-value-upper'])
+            lower_price = Decimal(request.GET['skip-value-lower'])
+            upper_price = Decimal(request.GET['skip-value-upper'])
             filter_by_price = Q(price__gte=lower_price) & Q(price__lte=upper_price)
             request.session['filter_by_price'] = 'Q(price__gte=lower_price) & Q(price__lte=upper_price)'
+            request.session['skip-value-lower']=lower_price
+
+            overall_rating_selected = float(updated_filter('overall_rating', request))
+            filter_by_rating = Q(overall_rating__gte=overall_rating_selected)
+            request.session['filter_by_rating'] = 'Q(overall_rating__gte=overall_rating_selected)'
+
+            brand_name = updated_filter('brand_name', request)
+            brand_selected = brands_column.filter(brand_name__exact=brand_name).first()
+            filter_by_brand = Q(brand_name__exact=brand_name)
+            request.session['filter_by_brand'] = 'Q(brand_name__exact=brand_name)'
+
+            category_friendly = updated_filter('category',request)
+            category_selected = list_categories_friendly_name.filter(friendly_name__exact=category_friendly).first()
+            filter_by_category = Q(category__friendly_name__exact=category_friendly)
+            request.session['filter_by_category'] = 'Q(category__friendly_name__exact=category_friendly)'
 
         products = products.filter(
             filter_by_price &

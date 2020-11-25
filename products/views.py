@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from .models import Product, Category
 from django.contrib import messages
 from django.db.models import Q
-from django.http import HttpResponse, response
 
 
 def is_valid(form_parameter, request):
@@ -26,7 +25,6 @@ def updated_filter(parameter, request):
     return result
 
 
-# Create your views here.
 def all_products(request):
     """A view to show all products"""
 
@@ -39,11 +37,9 @@ def all_products(request):
 
     brands_column = products.values_list('brand_name', flat=True).distinct()
     brand_selected = {}
-    brand_name = None
 
     list_categories_friendly_name = categories.values_list('friendly_name', flat=True).distinct()
     category_selected = None
-    category_friendly = None
 
     price_column = products.values_list('price', flat=True)
     lower_price = 0
@@ -59,24 +55,16 @@ def all_products(request):
     if request.GET:
 
         if is_valid('overall_rating', request):
-            if overall_rating_selected in request.COOKIES:
-                overall_rating_selected = request.COOKIES[overall_rating_selected]
-            else:
-                overall_rating_selected = float(request.GET['overall_rating'])
+            overall_rating_selected = float(request.GET['overall_rating'])
             products = products.filter(overall_rating__gte=overall_rating_selected)
-            overall_rating_filtered = overall_rating_column.filter(overall_rating__gte=overall_rating_selected)
+            overall_rating_filtered = overall_rating_column.filter(overall_rating__gte=overall_rating_selected).first()
 
         if is_valid('brand_name', request):
-            # brand_name = updated_filter('brand_name', request)
             brand_name = request.GET['brand_name']
             products = products.filter(brand_name__icontains=brand_name)
-            products = products.filter(brand_name__icontains=brand_name)
             brand_selected = brands_column.filter(brand_name__icontains=brand_name).first()
-            request.session['brand_name'] = brand_selected
 
         if is_valid('category', request):
-            brand_name = updated_filter('brand_name', request)
-            brand_selected = brands_column.filter(brand_name__icontains=brand_name).first()
             category_friendly = request.GET['category']
             products = products.filter(category__friendly_name__exact=category_friendly)
             category_selected = list_categories_friendly_name.filter(friendly_name__exact=category_friendly).first()

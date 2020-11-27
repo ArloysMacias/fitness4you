@@ -6,10 +6,10 @@ $(document).ready(function () {
         step: 2,
         orientation: 'horizontal',
         tooltips: [wNumb({
-            prefix: '$',
+            prefix: '€',
             decimals: 1
         }), wNumb({
-            prefix: '$',
+            prefix: '€',
             decimals: 1
         })],
         range: {
@@ -20,7 +20,7 @@ $(document).ready(function () {
             mode: 'range',
             density: 2,
             format: wNumb({
-                prefix: '$',
+                prefix: '€',
                 decimals: 1
             })
         },

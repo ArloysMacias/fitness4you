@@ -263,6 +263,8 @@ def all_products(request):
             filter_by_rating
         )
 
+        products = products.filter()
+
     context = {
         'products': products,
         "clicked": clicked,

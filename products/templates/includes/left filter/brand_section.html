@@ -10,7 +10,7 @@
     <p>
         <input type="radio" name="brand_group"
                onchange="if(this.checked) document.location.href='{% url 'products' %}';"
-               id="all_products" {% if brand_selected %}{% else %}checked{% endif %}/>
-        <label for="all_products">All Brands</label>
+               id="all_brands" {% if brand_selected %}{% else %}checked{% endif %}/>
+        <label for="all_brands">All Brands</label>
     </p>
 </div>

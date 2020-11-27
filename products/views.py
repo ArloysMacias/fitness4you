@@ -43,7 +43,7 @@ def all_products(request):
         if is_valid('search', request):
             search = request.GET['search']
             print(search)
-            queries = (Q(product_name__icontains=search) | Q(product_description__icontains=search))
+            queries = (Q(product_name__icontains=search) | Q(product_description__icontains=search) | Q (brand_name__icontains=search))
             if search == "":
                 messages.error(request, ("You most enter a value"))
                 return redirect(reverse('products'))

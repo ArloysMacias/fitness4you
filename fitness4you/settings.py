@@ -41,8 +41,16 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'home',
     'products',
-    'django_filters'
+    'django_filters',
+    #'django-crispy-forms',
+    # 'rest_framework',
 ]
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_FILTER_BACKENDS': (
+#         'django_filters.rest_framework.DjangoFilterBackend',
+#     ),
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,6 +80,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'products.contexts.cached_queries',
             ],
         },
     },

@@ -2,7 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-
+from django.core.cache import cache
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fitness4you.settings')
@@ -19,3 +19,9 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+class Command():
+    help = 'Refreshes my cache'
+
+    def handle_noargs(self, queryset=None, **options):
+        cache.set('key', queryset)

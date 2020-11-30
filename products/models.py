@@ -1,3 +1,4 @@
+import generics as generics
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
@@ -37,6 +38,7 @@ class Product(models.Model):
     verified_buyer_rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
 
-    def __str__(self):
+    def __str__(self, **kwargs):
         return self.product_name
+
 

@@ -1,246 +1,80 @@
-# from django.shortcuts import render, redirect
-# from .models import Product, Category
-# from django.contrib import messages
-# from django.db.models import Q
-#
-#
-# def is_valid(form_parameter, request):
-#     if request.GET:
-#         if form_parameter in request.GET and form_parameter != '' and form_parameter is not None:
-#             return True
-#     elif request.POST:
-#         if form_parameter in request.POST and form_parameter != '' and form_parameter is not None:
-#             return True
-#     else:
-#         messages.error(request, f"The criteria {form_parameter} is not valid")
-#         return redirect('products')
-#
-#
-# def updated_filter(parameter, request):
-#     if request.GET:
-#         if request.session[parameter]:
-#             result = request.session[parameter]
-#         else:
-#             result = request.GET[parameter]
-#     return result
-#
-#
-# def all_products(request):
-#     """A view to show all products"""
-#
-#     products = Product.objects.all()
-#     categories = Category.objects.all()
-#
-#     overall_rating_column = products.values_list('overall_rating', flat=True).distinct()
-#     overall_rating_filtered = {}
-#     overall_rating_selected = 0
-#
-#     brands_column = products.values_list('brand_name', flat=True).distinct()
-#     brand_selected = {}
-#
-#     list_categories_friendly_name = categories.values_list('friendly_name', flat=True).distinct()
-#     category_selected = None
-#
-#     price_column = products.values_list('price', flat=True)
-#     lower_price = 0
-#     upper_price = 0
-#
-#     # if request.GET:
-#     #     if is_valid('search', request):
-#     #         search = request.GET['search']
-#     #         products = products.filter(Q(product_name__icontains=search) | Q(product_description__icontains=search))
-#     #
-#     # current_brands = brands.filter(brand_name__in=checked_brand)
-#
-#     if request.GET:
-#
-#         if is_valid('overall_rating', request):
-#             overall_rating_selected = float(request.GET['overall_rating'])
-#             products = products.filter(overall_rating__gte=overall_rating_selected)
-#             overall_rating_filtered = overall_rating_column.filter(overall_rating__gte=overall_rating_selected).first()
-#
-#         if is_valid('brand_name', request):
-#             brand_name = request.GET['brand_name']
-#             products = products.filter(brand_name__icontains=brand_name)
-#             brand_selected = brands_column.filter(brand_name__icontains=brand_name).first()
-#
-#         if is_valid('category', request):
-#             category_friendly = request.GET['category']
-#             products = products.filter(category__friendly_name__exact=category_friendly)
-#             category_selected = list_categories_friendly_name.filter(friendly_name__exact=category_friendly).first()
-#
-#         if is_valid('skip-value-lower', request):
-#             lower_price = float(request.GET['skip-value-lower'])
-#             upper_price = float(request.GET['skip-value-upper'])
-#             products = products.filter(Q(price__gte=lower_price) & Q(price__lte=upper_price))
-#
-#     context = {
-#         'products': products,
-#
-#         'overall_rating_selected': overall_rating_selected,
-#         'overall_rating_filtered': overall_rating_filtered,
-#
-#         'list_categories_friendly_name': list_categories_friendly_name,
-#         'category_selected': category_selected,
-#
-#         'brands': brands_column,
-#         'brand_selected': brand_selected,
-#
-#         'prices': price_column,
-#         'lower_price': lower_price,
-#         'upper_price': upper_price,
-#     }
-#
-#     return render(request, 'products/products.html', context)
-from django.http import JsonResponse
-from django.shortcuts import render, redirect
-from django.urls import reverse
-
+import generics
+from django import forms
+import django_filters
 from .models import Product, Category
-from django.contrib import messages
-from django.db.models import Q
-from django.core import serializers
 
 
-def is_valid(form_parameter, request):
-    if request.GET:
-        if form_parameter in request.GET and form_parameter != '' and form_parameter is not None:
-            return True
-    elif request.POST:
-        if form_parameter in request.POST and form_parameter != '' and form_parameter is not None:
-            return True
-    else:
-        messages.error(request, f"The criteria {form_parameter} is not valid")
-        return redirect('products')
+# class UserFilter(django_filters.FilterSet):
+#     class Meta:
+#         model = User
+#         fields = ['username', 'first_name', 'last_name', ]
+
+class NumberInFilter(django_filters.BaseInFilter, django_filters.NumberFilter):
+    pass
 
 
-def updated_filter(parameter, request):
-    if request.GET:
-        if request.session[parameter]:
-            result = request.session[parameter]
-        else:
-            result = request.GET[parameter]
-    return result
+class ProductFilter(django_filters.FilterSet):
+    categories = NumberInFilter(field_name='category', lookup_expr='in')
+
+    price = django_filters.NumberFilter()
+    price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt')
+    price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt')
+
+    overall_rating = django_filters.NumberFilter(field_name='overall_rating', lookup_expr='gt')
+
+    class Meta:
+        model = Product
+        fields = {
+            'brand_name': ['exact', ],
+            'category': ['exact'],
+        }
 
 
-def all_products(request):
-    """A view to show all products"""
+class CategoryFilter(django_filters.FilterSet):
+    friendly_name = django_filters.CharFilter(lookup_expr='icontains')
 
-    products = Product.objects.all()
-    categories = Category.objects.all()
+    class Meta:
+        model = Category
 
-    overall_rating_column = products.values_list('overall_rating', flat=True).distinct()
-    overall_rating_filtered = {}
-    overall_rating_selected = 0
+        fields = {
+            'friendly_name': ['exact', ],
+            'name': ['exact', ],
+        }
 
-    brands_column = products.values_list('brand_name', flat=True).distinct()
-    brand_selected = {}
-
-    list_categories_friendly_name = categories.values_list('friendly_name', flat=True).distinct()
-    category_selected = {}
-
-    price_column = products.values_list('price', flat=True)
-    lower_price = 0
-    upper_price = 0
-
-    brand_name = None
-    category_friendly = None
-
-    filter_by_rating = Q()
-    filter_by_brand = Q()
-    filter_by_category = Q()
-    filter_by_price = Q()
-
-    clicked = None
-
-    # current_brands = brands.filter(brand_name__in=checked_brand)
-
-    # SESSIONS
-    allFilter_at_time = False
-
-    products_filters_by_rating = products
-    products_filters_by_brand = products
-    products_filters_by_category = products
-    products_filters_by_price = products
-
-    search = ""
-
-    if request.GET:
-
-        if is_valid('search', request):
-            search = request.GET['search']
-            print(search)
-            queries = (Q(product_name__icontains=search) | Q(product_description__icontains=search))
-            if search == "":
-                messages.error(request, ("You most enter a value"))
-                return redirect(reverse('products'))
-            else:
-                products = products.filter(queries)
+# class ProductSerializer(Product):
+#     pass
 
 
-        if is_valid('overall_rating', request):
-            clicked = 'rating'
-            overall_rating_selected = float(request.GET['overall_rating'])
-            request.session['overall_rating_selected'] = overall_rating_selected
-            products_filters_by_rating = products.filter(
-                Q(overall_rating__gte=request.session['overall_rating_selected']))
-            print(products_filters_by_rating)
-            products = products.filter(Q(overall_rating__gte=request.session['overall_rating_selected']))
-
-        if is_valid('brand_name', request):
-            clicked = 'brand'
-            brand_name = request.GET['brand_name']
-            brand_selected = brands_column.filter(brand_name__exact=brand_name).first()
-            request.session['brand_name'] = brand_name
-            products_filters_by_brand = products.filter(Q(brand_name__exact=request.session['brand_name']))
-            print(products_filters_by_brand)
-            products = products.filter(Q(brand_name__exact=request.session['brand_name']))
-
-        if is_valid('category', request):
-            clicked = 'category'
-            category_friendly = request.GET['category']
-            category_selected = list_categories_friendly_name.filter(friendly_name__exact=category_friendly).first()
-            request.session['category_selected'] = category_selected
-            products_filters_by_category = products.filter(
-                Q(category__friendly_name__exact=request.session['category_selected']))
-            print(products_filters_by_category)
-            products = products.filter(Q(category__friendly_name__exact=request.session['category_selected']))
-
-        if is_valid('skip-value-lower', request):
-            clicked = 'price'
-            lower_price = float(request.GET['skip-value-lower'])
-            upper_price = float(request.GET['skip-value-upper'])
-            request.session['lower_price'] = lower_price
-            request.session['upper_price'] = upper_price
-            products_filters_by_price = products.filter(
-                Q(price__gte=request.session['lower_price']) & Q(price__lte=request.session['upper_price']))
-            print(products_filters_by_price)
-            products = products.filter(
-                Q(price__gte=request.session['lower_price']) & Q(price__lte=request.session['upper_price']))
-
-    # if allFilter_at_time:
-    #     rat_brandList = list(set(products_filters_by_rating).intersection(products_filters_by_brand))
-    #     cat_price = list(set(products_filters_by_category).intersection(products_filters_by_price))
-    #     products = list(set(rat_brandList).intersection(cat_price))
-    #     print(products)
-
-    context = {
-        'products': products,
-        "clicked": clicked,
-
-        'search': search,
-
-        'overall_rating_selected': overall_rating_selected,
-
-        'list_categories_friendly_name': list_categories_friendly_name,
-        'category_selected': category_selected,
-
-        'brands': brands_column,
-        'brand_selected': brand_selected,
-
-        'prices': price_column,
-        'lower_price': lower_price,
-        'upper_price': upper_price,
-    }
-
-    return render(request, 'products/products.html', context)
+# class ProductsListView(generics.ListAPIView):
+#     queryList = Product.objects.all()
+#     serializer_class = ProductSerializer
+#     filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+#     # filterset_class = ProductFilter
+#     # filterset_fields = ('category', 'brand_name', 'category')
+#
+#     def get_queryset(self):
+#
+#         overall_rating_selected = overall_rating_selected = float(self.request.query_params.get('overall_rating', None))
+#         brand_name = brand_name = self.request.query_params.get('brand_name', None)
+#         category_friendly = category_friendly = self.request.query_params.get('category', None)
+#         lower_price = lower_price = float(self.request.query_params.get('skip-value-lower', None))
+#         upper_price = upper_price = float(self.request.query_params.get('skip-value-upper', None))
+#
+#         if overall_rating_selected:
+#             queryList = queryList.filter(overall_rating_selected=overall_rating_selected)
+#         if brand_name:
+#             queryList = queryList.filter(brand_name=brand_name)
+#         if category_friendly:
+#             queryList = queryList.filter(category_friendly=category_friendly)
+#         if lower_price:
+#             queryList = queryList.filter(lower_price=lower_price)
+#         if upper_price:
+#             queryList = queryList.filter(upper_price=upper_price)
+#
+#         # results = []
+#         # for choice in queryList:
+#         #     results.append((choice.pk, choice.name))
+#         #
+#         # return http.HttpResponse(results)
+#
+#         return queryList

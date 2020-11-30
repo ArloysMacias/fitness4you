@@ -52,7 +52,7 @@
         function setGetParameter() {
             var lower = document.getElementById('skip-value-lower').value;
             var upper = document.getElementById('skip-value-upper').value;
-            window.location.href = "{% url 'products' %}" + "?skip-value-lower=" + lower + "&skip-value-upper=" + upper;
+            window.location.href = "{% url 'products' %}" + "?price__gt=" + lower + "&price__lt=" + upper;
         }
         function Search() {
             var search_value = document.getElementById('search').value;

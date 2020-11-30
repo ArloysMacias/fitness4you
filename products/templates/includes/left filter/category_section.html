@@ -1,10 +1,10 @@
 <div id="category-section" class="left-filter-section">
-    {% for category_name in list_categories_friendly_name %}
+    {% for category_name in categories.qs %}
         <p>
             <input type="radio" name="category_group"
-                   onchange="if(this.checked) document.location.href='{% url 'products' %}?category={{ category_name }}';"
+                   onchange="if(this.checked) document.location.href='{% url 'products' %}?category={{ category_name.pk }}';"
                    id="{{ category_name }}" {% if category_selected == category_name %} checked {% endif %} />
-            <label for="{{ category_name }}">{{ category_name }}</label>
+            <label for="{{ category_name }}">{{ category_name.friendly_name }}</label>
         </p>
     {% endfor %}
     <p>

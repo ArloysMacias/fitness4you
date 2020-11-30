@@ -3,7 +3,7 @@
         <p>
             <input type="radio" name="category_group"
                    onchange="if(this.checked) document.location.href='{% url 'products' %}?category={{ category_name.pk }}';"
-                   id="{{ category_name }}" {% if category_selected == category_name %} checked {% endif %} />
+                   id="{{ category_name }}" {% if category_selected == category_name.pk %} checked {% endif %} />
             <label for="{{ category_name }}">{{ category_name.friendly_name }}</label>
         </p>
     {% endfor %}

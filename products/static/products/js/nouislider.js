@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var slider = document.getElementById('test-slider');
     noUiSlider.create(slider, {
-        start: [document.getElementById('skip-value-lower').value, document.getElementById('skip-value-upper').value],
+        start: [document.getElementById('lower').value, document.getElementById('upper').value],
         connect: true,
         step: 2,
         orientation: 'horizontal',
@@ -31,16 +31,16 @@ $(document).ready(function () {
         // })
     });
     var rangeValues = [
-        document.getElementById('skip-value-lower'),
-        document.getElementById('skip-value-upper')
+        document.getElementById('lower'),
+        document.getElementById('upper')
     ];
 
     slider.noUiSlider.on('update', function (values, handle) {
         rangeValues[handle].value = values[handle];
     })
 
-    var inputFormat_lower = document.getElementById('skip-value-lower');
-    var inputFormat_upper = document.getElementById('skip-value-lower');
+    var inputFormat_lower = document.getElementById('lower');
+    var inputFormat_upper = document.getElementById('upper');
     inputFormat_lower.addEventListener('change', function () {
         slider.noUiSlider.set(this.value);
     });

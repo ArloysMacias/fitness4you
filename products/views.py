@@ -1,4 +1,6 @@
 from decimal import Decimal
+
+from django.db.models.functions import Lower
 from django.shortcuts import render
 
 from .filters import ProductFilter, CategoryFilter
@@ -22,9 +24,13 @@ def all_products(request):
     lower_price = 0
     upper_price = 400
 
+    sort = None
+    direction = None
+    current_sorting = None
+
     if request.GET:
         if 'overall_rating' in request.GET:
-            overall_rating_selected =int(request.GET['overall_rating'])
+            overall_rating_selected = int(request.GET['overall_rating'])
             clicked = 'rating'
         if 'brand_name' in request.GET:
             brand_selected = (request.GET['brand_name'])
@@ -38,6 +44,12 @@ def all_products(request):
         if 'price__lt' in request.GET:
             clicked = 'price'
             upper_price = Decimal(request.GET['price__lt'])
+
+        if 'ordering' in request.GET:
+            clicked = 'filter'
+            current_sorting = (request.GET['ordering'])
+
+
 
     context = {
         'products': products_filter,
@@ -56,6 +68,8 @@ def all_products(request):
 
         'lower_price': lower_price,
         'upper_price': upper_price,
+
+        'current_sorting': current_sorting,
 
     }
     return render(request, 'products/products.html', context)

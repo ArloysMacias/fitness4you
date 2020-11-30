@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'home',
     'products',
     'django_filters',
-    #'django-crispy-forms',
-    # 'rest_framework',
+    # 'bootstrapform',
 ]
 
 # REST_FRAMEWORK = {

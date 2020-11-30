@@ -1,6 +1,8 @@
 import generics
 from django import forms
 import django_filters
+from django.db.models import Q
+
 from .models import Product, Category
 
 
@@ -21,6 +23,7 @@ class ProductFilter(django_filters.FilterSet):
     price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt')
 
     overall_rating = django_filters.NumberFilter(field_name='overall_rating', lookup_expr='gt')
+    q = django_filters.CharFilter(method='my_custom_filter')
 
     class Meta:
         model = Product
@@ -28,7 +31,11 @@ class ProductFilter(django_filters.FilterSet):
             'brand_name': ['exact', ],
             'category': ['exact'],
         }
-
+    def my_custom_filter(self, queryset, name, value):
+        return Product.objects.filter(
+            Q(product_name__icontains=value) | Q(product_description__icontains=value) | Q(
+                brand_name__icontains=value)
+        )
 
 class CategoryFilter(django_filters.FilterSet):
     friendly_name = django_filters.CharFilter(lookup_expr='icontains')
@@ -40,6 +47,9 @@ class CategoryFilter(django_filters.FilterSet):
             'friendly_name': ['exact', ],
             'name': ['exact', ],
         }
+
+
+
 
 # class ProductSerializer(Product):
 #     pass

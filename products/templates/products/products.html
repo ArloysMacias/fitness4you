@@ -56,7 +56,7 @@
         }
         function Search() {
             var search_value = document.getElementById('search').value;
-            window.location.href = "{% url 'products' %}" + "?search=" + search_value;
+            window.location.href = "{% url 'products' %}" + "?q=" + search_value;
         }
     </script>
 {% endblock %}

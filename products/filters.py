@@ -34,7 +34,7 @@ class ProductFilter(django_filters.FilterSet):
     )
 
     ordering = django_filters.OrderingFilter(choices=CHOICES)
-
+    pk = NumberInFilter(field_name='category', lookup_expr='exact')
     categories = NumberInFilter(field_name='category', lookup_expr='in')
     price = django_filters.NumberFilter()
     price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt')

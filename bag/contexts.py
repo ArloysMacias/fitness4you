@@ -1,11 +1,14 @@
-from django.core.cache import cache
-
 from products.models import Product
 
 
 def bag(request):
-    products = Product.objects.all()
+    bag_items = []
+    total = 0
+    amount_of_products = 0
+
     context = {
-        'bag_items': products,
+        'bag_items': bag_items,
+        'total': total,
+        'amount_of_products': amount_of_products,
     }
     return context

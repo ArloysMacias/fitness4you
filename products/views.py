@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 from django.db.models.functions import Lower
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .filters import ProductFilter, CategoryFilter
 from .models import Product, Category
@@ -49,8 +49,6 @@ def all_products(request):
             clicked = 'filter'
             current_sorting = (request.GET['ordering'])
 
-
-
     context = {
         'products': products_filter,
 
@@ -73,3 +71,12 @@ def all_products(request):
 
     }
     return render(request, 'products/products.html', context)
+
+
+def add_to_shopping_bag(request, id):
+
+    product = get_object_or_404(Product, pk=id)
+    context = {
+        'product': product,
+    }
+    return render(request, 'products/products_details.html', context)

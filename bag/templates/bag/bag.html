@@ -24,6 +24,7 @@
     <!-- Page Layout here -->
     <div class="black-text">
         <form method="GET" action="{% url 'products' %}" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="row">
                 <div class="col offset-l3 l7">
                     {% if bag_items %}

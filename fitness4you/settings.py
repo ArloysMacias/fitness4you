@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'home',
     'products',
+    'bag',
     'django_filters',
     # 'bootstrapform',
 ]
@@ -79,7 +80,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
-                'products.contexts.cached_queries',
+                'bag.contexts.bag',
             ],
         },
     },

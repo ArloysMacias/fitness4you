@@ -1,7 +1,6 @@
 <section id="right-content">
     <div class="container-fluid">
         <div class="row">
-            {#            {% for product in products %}#}
             {% for product in products.qs %}
                 <div class="col s6 m6 l4 xl3">
                     <div class="card hoverable waves-effect waves-block waves-light">
@@ -15,19 +14,21 @@
                             <span class="card-title small black-text">{{ product.product_name }}</span>
                             <a  href="{% url 'add_to_shopping_bag' product.id %}" class="btn-floating halfway-fab waves-effect waves-light red"><i
                                     class="material-icons">add_shopping_cart</i></a>
+
                         </div>
                         <div id="card-content-container" class="card-content">
-                            <p>€{{ product.price }}</p>
+                            <p>Price: €{{ product.price }}</p>
                             {% if product.overall_rating %}
-                                <small class=" text-lighten-5">{{ product.overall_rating }}</small>
+{#                                <p id="rating" class="text-lighten-5" oninput="rating()">Rating: <small>{{ product.overall_rating }}</small></p>#}
+                                <p id="rat" class="text-lighten-5">Rating: {{ product.overall_rating }}</p>
                             {% else %}
                                 <small class="text-lighten-1">No Rating</small>
                             {% endif %}
-                            <p class="truncate">{{ product.brand_name }}</p>
+                            <p class="truncate">Brand: {{ product.brand_name }}</p>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i
-                                    class="material-icons right">close</i>{{ product.product_name }}</span>
+                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>{{ product.product_name }}</span>
+                            <p>Description:</p>
                             <p>{{ product.product_description }}</p>
                         </div>
                     </div>
@@ -35,5 +36,4 @@
             {% endfor %}
         </div>
     </div>
-
 </section>

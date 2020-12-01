@@ -31,6 +31,7 @@ def all_products(request):
     if request.GET:
         if 'overall_rating' in request.GET:
             overall_rating_selected = int(request.GET['overall_rating'])
+            overall_rating_selected = ratingHtml(overall_rating_selected)
             clicked = 'rating'
         if 'brand_name' in request.GET:
             brand_selected = (request.GET['brand_name'])
@@ -79,4 +80,4 @@ def add_to_shopping_bag(request, id):
     context = {
         'product': product,
     }
-    return render(request, 'products/products_details.html', context)
+    return render(request, 'products/product_details.html', context)

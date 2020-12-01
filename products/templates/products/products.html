@@ -16,8 +16,8 @@
 {% block page_header %}
     <div class="container black-text header-container">
         <div class="row">
-            <div class="col s12 left">
-                <h1>Products</h1>
+            <div class="col s12 m12 l12 center">
+                <h3>Products</h3>
             </div>
         </div>
     </div>
@@ -82,5 +82,7 @@
             var sort = document.getElementById('sort-selector').value;
             window.location.href = "{% url 'products' %}" + "?ordering="+sort;
         }
+
+
     </script>
 {% endblock %}

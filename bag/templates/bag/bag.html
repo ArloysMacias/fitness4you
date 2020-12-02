@@ -12,7 +12,7 @@
     <div class="container black-text header-container">
         <div class="row">
             <div class="col s12 left">
-                <h1>Shopping Bag</h1>
+                <h3>Shopping Bag</h3>
             </div>
         </div>
     </div>
@@ -31,20 +31,21 @@
                         <table>
                             <thead>
                             <tr>
-                                <th>Picture</th>
+                                <th></th>
                                 <th>Item Name</th>
                                 <th>Amount</th>
-                                <th>Item Subtotal</th>
+                                <th>Item Price</th>
+                                <th>Description</th>
                                 <th>Total</th>
                             </tr>
                             </thead>
 
                             <tbody>
-                            {% for product in products %}
+                            {% for item in bag_items %}
                                 <tr>
                                     <td>
-                                        {% if product.image_url %}
-                                            <img class="materialboxed product-detail-image" width="80" src="{{ product.image_url }}"
+                                        {% if item.product.image_url %}
+                                            <img class="materialboxed product-detail-image" width="80" src="{{ item.product.image_url }}"
                                                  alt="product-image">
                                         {% else %}
                                             <img class="materialboxed product-detail-image" width="80"
@@ -52,19 +53,28 @@
                                                  alt="no-images">
                                         {% endif %}
                                     </td>
-                                    <td>{{ product.product_name }}</td>
+                                    <td>{{ item.product.product_name }}</td>
 
-                                    <td>1</td>
+                                    <td> {{ item.quantity }}</td>
 
-                                    <td>€ {{ product.price }}</td>
+                                    <td>€ {{ item.product.price }}</td>
 
-                                    <td>€ {{ product.price }}</td>
+                                    <td>{{ item.product.product_description }}</td>
 
-                                    <td>{{ product.product_description }}</td>
+                                    <td>€{{item.total_item_price }}</td>
                                 </tr>
                             {% endfor %}
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><p class="large red-text">€{{ sum_total }}</p></td>
+                                </tr>
                             </tbody>
                         </table>
+
                         {% else %}
                             <p>Your bag is empty.</p>
                             <i class="material-icons" style="font-size: 107px">remove_shopping_cart</i>

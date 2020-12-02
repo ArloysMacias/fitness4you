@@ -6,7 +6,7 @@
     <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Merchendise<i class="material-icons right">arrow_drop_down</i></a></li>
     <!-- Dropdown Trigger -->
     <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Account<i class="material-icons right">arrow_drop_down</i></a></li>
-    <li><a href="{% url 'shopping_bag' %}">{{ bag_items }}<i class="material-icons right">local_grocery_store</i></a></li>
+    <li><a class="red-text" href="{% url 'shopping_bag' %}">{{ amount_of_products }}<i class="material-icons right">local_grocery_store</i></a></li>
 </ul>
 <!-- Dropdown Structure Desktop-->
 <ul id="dropdown1" class="dropdown-content black">

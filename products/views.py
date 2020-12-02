@@ -31,7 +31,6 @@ def all_products(request):
     if request.GET:
         if 'overall_rating' in request.GET:
             overall_rating_selected = int(request.GET['overall_rating'])
-            overall_rating_selected = ratingHtml(overall_rating_selected)
             clicked = 'rating'
         if 'brand_name' in request.GET:
             brand_selected = (request.GET['brand_name'])

@@ -22,50 +22,69 @@
         </div>
     </div>
 {% endblock %}
-
 {% block content %}
     <div class="overlay "></div>
+
+    <!--GO back button-->
+    <div class="row">
+        <div class="col s12">
+            <a class="waves-effect waves-teal btn-flat" href="{% url 'products' %}"><i
+                    class="material-icons left">arrow_back</i>Go Back</a>
+        </div>
+    </div>
+
+    <!--Detail container-->
+    <div class="container">
     <div class="row">
         <div class="col s12 m6 l6">
+            <!--Image-->
             {% if product.image_url %}
-                <img class="materialboxed product-detail-image" width="330" src="{{ product.image_url }}" alt="product-image">
+                <img class="materialboxed product-detail-image" height="380" src="{{ product.image_url }}"
+                     alt="product-image">
             {% else %}
-                <img class="materialboxed product-detail-image" width="330" src="{{ MEDIA_URL }}images/products_images/no-image.png"
+                <img class="materialboxed product-detail-image" height="380"
+                     src="{{ MEDIA_URL }}images/products_images/no-image.png"
                      alt="no-images">
             {% endif %}
         </div>
-        <ul class="col s12 m6 l6 black-text product-detail">
-            <ul>
-                <li><h4>{{ product.product_name }}</h4></li>
-            </ul>
-            <ul>
-                <li>
-                    <h5>€ {{ product.price }}</h5>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    {% if product.overall_rating %}
-                        <p id="rating" class="text-lighten-5">{{ product.overall_rating }}</p>
-                    {% else %}
-                        <small class="text-lighten-1">No Rating</small>
-                    {% endif %}
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <p>{{ product.brand_name }}</p>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <p>{{ product.product_description }}</p>
-                </li>
-            </ul>
-            <a class="waves-effect waves-light btn-large buy-button" onclick="M.toast({html: 'I am a toast'})"><i
-                    class="material-icons right">local_grocery_store</i>Buy</a>
-        </ul>
+            <!--Product Detail-->
+        <div class="col s12 m6 l6 black-text product-detail">
+            <h4>{{ product.product_name }}</h4>
+            <h5>€ {{ product.price }}</h5>
+            <!--Rating-->
+            {% if product.overall_rating %}
+                <p id="rating" class="text-lighten-5"></p><!--The rate is filled by jquery-->
+            {% else %}
+                <small class="text-lighten-1">No Rating</small>
+            {% endif %}
+            <!--Name-->
+            <p>{{ product.brand_name }}</p>
+            <!--Description-->
+            <p>{{ product.product_description }}</p>
+            <!--Quantity-->
+            <div class="row center">
+                <div class="input-field col s12">
+                    <select id="amount_to_buy">
+                        <option value="" disabled>Choose your option</option>
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                    <label>Select the amount</label>
+                </div>
+            </div>
+
+            <div class="row center">
+                <div class="col s12 right">
+                    <a href="{% url 'shopping_bag' %}" class="waves-effect waves-light btn-large buy-button"><i class="material-icons right">local_grocery_store</i>Buy</a>
+                </div>
+            </div>
+        </div>
     </div>
+
 {% endblock %}
 
 {% block postloadjs %}
@@ -73,17 +92,16 @@
     <script src="{% static 'home/js/materialize.js' %}"></script>
     <script>
         $(document).ready(function () {
-            let rat ={{ product.overall_rating }}
+            let rat =
+            {{ product.overall_rating }}
             if (rat) {
                 var ratingHtml = '';
                 for (var i = 0; i < 5; i++) {
                     if (rat < (i + 0.5)) {
                         ratingHtml += '&#10025;';//empty-star
-                    }
-                    if (rat < (i + 0.9)) {
+                    } else if (rat < (i + 0.9)) {
                         ratingHtml += '&#10027;';//half-star
-                    }
-                    else {
+                    } else {
                         ratingHtml += '&#10029;';//full-star
                     }
                     document.getElementById('rating').style.display = '';

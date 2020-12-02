@@ -28,29 +28,50 @@
             <div class="row">
                 <div class="col offset-l3 l7">
                     {% if bag_items %}
-                        <div class="table-response">
-                            <ul>
-                                <li>
-                                    Hi
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    Hi
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    Hi
-                                </li>
-                            </ul>
-                        </div>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Picture</th>
+                                <th>Item Name</th>
+                                <th>Amount</th>
+                                <th>Item Subtotal</th>
+                                <th>Total</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for product in products %}
+                                <tr>
+                                    <td>
+                                        {% if product.image_url %}
+                                            <img class="materialboxed product-detail-image" width="80" src="{{ product.image_url }}"
+                                                 alt="product-image">
+                                        {% else %}
+                                            <img class="materialboxed product-detail-image" width="80"
+                                                 src="{{ MEDIA_URL }}images/products_images/no-image.png"
+                                                 alt="no-images">
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ product.product_name }}</td>
+
+                                    <td>1</td>
+
+                                    <td>€ {{ product.price }}</td>
+
+                                    <td>€ {{ product.price }}</td>
+
+                                    <td>{{ product.product_description }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
                         {% else %}
                             <p>Your bag is empty.</p>
                             <i class="material-icons" style="font-size: 107px">remove_shopping_cart</i>
                             <br><br><br><br>
                             <a href="{% url 'products' %}" class="waves-effect waves-light btn-large"><i class="material-icons left">keyboard_backspace</i>Continue Shopping</a>
                     {% endif %}
+
                 </div>
             </div>
         </form>

@@ -38,6 +38,7 @@
 .product-detail {
     text-align: initial
 }
-.buy-button {
-    text-align: end;
+.buy-button{
+    width: 100%;
+    text-align: center;
 }

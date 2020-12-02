@@ -73,7 +73,7 @@ def all_products(request):
     return render(request, 'products/products.html', context)
 
 
-def add_to_shopping_bag(request, id):
+def product_details(request, id):
 
     product = get_object_or_404(Product, pk=id)
     context = {

@@ -12,7 +12,7 @@
                                      alt="no-images">
                             {% endif %}
                             <span class="card-title small black-text">{{ product.product_name }}</span>
-                            <a  href="{% url 'add_to_shopping_bag' product.id %}" class="btn-floating halfway-fab waves-effect waves-light red"><i
+                            <a  href="{% url 'product_details' product.id %}" class="btn-floating halfway-fab waves-effect waves-light red"><i
                                     class="material-icons">add_shopping_cart</i></a>
 
                         </div>
@@ -34,6 +34,12 @@
                     </div>
                 </div>
             {% endfor %}
+            <!--Floating button back to the top-->
+            <div class="fixed-action-btn back_to_top">
+                <a class="btn-floating btn-large waves-effect waves-light red btt-link">
+                    <i class="large material-icons">publish</i>
+                </a>
+            </div>
         </div>
     </div>
 </section>

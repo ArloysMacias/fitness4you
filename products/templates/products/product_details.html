@@ -73,8 +73,14 @@
                                 <option value="4">4</option>
                                 <option value="5">5</option>
                                 <option value="6">6</option>
+                                <option value="7">7</option>
                             </select>
-                            <label>Select the amount</label>
+
+{#                            <div class="handle-counter" id="handleCounter">#}
+{#                                <button class="counter-minus btn btn-primary">-</button>#}
+{#                                <input onchange="handleCounter()" id= quantity name="amount_to_buy" type="number" value="1" style="border-bottom: none;">#}
+{#                                <button class="counter-plus btn btn-primary">+</button>#}
+{#                            </div>#}
                         </div>
                     </div>
 
@@ -82,7 +88,6 @@
 
                     <div class="row center">
                         <div class="col s12 right">
-{#                            <a onclick="this.form.submit()" class="waves-effect waves-light btn-large buy-button"><i class="material-icons right">local_grocery_store</i>Add to cart</a>#}
                             <a onclick="document.getElementById('add_to_bag_form').submit();" class="waves-effect waves-light btn-large buy-button"><i class="material-icons right">local_grocery_store</i>Add to cart</a>
                         </div>
                     </div>
@@ -117,5 +122,6 @@
             }
         })
     </script>
+    <script src="{% static '/products/js/myjs.js' %}"></script>
 {% endblock %}
 

@@ -13,9 +13,11 @@ def shopping_bag(request):
 def add_to_bag(request, product_id):
     """A view to add product and quantity to the cart"""
     quantity = 0
+    redirect_url = '/products'
+    print(redirect_url)
     if request.POST:
         if 'amount_to_buy' in request.POST:
-            quantity = request.POST.get('amount_to_buy')
+            quantity = int(request.POST.get('amount_to_buy'))
         else:
             quantity = 1
 

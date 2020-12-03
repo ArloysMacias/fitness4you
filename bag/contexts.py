@@ -13,15 +13,9 @@ def bag(request):
 
     bag = request.session.get('bag', {})
 
-    if request.POST:
-        if 'amount_to_buy' in request.POST:
-            quantity = request.POST.get('amount_to_buy')
-        if 'the_url' in request.POST:
-            redirect_url = request.POST.get('the_url')
-
     for item_id, quantity in bag.items():
         product = get_object_or_404(Product, pk=item_id)
-        digits = [int(x) for x in quantity]
+        digits = [int(x) for x in str(quantity)]
         quantity = sum(digits)
         total_item_price = Decimal(quantity) * Decimal(product.price)
         sum_total += total_item_price

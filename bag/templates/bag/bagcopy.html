@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    {#    <link href="{% static 'bag/css/bag.css' %}" rel="stylesheet">#}
+{#    <link href="{% static 'bag/css/bag.css' %}" rel="stylesheet">#}
 {% endblock %}
 {% block extra_js %}
 {% endblock %}
@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col offset-l3 l7">
                     {% if bag_items %}
-                        <table class="table table-bordered table-responsive-md table-striped text-center">
+                        <table>
                             <thead>
                             <tr>
                                 <th></th>
@@ -45,8 +45,7 @@
                                 <tr>
                                     <td>
                                         {% if item.product.image_url %}
-                                            <img class="materialboxed product-detail-image" width="80"
-                                                 src="{{ item.product.image_url }}"
+                                            <img class="materialboxed product-detail-image" width="80" src="{{ item.product.image_url }}"
                                                  alt="product-image">
                                         {% else %}
                                             <img class="materialboxed product-detail-image" width="80"
@@ -62,29 +61,25 @@
 
                                     <td>{{ item.product.product_description }}</td>
 
-                                    <td>€{{ item.total_item_price }}</td>
-                                    <td><a href="{% url 'update_bag_amount' %}?update={{ item.product.id }},decrease,{{ item.quantity }};"><i class="material-icons">remove_circle</i></a>
-                                        <a href="{% url 'update_bag_amount' %}?update={{ item.product.id }},remove,{{ item.quantity }};"><i class="material-icons">delete_forever</i></a>
-                                        <a href="{% url 'update_bag_amount' %}?update={{ item.product.id }},increase,{{ item.quantity }};"><i class="material-icons">add_circle</i></a> </td>
+                                    <td>€{{item.total_item_price }}</td>
                                 </tr>
                             {% endfor %}
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><p class="large red-text">€{{ sum_total }}</p></td>
-                            </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><p class="large red-text">€{{ sum_total }}</p></td>
+                                </tr>
                             </tbody>
                         </table>
 
-                    {% else %}
-                        <p>Your bag is empty.</p>
-                        <i class="material-icons" style="font-size: 107px">remove_shopping_cart</i>
-                        <br><br><br><br>
-                        <a href="{% url 'products' %}" class="waves-effect waves-light btn-large"><i
-                                class="material-icons left">keyboard_backspace</i>Continue Shopping</a>
+                        {% else %}
+                            <p>Your bag is empty.</p>
+                            <i class="material-icons" style="font-size: 107px">remove_shopping_cart</i>
+                            <br><br><br><br>
+                            <a href="{% url 'products' %}" class="waves-effect waves-light btn-large"><i class="material-icons left">keyboard_backspace</i>Continue Shopping</a>
                     {% endif %}
 
                 </div>
@@ -94,6 +89,6 @@
 {% endblock %}
 
 {% block postloadjs %}
-    {{ block.super }}
+    {{  block.super }}
     <script src="{% static 'home/js/materialize.js' %}"></script>
 {% endblock %}

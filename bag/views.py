@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
+from django.urls import reverse
+
 from products.models import Product
 
 
@@ -36,3 +38,26 @@ def add_to_bag(request, product_id):
     request.session['bag'] = bag
 
     return redirect(redirect_url)
+
+
+def update_bag_amount(request):
+    if request.GET:
+        if 'update' in request.GET:
+            list_of_parameter = request.GET['update'].split(',')
+            id_product_to_update = list_of_parameter[0]
+            type_update = list_of_parameter[1]
+            quantity = int(str(list_of_parameter[2]))
+            bag = request.session.get('bag', {})
+            if id_product_to_update in list(bag.keys()):
+                if type_update == 'increase':
+                    quantity = quantity + 1
+                if type_update == 'decrease':
+                    quantity = quantity - 1
+                if type_update == 'remove' or quantity <= 0:
+                    bag.pop(id_product_to_update)
+                else:
+                    bag[id_product_to_update] = quantity
+
+        request.session['bag'] = bag
+
+    return redirect(reverse('shopping_bag'))

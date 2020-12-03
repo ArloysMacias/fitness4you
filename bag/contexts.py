@@ -7,7 +7,6 @@ from products.models import Product
 
 def bag(request):
     bag_items = []
-    total_item_price = 0
     sum_total = 0
     amount_of_products = 0
 

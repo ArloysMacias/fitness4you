@@ -1,0 +1,29 @@
+
+/** Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+
+}
+
+/** Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .bag-image{
+        width: 100px;
+    }
+    .name-cell{
+        width:33% ;
+    }
+
+
+    .description-cell{
+        width:50% ;
+    }
+
+    .floating ul li {
+        margin: 53px 11px 0 0!important;
+    }
+}
+
+/** Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}

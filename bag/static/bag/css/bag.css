@@ -2,3 +2,37 @@
 .empty_bag{
     font-size: 107px!important;
 }
+
+
+.bag-image{
+    width: 50px;
+}
+
+.name-cell{
+    width:33% ;
+}
+
+.amount-cell{
+    display: block;
+}
+.amount-cell > p{
+    margin-left: 20px;
+}
+.description-cell{
+    width:50% ;
+}
+
+.floating{
+    position: relative!important;
+    right: 0;
+    margin-top: 43px;
+
+}
+
+.floating > ul{
+    bottom: 20px!important;
+}
+
+.floating ul li {
+    margin: 33px 10px 0 0!important;
+}

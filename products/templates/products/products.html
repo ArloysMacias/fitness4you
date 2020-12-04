@@ -8,7 +8,6 @@
 {% endblock %}
 {% block extra_js %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js"></script>
-    {% comment %}<script src="{% static 'products/js/nouislider/nouislider.js' %}"></script>{% endcomment %}
     <script src="{% static 'products/js/wnumb/wNumb.min.js' %}"></script>
 {% endblock %}
 
@@ -25,6 +24,7 @@
 
 {% block content %}
     <div class="overlay "></div>
+    <!--Filter by-->
     <div class="row black-text">
         <div class="col s12 offset-l10 l2">
             <select id="sort-selector" onchange="sortBy()">
@@ -42,7 +42,7 @@
             </select>
         </div>
     </div>
-    <!-- Page Layout here -->
+    <!--Right content -->
     <div class="black-text">
         <form method="GET" action="{% url 'products' %}" enctype="multipart/form-data">
             {#            {% csrf_token %}#}
@@ -51,6 +51,7 @@
                     <!-- Left filter -->
                     {% include 'includes/left filter/left_filter_all.html' %}
                 </div>
+                    <!-- List of products-->
                 <div class="col s12 m8 l9" id="products">
                     {% include 'includes/right/right_content.html' %}
                 </div>
@@ -61,7 +62,6 @@
 
 {% block postloadjs %}
     {{  block.super }}
-    <script src="{% static 'home/js/materialize.js' %}"></script>
     <script src="{% static 'products/js/nouislider.js' %}"></script>
     <script src="{% static 'products/js/nouislider/nouislider.js' %}"></script>
     <script>

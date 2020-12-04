@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block extra_css %}
-{#    <link href="{% static 'bag/css/bag.css' %}" rel="stylesheet">#}
+    <link href="{% static 'bag/css/bag.css' %}" rel="stylesheet">
+    <link href="{% static 'bag/css/bag-queries.css' %}" rel="stylesheet">
 {% endblock %}
 {% block extra_js %}
 {% endblock %}
@@ -11,7 +12,7 @@
 {% block page_header %}
     <div class="container black-text header-container">
         <div class="row">
-            <div class="col s12 left">
+            <div class="col s12 m12 l12 center">
                 <h3>Shopping Bag</h3>
             </div>
         </div>
@@ -20,22 +21,21 @@
 
 {% block content %}
     <div class="overlay "></div>
-
-    <!-- Page Layout here -->
+    <!--Content Table-->
     <div class="black-text">
         <form method="GET" action="{% url 'products' %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="row">
-                <div class="col offset-l3 l7">
+                <div class="col offset-l2 l8">
                     {% if bag_items %}
-                        <table>
+                        <table class="centered">
                             <thead>
                             <tr>
                                 <th></th>
-                                <th>Item Name</th>
+                                <th>Name</th>
                                 <th>Amount</th>
-                                <th>Item Price</th>
-                                <th>Description</th>
+                                <th>Price</th>
+                                <th class="hide-on-small-only">Description</th>
                                 <th>Total</th>
                             </tr>
                             </thead>
@@ -45,50 +45,67 @@
                                 <tr>
                                     <td>
                                         {% if item.product.image_url %}
-                                            <img class="materialboxed product-detail-image" width="80" src="{{ item.product.image_url }}"
+                                            <img class="materialboxed bag-image" {% comment %}width="80"{% endcomment %}
+                                                 src="{{ item.product.image_url }}"
                                                  alt="product-image">
                                         {% else %}
-                                            <img class="materialboxed product-detail-image" width="80"
+                                            <img class="materialboxed bag-image" {% comment %}width="80"{% endcomment %}
                                                  src="{{ MEDIA_URL }}images/products_images/no-image.png"
                                                  alt="no-images">
                                         {% endif %}
                                     </td>
-                                    <td>{{ item.product.product_name }}</td>
+                                    <td class="name-cell">{{ item.product.product_name }}</td>
 
-                                    <td> {{ item.quantity }}</td>
+                                    <td>
+                                        <div class="amount-cell valign-wrapper">
+                                            <a href="{% url 'update_bag_amount' %}?update={{ item.product.id }},decrease,{{ item.quantity }};">
+                                                <i class="material-icons">remove_circle</i>
+                                            </a>
+                                            <p class="valign-wrapper">{{ item.quantity }}</p>
+                                            <a href="{% url 'update_bag_amount' %}?update={{ item.product.id }},increase,{{ item.quantity }};">
+                                                <i class="material-icons">add_circle</i>
+                                            </a>
+                                        </div>
+                                    </td>
 
                                     <td>€{{ item.product.price }}</td>
 
-                                    <td>{{ item.product.product_description }}</td>
+                                    <td class="hide-on-small-only description-cell">{{ item.product.product_description }}</td>
 
-                                    <td>€{{item.total_item_price }}</td>
+                                    <td>€{{ item.total_item_price }}</td>
+                                    <td>
+                                        <a href="{% url 'update_bag_amount' %}?update={{ item.product.id }},remove,{{ item.quantity }};"><i
+                                                class="material-icons">delete_forever</i></a>
+                                    <td>
                                 </tr>
                             {% endfor %}
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td><p class="large red-text">€{{ sum_total }}</p></td>
-                                </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><p class="large white-text btn red">€{{ sum_total }}</p></td>
+                            </tr>
                             </tbody>
                         </table>
+                        </div>
+                    {% else %}
+                        <p class="red-text">Your bag is empty.</p>
 
-                        {% else %}
-                            <p>Your bag is empty.</p>
-                            <i class="material-icons" style="font-size: 107px">remove_shopping_cart</i>
-                            <br><br><br><br>
-                            <a href="{% url 'products' %}" class="waves-effect waves-light btn-large"><i class="material-icons left">keyboard_backspace</i>Continue Shopping</a>
+                        <i class="material-icons empty_bag">remove_shopping_cart</i>
+
+                        <br><br><br><br>
+
+                        <a href="{% url 'products' %}" class="waves-effect waves-light btn-large"><i
+                                class="material-icons left">keyboard_backspace</i>Continue Shopping</a>
                     {% endif %}
 
-                </div>
             </div>
         </form>
     </div>
 {% endblock %}
 
 {% block postloadjs %}
-    {{  block.super }}
-    <script src="{% static 'home/js/materialize.js' %}"></script>
+    {{ block.super }}
 {% endblock %}

@@ -142,9 +142,10 @@
                 </div>
             </div>
         </footer>
+        <!-- Myscript -->
+        <script src="{% static 'js/myscript.js' %}"></script>
         {% block postloadjs %}
-            <!-- Myscript -->
-            <script src="{% static 'js/myscript.js' %}"></script>
+
         {% endblock %}
         {{ block.super }}
         <script type="text/javascript">

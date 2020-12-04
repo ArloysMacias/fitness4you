@@ -77,3 +77,17 @@
 .btn-primary { background-color: #009dda!important; }
 
 .btn-primary:hover, .btn-primary:focus { background-color: #0486b9!important; }
+
+.extra-button{
+    padding-top: 76px!important;
+    padding-left: 10px;
+}
+
+.extra-button a{
+    opacity: 0.2;
+}
+
+.extra-button a:hover{
+    opacity: 1;
+}
+

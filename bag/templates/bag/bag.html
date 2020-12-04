@@ -16,6 +16,7 @@
                 <h3>Shopping Bag</h3>
             </div>
         </div>
+        <br><br><br>
     </div>
 {% endblock %}
 
@@ -28,16 +29,15 @@
             <div class="row">
                 <div class="col offset-l2 l8">
                     {% if bag_items %}
-                            <table width="100%" class="centered">
+                            <table class="centered">
                                 <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Name</th>
-                                    <th>Amount</th>
-                                    <th>Price</th>
-                                    <th class="hide-on-small-only">Description</th>
-                                    <th>Total</th>
-                                    <th>Update</th>
+                                    <th>NAME</th>
+                                    <th>QTY</th>
+                                    <th>PRICE</th>
+                                    <th class="hide-on-small-only">DESCRIPTION</th>
+                                    <th>TOTAL</th>
                                 </tr>
                                 </thead>
 
@@ -55,43 +55,48 @@
                                                      alt="no-images">
                                             {% endif %}
                                         </td>
-                                        <td class="name-cell">{{ item.product.product_name }}</td>
+                                        <td class="name-cell"><p class="flow-text center">{{ item.product.product_name }}</p></td>
 
-                                        <td>
-                                            {{ item.quantity }}
+                                        <td class="name-cell">
+                                            <div class="amount-cell valign-wrapper">
+                                                <a href="{% url 'update_bag_amount' %}?update={{ item.product.id }},increase,{{ item.quantity }};">
+                                                    <i class="small material-icons green-text">add_circle</i>
+                                                </a>
+                                                <p class="center">{{ item.quantity }}</p>
+                                                <a href="{% url 'update_bag_amount' %}?update={{ item.product.id }},decrease,{{ item.quantity }};">
+                                                    <i class="small material-icons light-green-text">remove_circle</i>
+                                                </a>
+                                            </div>
                                         </td>
 
-                                        <td>€{{ item.product.price }}</td>
+                                        <td class="price-cell"><p class="flow-text center">€{{ item.product.price }}</p></td>
 
-                                        <td class="hide-on-small-only description-cell">{{ item.product.product_description }}</td>
+                                        <td class="hide-on-small-only description-cell"><p class="flow-text center">{{ item.product.product_description }}</p></td>
 
-                                        <td>€{{ item.total_item_price }}</td>
+                                        <td><p class="flow-text center">€{{ item.total_item_price }}</p></td>
 
 
-                                        <td>
-                                            <div class="fixed-action-btn horizontal click-to-toggle floating">
-                                                <a class="btn-floating btn-small red">
-                                                    <i class="material-icons">menu</i>
-                                                </a>
-                                                <ul>
-                                                    <li><a class="btn-floating green" href="{% url 'update_bag_amount' %}?update={{ item.product.id }},increase,{{ item.quantity }};">
-                                                        <i class="material-icons">add_circle</i>
-                                                    </a></li>
-                                                    <li><a class="btn-floating yellow" href="{% url 'update_bag_amount' %}?update={{ item.product.id }},decrease,{{ item.quantity }};">
-                                                        <i class="material-icons">remove_circle</i>
-                                                    </a></li>
-                                                    <li><a class="btn-floating red" href="{% url 'update_bag_amount' %}?update={{ item.product.id }},remove,{{ item.quantity }};"><i
-                                                            class="material-icons">delete_forever</i></a></li>
-                                                </ul>
-                                            </div>
+                                        <td class="name-cell">
+                                            <a href="{% url 'update_bag_amount' %}?update={{ item.product.id }},remove,{{ item.quantity }};"><i
+                                                    class="delete-icon material-icons valign-wrapper">delete</i></a>
                                         <td>
                                     </tr>
                                 {% endfor %}
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td colspan="6"><a class="large white-text btn red">€{{ sum_total }}</a></td>
+                                <tr class="border-0">
+                                    <td colspan="6" class="border-0"></td>
+                                </tr>
+                                <tr class="border-0">
+                                    <td colspan="6" class="border-0"></td>
+                                </tr>
+                                <tr class="hide-on-med-and-up">
+                                    <td colspan="2"><a href="{% url 'products' %}" class="large black-text btn light-green right">Buy more</a></td>
+                                    <td colspan="4"><a href="" class="waves-effect waves-light btn black red-text left"><i class="material-icons right">credit_card</i>Check out €{{ sum_total }}</a></td>
+                                </tr>
+                                <tr class="hide-on-small-only">
+                                    <td colspan="7">
+                                        <a href="" class="waves-effect waves-light btn-large black red-text right"><i class="material-icons right">credit_card</i>Check out €{{ sum_total }}</a>
+                                        <a href="{% url 'products' %}" class="large black-text btn-large light-green right "><i class="material-icons right">add_shopping_cart</i>Buy more</a>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>

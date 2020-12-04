@@ -12,14 +12,24 @@
                                      alt="no-images">
                             {% endif %}
                             <span class="card-title small black-text">{{ product.product_name }}</span>
-                            <a  href="{% url 'product_details' product.id %}" class="btn-floating halfway-fab waves-effect waves-light red"><i
-                                    class="material-icons">add_shopping_cart</i></a>
+                            <div class="extra-button">
+                                <a href="{% url 'update_bag_amount' %}?update={{ product.id }},increase,1;"
+                                   class="btn-floating add-to-cart waves-effect waves-light black"><i
+                                        class="material-icons">edit</i></a>
 
+                                <a href="{% url 'add_to_bag' product.id %}"
+                                   class="btn-floating add-to-cart waves-effect waves-light light-green"><i
+                                        class="material-icons">add_shopping_cart</i></a>
+
+                                <a href="{% url 'product_details' product.id %}"
+                                   class="btn-floating {% comment %}halfway-fab{% endcomment %} waves-effect waves-light red"><i
+                                        class="material-icons">visibility</i></a>
+                            </div>
                         </div>
                         <div id="card-content-container" class="card-content">
                             <p>Price: €{{ product.price }}</p>
                             {% if product.overall_rating %}
-{#                                <p id="rating" class="text-lighten-5" oninput="rating()">Rating: <small>{{ product.overall_rating }}</small></p>#}
+                                {#                                <p id="rating" class="text-lighten-5" oninput="rating()">Rating: <small>{{ product.overall_rating }}</small></p>#}
                                 <p id="rat" class="text-lighten-5">Rating: {{ product.overall_rating }}</p>
                             {% else %}
                                 <small class="text-lighten-1">No Rating</small>
@@ -27,7 +37,8 @@
                             <p class="truncate">Brand: {{ product.brand_name }}</p>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>{{ product.product_name }}</span>
+                            <span class="card-title grey-text text-darken-4"><i
+                                    class="material-icons right">close</i>{{ product.product_name }}</span>
                             <p>Description:</p>
                             <p>{{ product.product_description }}</p>
                         </div>

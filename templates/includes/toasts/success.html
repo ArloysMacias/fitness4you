@@ -1,12 +1,15 @@
 <div class="toast-message ">
+    <!--Hidden input that contain the class type-->
     <input id="classmessage" name="classmessage" type="text" class="hide" value="light-green lighten-2 black-text">
-    <div class="container">
+
+    <div class="container-fluid">
         <div class="row">
-            <div class="left">
-                <h5>Success</h5>
+            <div class="col s9 left">
+                <h5 class="left">Success</h5>
             </div>
-            <div class="col right">
-                <a class="btn-flat black-text toast-action" onclick="closeToast()"><i class="material-icons">close</i></a>
+            <div class="col s3 center">
+                <a class="btn-flat black-text" onclick="closeToast()"><i
+                        class="material-icons">close</i></a>
             </div>
         </div>
         <div class="row">
@@ -15,4 +18,5 @@
             </p>
         </div>
     </div>
+
 </div>

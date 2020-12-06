@@ -34,8 +34,7 @@ def add_to_bag(request, product_id):
                 bag[product_id] += quantity
     else:
         bag[product_id] = quantity
-        print('there is message')
-    messages.success(request, f'Added {product_added.product_name} to your bag')
+        messages.success(request, f'Added {product_added.product_name} to your bag')
 
     request.session['bag'] = bag
 
@@ -47,6 +46,7 @@ def update_bag_amount(request):
         if 'update' in request.GET:
             list_of_parameter = request.GET['update'].split(',')
             id_product_to_update = list_of_parameter[0]
+            product_to_update = Product.objects.get(pk=id_product_to_update)
             type_update = list_of_parameter[1]
             quantity = int(str(list_of_parameter[2]))
             bag = request.session.get('bag', {})
@@ -57,8 +57,10 @@ def update_bag_amount(request):
                     quantity = quantity - 1
                 if type_update == 'remove' or quantity <= 0:
                     bag.pop(id_product_to_update)
+                    messages.info(request, f'Deleted {product_to_update.product_name} from the bag')
                 else:
                     bag[id_product_to_update] = quantity
+                    messages.success(request, f'Updated {product_to_update.product_name} to {quantity}')
 
         request.session['bag'] = bag
 

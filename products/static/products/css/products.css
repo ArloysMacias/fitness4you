@@ -43,26 +43,6 @@
     text-align: center;
 }
 
-/* ------------------------------------------------*/
-/* Jquery Plugin     https://www.jqueryscript.net/form/jQuery-Plugin-To-Create-Increment-Decrement-Input-Spinners-handleCounter.html
-/* ------------------------------------------------*/
-
-.handle-counter { overflow: hidden; }
-
-.handle-counter .counter-minus,  .handle-counter .counter-plus,  .handle-counter input {
-    float: left!important;
-    text-align: center!important;
-}
-
-.handle-counter .counter-minus,  .handle-counter .counter-plus { text-align: center!important; }
-
-.handle-counter input {
-    width: 50px!important;
-    border-width: 1px!important;
-    border-left: none!important;
-    border-right: none!important;
-}
-
 .btn {
     padding: 6px 12px!important;
     border: 1px solid transparent!important;
@@ -91,3 +71,11 @@
     opacity: 1;
 }
 
+.button-prod-details{
+    margin: 0 auto!important;
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
+.checkout-button{
+    width: fit-content!important;
+}

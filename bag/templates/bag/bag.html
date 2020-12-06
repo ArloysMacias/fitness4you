@@ -88,19 +88,33 @@
                                 <tr class="border-0">
                                     <td colspan="6" class="border-0"></td>
                                 </tr>
-                                <tr class="hide-on-med-and-up">
-                                    <td colspan="2"><a href="{% url 'products' %}" class="large black-text btn light-green right">Buy more</a></td>
-                                    <td colspan="4"><a href="" class="waves-effect waves-light btn black red-text left"><i class="material-icons right">credit_card</i>Check out €{{ sum_total }}</a></td>
-                                </tr>
                                 <tr class="hide-on-small-only">
                                     <td colspan="7">
                                         <a href="" class="waves-effect waves-light btn-large black red-text right"><i class="material-icons right">credit_card</i>Check out €{{ sum_total }}</a>
                                         <a href="{% url 'products' %}" class="large black-text btn-large light-green right "><i class="material-icons right">add_shopping_cart</i>Buy more</a>
                                     </td>
                                 </tr>
+
                                 </tbody>
                             </table>
+                        <div class="row hide-on-med-and-up">
+                            <div class="col s12 m5 offset-m7" style="width: 100%; display: flex">
+                                <!--Buton buy more-->
+                                <div class="col s6 " style="width: 70%">
+                                    <a href="{% url 'products' %}"
+                                       class="waves-effect waves-light btn-large light-green black-text"><i
+                                            class="material-icons right hide-on-small-only">add_shopping_cart</i>Buy more</a>
+                                </div>
+                                <!--Buton Add to cart-->
+                                <div class="col s6 " style="width: 100%">
+                                    <a onclick="document.getElementById('add_to_bag_form').submit()"
+                                       class="waves-effect waves-light btn-large black red-text"><i
+                                            class="material-icons right hide-on-small-only">credit_card</i>Check out €{{ sum_total }}
+                                    </a>
+                                </div>
+                            </div>
                         </div>
+
                     {% else %}
                         <p class="red-text">Your bag is empty.</p>
 
@@ -113,6 +127,7 @@
                     {% endif %}
 
                 </div>
+            </div>
         </form>
     </div>
 {% endblock %}

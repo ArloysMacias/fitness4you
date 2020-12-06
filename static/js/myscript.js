@@ -1,17 +1,16 @@
 $(document).ready(function(){
 
-    //Materialize
+    initializeMaterialize()
 
-    //NavBar
+
+});
+
+function initializeMaterialize() {
     $('.collapsible').collapsible();
     $('select').material_select();
     document.querySelectorAll('.select-wrapper').forEach(t => t.addEventListener('click', e=>e.stopPropagation())) // fixes first click
     $(".button-collapse").sideNav();
     $('.dropdown-buttonh').dropdown();
     $('.parallax').parallax();
-    $('.materialboxed').materialbox();
-
-     //Toast
-    // $('.toast').toast('show');
-
-});
+    // $('.materialboxed').materialbox();
+}

@@ -52,6 +52,7 @@
     {% block corejs %}
         <!-- Jquery -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
         {#        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>#}
 
         <!-- MaterializeJS -->
@@ -69,19 +70,20 @@
     <title>Fitness4You {% block extra_title %}{% endblock %}</title>
 </head>
     <body class="black">
+
         <!--Messages-->
         {% if messages %}
-            <div class="message-container">
+            <div id="toast-container">
                 {% for message in messages %}
-                    {% with message.level as level %}
+                    {%  with message.level as level %}
                         {% if level == 40 %}
-                            {% include 'includes/toasts/toast_error.html' %}
-                        {% elif level == 30 %}
-                            {% include 'includes/toasts/toast_warning.html' %}
+                            {% include 'includes/toasts/error.html' %}
                         {% elif level == 25 %}
-                            {% include 'includes/toasts/toast_success.html' %}
+                            {% include 'includes/toasts/success.html' %}
+                        {% elif level == 30 %}
+                            {% include 'includes/toasts/warning.html' %}
                         {% else %}
-                            {% include 'includes/toasts/toast_info.html' %}
+                            {% include 'includes/toasts/warning.html' %}
                         {% endif %}
                     {% endwith %}
                 {% endfor %}
@@ -145,13 +147,31 @@
                 </div>
             </div>
         </footer>
+
         <!-- Myscript -->
         <script src="{% static 'js/myscript.js' %}"></script>
         {% block postloadjs %}
 
         {% endblock %}
+
         {{ block.super }}
         <script type="text/javascript">
+            $(function(){
+                let content= $('.toast-message').html();
+
+                if(content){
+                    $('#toast-container').remove();
+                    Materialize.toast(content, 3000,'rounded')
+                }
+            });
+
+
+            function closeToast(){
+                $('#toast-container').fadeOut(function(e){
+                    $('#toast-container').remove();
+                });
+            }
+
             $('.btt-link').click(function(e) {
                 window.scrollTo(0,0)
             })

@@ -1,7 +1,18 @@
-<div class="toast-message">
-
-    <p>
-        {{ message }}
-        <a class="btn-flat red-text toast-action" onclick="closeToast()"><i class="material-icons">close</i></a>
-    </p>
+<div class="toast-message ">
+    <input id="classmessage" name="classmessage" type="text" class="hide" value="red lighten-3 black-text">
+    <div class="container">
+        <div class="row">
+            <div class="left">
+                <h5>Error</h5>
+            </div>
+            <div class="col right">
+                <a class="btn-flat black-text toast-action" onclick="closeToast()"><i class="material-icons">close</i></a>
+            </div>
+        </div>
+        <div class="row">
+            <p>
+                {{ message }}
+            </p>
+        </div>
+    </div>
 </div>

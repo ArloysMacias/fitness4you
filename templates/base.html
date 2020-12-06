@@ -158,10 +158,11 @@
         <script type="text/javascript">
             $(function(){
                 let content= $('.toast-message').html();
+                let classMessage= document.getElementById('classmessage').value.toString();
 
                 if(content){
                     $('#toast-container').remove();
-                    Materialize.toast(content, 3000,'rounded')
+                    Materialize.toast(content, 3000, ""+classMessage)
                 }
             });
 

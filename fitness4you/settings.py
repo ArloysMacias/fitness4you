@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'django_filters',
+    'checkout',
     # 'bootstrapform',
 ]
 

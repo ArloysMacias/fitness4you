@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.urls import reverse
+from django.utils.html import format_html
 
 from products.models import Product
 
@@ -57,7 +58,9 @@ def update_bag_amount(request):
                     quantity = quantity - 1
                 if type_update == 'remove' or quantity <= 0:
                     bag.pop(id_product_to_update)
-                    messages.info(request, f'Deleted {product_to_update.product_name} from the bag')
+                    message = format_html(u'{} <strong>{}</strong> {}', "Remove", product_to_update.product_name, "from the bag")
+                    messages.info(request, message)
+                    # messages.info(request, f'Remove product {product_to_update.product_name} from the bag')
                 else:
                     bag[id_product_to_update] = quantity
                     messages.success(request, f'Updated {product_to_update.product_name} to {quantity}')

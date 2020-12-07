@@ -1,6 +1,6 @@
 <div class="toast-message ">
     <!--Hidden input that contain the class type-->
-    <input id="classmessage" name="classmessage" type="text" class="hide" value="light-green lighten-2 black-text">
+    <input id="classmessage" name="classmessage" type="text" class="hide" value="green lighten-5 black-text">
 
     <div class="container-fluid">
         <div class="row">
@@ -13,9 +13,45 @@
             </div>
         </div>
         <div class="row">
-            <p>
-                {{ message }}
-            </p>
+            <table class="centered">
+{#                <thead>#}
+{#                <tr>#}
+{#                    <th></th>#}
+{#                    <th>NAME</th>#}
+{#                    <th>TOTAL PRICE</th>#}
+{#                </tr>#}
+{#                </thead>#}
+
+                <tbody >
+                    {% for item in bag_items %}
+                        <tr>
+                            <!--Image-->
+                            <td>
+                                {% if item.product.image_url %}
+                                    <img class="materialboxed bag-image" width="60"
+                                         src="{{ item.product.image_url }}"
+                                         alt="product-image">
+                                {% else %}
+                                    <img class="materialboxed bag-image" width="60"
+                                         src="{{ MEDIA_URL }}images/products_images/no-image.png"
+                                         alt="no-images">
+                                {% endif %}
+                            </td>
+                            <!--Name-->
+                            <td class="name-cell"><p class="center">{{ item.product.product_name }}</p></td>
+                            <!--Total Price-->
+                            <td><p class=" center">€{{ item.total_item_price }}</p></td>
+
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="7">
+                            <a href="" class="waves-effect waves-light btn-large black red-text right"><i
+                                    class="material-icons right">credit_card</i>Check out €{{ sum_total }}</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 

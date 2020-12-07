@@ -87,16 +87,10 @@ nav .brand-logo{
 .btn-large:hover {
     opacity: 1
 }
-/*.btn{*/
-/*    opacity: 0.7;*/
-/*}*/
+
 .btn:hover {
     opacity: 1
 }
-/*section{*/
-/*    height: 100vh;*/
-/*}*/
-
 /* ------------------------------------------------*/
 /* WHAT WE OFFER */
 /* ------------------------------------------------*/
@@ -118,12 +112,6 @@ nav .brand-logo{
     margin-top: 34vh;
     height: 80vh;
 }
-/*.card{*/
-/*    height: 200px;*/
-/*}*/
-/*.card .card-content{*/
-/*    padding: 0px;*/
-/*}*/
 
 #card-container{
     position: relative;
@@ -178,4 +166,27 @@ nav .brand-logo{
 }
 .footer-copyright{
     text-align: center;
+}
+
+/* ------------------------------------------------*/
+/* TABLE TOAST */
+/* ------------------------------------------------*/
+tbody {
+    display:block;
+    height:540px;
+    overflow:auto;
+}
+
+.thead-bag, .tbody-bag > tr{
+    display:table;
+    width:100%;
+    table-layout:fixed;
+    width: calc( 114% - 1em );
+}
+
+.thead-bag {
+    width: calc( 100% - 1em )
+}
+table {
+    width:100%;
 }

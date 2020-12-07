@@ -1,25 +1,18 @@
-import generics
-import django_filters
+import django
 from django.http import request
+import django_filters
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib import messages
 from django.db.models import Q
-
 from .models import Product, Category
 
-
-# class UserFilter(django_filters.FilterSet):
-#     class Meta:
-#         model = User
-#         fields = ['username', 'first_name', 'last_name', ]
 
 class NumberInFilter(django_filters.BaseInFilter, django_filters.NumberFilter):
     pass
 
 
 class ProductFilter(django_filters.FilterSet):
-
     CHOICES = (
         ('product_name', 'Name (A-Z)'),
         ('-product_name', 'Name (Z-A)'),
@@ -49,18 +42,15 @@ class ProductFilter(django_filters.FilterSet):
             'category': ['exact'],
         }
 
-    def search_filter(self, queryset, name, value):
-        queryset = Q(product_name__icontains=value) | Q(product_description__icontains=value) | Q(
-            brand_name__icontains=value)
-        if value == "":
-            messages.error(request, "You most enter a value")
+    @staticmethod
+    def search_filter(queryset, name, value):
+        if value == '':
+            messages.error(request, 'You most enter some value')
             return redirect(reverse('products'))
         else:
+            queryset = Q(product_name__icontains=value) | Q(product_description__icontains=value) | Q(
+                brand_name__icontains=value)
             return Product.objects.filter(queryset)
-
-    # def filter_by_order(self, queryset, name, value):
-    #     expression ='brand_name' if value == 'ascending' else '-brand_name'
-    #     return queryset.order_by(expression)
 
 
 class CategoryFilter(django_filters.FilterSet):

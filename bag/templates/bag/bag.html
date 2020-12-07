@@ -27,10 +27,12 @@
         <form method="GET" action="{% url 'products' %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="row">
-                <div class="col offset-l2 l8">
+                <div class="col m1 l2"></div>
+
+                <div class="col s12 m10 l8">
                     {% if bag_items %}
-                            <table class="centered">
-                                <thead>
+                        <table class="centered">
+                            <thead class="thead-bag">
                                 <tr>
                                     <th></th>
                                     <th>NAME</th>
@@ -38,12 +40,13 @@
                                     <th>PRICE</th>
                                     <th class="hide-on-small-only">DESCRIPTION</th>
                                     <th>TOTAL</th>
+                                    <th></th>
                                 </tr>
-                                </thead>
-
-                                <tbody>
+                            </thead>
+                            <tbody class="tbody-bag">
                                 {% for item in bag_items %}
                                     <tr>
+                                        <!--Image-->
                                         <td>
                                             {% if item.product.image_url %}
                                                 <img class="materialboxed bag-image" {% comment %}width="80"{% endcomment %}
@@ -55,9 +58,12 @@
                                                      alt="no-images">
                                             {% endif %}
                                         </td>
-                                        <td class="name-cell"><p class="flow-text center">{{ item.product.product_name }}</p></td>
-
-                                        <td class="name-cell">
+                                        <!--Name-->
+                                        <td>
+                                            <p class="center">{{ item.product.product_name }}</p>
+                                        </td>
+                                        <!--Update quantity-->
+                                        <td>
                                             <div class="amount-cell valign-wrapper">
                                                 <a href="{% url 'update_bag_amount' %}?update={{ item.product.id }},increase,{{ item.quantity }};">
                                                     <i class="small material-icons green-text">add_circle</i>
@@ -68,50 +74,47 @@
                                                 </a>
                                             </div>
                                         </td>
-
-                                        <td class="price-cell"><p class="flow-text center">€{{ item.product.price }}</p></td>
-
-                                        <td class="hide-on-small-only description-cell"><p class="flow-text center">{{ item.product.product_description }}</p></td>
-
-                                        <td><p class="flow-text center">€{{ item.total_item_price }}</p></td>
-
-
-                                        <td class="name-cell">
+                                        <!--Price-->
+                                        <td>
+                                            <p class="center">€{{ item.product.price }}</p>
+                                        </td>
+                                        <!--Description-->
+                                        <td class="hide-on-small-only">
+                                            <p class="center">{{ item.product.product_description }}</p>
+                                        </td>
+                                        <!--Total Price-->
+                                        <td>
+                                            <p class="center">€{{ item.total_item_price }}</p>
+                                        </td>
+                                        <!--Delete-->
+                                        <td>
                                             <a href="{% url 'update_bag_amount' %}?update={{ item.product.id }},remove,{{ item.quantity }};"><i
                                                     class="delete-icon material-icons valign-wrapper">delete</i></a>
                                         <td>
                                     </tr>
                                 {% endfor %}
-                                <tr class="border-0">
-                                    <td colspan="6" class="border-0"></td>
-                                </tr>
-                                <tr class="border-0">
-                                    <td colspan="6" class="border-0"></td>
-                                </tr>
-                                <tr class="hide-on-small-only">
-                                    <td colspan="7">
-                                        <a href="" class="waves-effect waves-light btn-large black red-text right"><i class="material-icons right">credit_card</i>Check out €{{ sum_total }}</a>
-                                        <a href="{% url 'products' %}" class="large black-text btn-large light-green right "><i class="material-icons right">add_shopping_cart</i>Buy more</a>
-                                    </td>
-                                </tr>
-
-                                </tbody>
-                            </table>
-                        <div class="row hide-on-med-and-up">
-                            <div class="col s12 m5 offset-m7" style="width: 100%; display: flex">
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col s1">
+                            </div>
+                            <div class="col s12 right">
+                                {#                                <div class="row ">#}
                                 <!--Buton buy more-->
-                                <div class="col s6 " style="width: 70%">
+                                <div class="col s5 l8">
                                     <a href="{% url 'products' %}"
-                                       class="waves-effect waves-light btn-large light-green black-text"><i
-                                            class="material-icons right hide-on-small-only">add_shopping_cart</i>Buy more</a>
+                                       class="waves-effect waves-light btn-large light-green black-text right"><i
+                                            class="material-icons right">add_shopping_cart</i>Buy more</a>
                                 </div>
                                 <!--Buton Add to cart-->
-                                <div class="col s6 " style="width: 100%">
-                                    <a onclick="document.getElementById('add_to_bag_form').submit()"
+                                <div class="col s7 l4">
+                                    <a style="align-content: flex-end"
+                                       onclick="document.getElementById('add_to_bag_form').submit()"
                                        class="waves-effect waves-light btn-large black red-text"><i
-                                            class="material-icons right hide-on-small-only">credit_card</i>Check out €{{ sum_total }}
+                                            class="material-icons right">credit_card</i>Check out €{{ sum_total }}
                                     </a>
                                 </div>
+                                {#                                </div>#}
                             </div>
                         </div>
 
@@ -122,11 +125,13 @@
 
                         <br><br><br><br>
 
-                        <a  href="{% url 'products' %}" class="waves-effect waves-light btn-large"><i
+                        <a href="{% url 'products' %}" class="waves-effect waves-light btn-large"><i
                                 class="material-icons left">keyboard_backspace</i>Continue Shopping</a>
                     {% endif %}
 
                 </div>
+
+                <div class="col m1 l2"></div>
             </div>
         </form>
     </div>

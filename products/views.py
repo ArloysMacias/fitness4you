@@ -1,8 +1,5 @@
 from decimal import Decimal
-
-from django.db.models.functions import Lower
 from django.shortcuts import render, get_object_or_404
-
 from .filters import ProductFilter, CategoryFilter
 from .models import Product, Category
 
@@ -23,9 +20,6 @@ def all_products(request):
     category_selected = "All Brands"
     lower_price = 0
     upper_price = 400
-
-    sort = None
-    direction = None
     current_sorting = None
 
     if request.GET:

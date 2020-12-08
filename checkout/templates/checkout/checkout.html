@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link href="{% static 'bag/css/bag.css' %}" rel="stylesheet">
+    <link href="{% static 'bag/css/bag-queries.css' %}" rel="stylesheet">
+{% endblock %}
+{% block extra_js %}
+{% endblock %}
+
+<!--Header-->
+{% block page_header %}
+    <div class="container black-text header-container">
+        <div class="row">
+            <div class="col s12 m12 l12 center">
+                <h3>Checkout</h3>
+            </div>
+        </div>
+        <br><br>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay "></div>
+    <!--Content Table-->
+    <div class="black-text">
+        <form id="checkout-payment" action="{% url 'checkout' %}" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col m1 l2">
+                </div>
+
+                <div class="col s12 m10 l8">
+                    <p class="text-muted">Please fill the form below to complete your order</p>
+                    <br><br>
+                    <div class="container">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">account_circle</i>
+                            {{order_form.full_name}}
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">email</i>
+                            {{order_form.email}}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">email</i>
+                            {{order_form.country}}
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">phone</i>
+                            {{order_form.phone_number}}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">public</i>
+                            {{order_form.city}}
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">markunread_mailbox</i>
+                            {{order_form.postcode}}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12">
+                            <i class="material-icons prefix">location_on</i>
+                            {{order_form.address}}
+                        </div>
+                    </div>
+
+                    {% if user.is_authenticated %}
+                        <p>
+                            <input type="checkbox" id="save-info" />
+                            <label for="save-info">Save information</label>
+                        </p>
+                    {% else %}
+                        <label class="form-check-label" for="id-save-info">
+                            <a class="text-info" href="{% url '' %}">Create an account</a> or
+                            <a class="text-info" href="{% url '' %}">login</a> to save this information
+                        </label>
+                    {% endif %}
+
+
+                    <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+                    <!-- A Stripe card element will go here -->
+                    <div class="mb-3" id="card-element"></div>
+                    <!-- Used to display form errors -->
+                    <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                    <!-- Pass the client secret to the view so we can get the payment intent id -->
+                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
+
+                </div>
+                </div>
+
+                <div class="col m1 l2">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s1">
+                </div>
+                <div class="col s12 right">
+                    {#                                <div class="row ">#}
+                    <!--Buton buy more-->
+                    <div class="col s5 l8">
+                        <a href="{% url 'products' %}"
+                           class="waves-effect waves-light btn-large light-green black-text right"><i
+                                class="material-icons right">add_shopping_cart</i>Buy more</a>
+                    </div>
+                    <!--Buton Add to cart-->
+                    <div class="col s7 l4">
+                        <a style="align-content: flex-end"
+                           onclick="document.getElementById('checkout_bag_form').submit()"
+                           class="waves-effect waves-light btn-large black red-text"><i
+                                class="material-icons right">credit_card</i>Pay €{{ sum_total }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+{% endblock %}

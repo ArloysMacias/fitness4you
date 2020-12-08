@@ -24,7 +24,7 @@
     <div class="overlay "></div>
     <!--Content Table-->
     <div class="black-text">
-        <form method="GET" action="{% url 'products' %}" enctype="multipart/form-data">
+        <form id="checkout_bag_form" method="GET" action="{% url 'checkout' %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="row">
                 <div class="col m1 l2"></div>
@@ -109,7 +109,7 @@
                                 <!--Buton Add to cart-->
                                 <div class="col s7 l4">
                                     <a style="align-content: flex-end"
-                                       onclick="document.getElementById('add_to_bag_form').submit()"
+                                       onclick="document.getElementById('checkout_bag_form').submit()"
                                        class="waves-effect waves-light btn-large black red-text"><i
                                             class="material-icons right">credit_card</i>Check out €{{ sum_total }}
                                     </a>

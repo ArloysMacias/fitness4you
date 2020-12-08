@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'bag',
     'django_filters',
     'checkout',
+    'crispy_forms'
     # 'bootstrapform',
 ]
 
@@ -65,6 +66,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'fitness4you.urls'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -83,6 +86,10 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'bag.contexts.bag',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]

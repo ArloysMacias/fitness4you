@@ -1,0 +1,32 @@
+/**
+ * Stripe css
+ */
+.StripeElement, .stripe-style {
+    box-sizing: border-box!important;
+
+    height: 40px!important;
+
+    padding: 10px 12px!important;
+
+    border: 1px solid transparent!important;
+    border-radius: 4px!important;
+    background-color: white!important;
+
+    box-shadow: 0 1px 3px 0 #e6ebf1!important;
+    -webkit-transition: box-shadow 150ms ease!important;
+    transition: box-shadow 150ms ease!important;
+}
+
+.StripeElement--focus, .stripe-style:focus, .stripe-style:active {
+    box-shadow: 0 1px 3px 0 #cfd7df!important;
+}
+
+.StripeElement--invalid {
+    border-color: #fa755a!important;
+}
+.stripe-style::placeholder{
+    color: #aab7c4!important;
+}
+.StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+}

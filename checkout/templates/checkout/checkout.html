@@ -27,86 +27,85 @@
         <form id="checkout-payment" action="{% url 'checkout' %}" method="post">
             {% csrf_token %}
             <div class="row">
-                <div class="col m1 l2">
+                <!--User data-->
+                <div class="col s12 m6">
+                    <div class="container">
+                        <!--Name Email-->
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">account_circle</i>
+                                {{ order_form.full_name }}
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">email</i>
+                                {{ order_form.email }}
+                            </div>
+                        </div>
+                        <!--Country Phone-->
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">public</i>
+                                {{ order_form.country }}
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">phone</i>
+                                {{ order_form.phone_number }}
+                            </div>
+                        </div>
+                        <!--Address-->
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">location_on</i>
+                                {{ order_form.address }}
+                            </div>
+                        </div>
+                        <!--Post code City-->
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">markunread_mailbox</i>
+                                {{ order_form.postcode }}
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">location_city</i>
+                                {{ order_form.city }}
+                            </div>
+                        </div>
+
+                        {% if user.is_authenticated %}
+                            <p>
+                                <input type="checkbox" id="save-info"/>
+                                <label for="save-info">Save information</label>
+                            </p>
+                        {% else %}
+                            <label class="form-check-label" for="id-save-info">
+                                <a class="text-info" href="{% url '' %}">Create an account</a> or
+                                <a class="text-info" href="{% url '' %}">login</a> to save this information
+                            </label>
+                        {% endif %}
+                    </div>
                 </div>
 
-                <div class="col s12 m10 l8">
-                    <p class="text-muted">Please fill the form below to complete your order</p>
-                    <br><br>
-                    <div class="container">
+                <!--Payment stripe data-->
+                <div class="col s12 m6">
                     <div class="row">
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">account_circle</i>
-                            {{order_form.full_name}}
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">email</i>
-                            {{order_form.email}}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">email</i>
-                            {{order_form.country}}
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">phone</i>
-                            {{order_form.phone_number}}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">public</i>
-                            {{order_form.city}}
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">markunread_mailbox</i>
-                            {{order_form.postcode}}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col s12">
-                            <i class="material-icons prefix">location_on</i>
-                            {{order_form.address}}
-                        </div>
-                    </div>
-
-                    {% if user.is_authenticated %}
-                        <p>
-                            <input type="checkbox" id="save-info" />
-                            <label for="save-info">Save information</label>
-                        </p>
-                    {% else %}
-                        <label class="form-check-label" for="id-save-info">
-                            <a class="text-info" href="{% url '' %}">Create an account</a> or
-                            <a class="text-info" href="{% url '' %}">login</a> to save this information
-                        </label>
-                    {% endif %}
-
-                    <div class="row">
-                        <legend>Payment</legend>
                         <!-- A Stripe card element will go here -->
-                        <div></div>
+                        <div>
+
+                        </div>
                         <!-- Used to display form errors -->
-                        <div></div>
+                        <div>
+
+                        </div>
                         <!-- Pass the client secret to the view so we can get the payment intent id -->
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </div>
-
-                </div>
-
-                <div class="col m1 l2">
-
                 </div>
             </div>
+            <!--Submit button-->
             <div class="row">
                 <div class="col s1">
                 </div>
                 <div class="col s12 right">
-                    {#                                <div class="row ">#}
                     <!--Buton buy more-->
                     <div class="col s5 l8">
                         <a href="{% url 'products' %}"

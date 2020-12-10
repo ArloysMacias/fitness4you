@@ -181,7 +181,7 @@ tbody {
     display:table;
     width:100%;
     table-layout:fixed;
-    width: calc( 114% - 1em );
+    width: calc( 100% - 1em );
 }
 
 .thead-bag {

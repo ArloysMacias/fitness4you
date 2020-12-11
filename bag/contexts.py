@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 from products.models import Product
 
 
-def bag(request):
+def bag_content(request):
     bag_items = []
     sum_total = 0
     amount_of_products = 0

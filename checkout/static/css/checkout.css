@@ -59,7 +59,9 @@
     color: #f16868!important;
 }
 
-
+.save-info-check-box{
+    margin-left: 4px;
+}
 
 tr:last-child{
     border:0!important;

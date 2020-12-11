@@ -111,27 +111,37 @@
                         <div class="col s12">
                             <!-- A Stripe card element will go here -->
                             <p class="title">Payment </p>
-                            <div id="card-element" class="card"></div>
-                            <!-- Used to display form errors -->
-                            <div id="card-errors"></div>
+                            <!--Card div-->
+                            <div id="stripe-card-input" class="card"></div>
                             <!-- Pass the client secret to the view so we can get the payment intent id -->
                             <input type="hidden" value="{{ client_secret }}" name="client_secret">
                         </div>
                     </div>
+                    <!-- Used to display form errors -->
+                    <div class="row">
+                        <div class="col s12">
+                            <div id="card-errors" class="red-text"></div>
+                        </div>
+                    </div>
                     <!--Save Information checkbox-->
-                    {% if user.is_authenticated %}
-                        <p>
-                            <input type="checkbox" id="save-info"/>
-                            <label for="save-info">Save information</label>
-                        </p>
-                    {% else %}
-                        <label class="form-check-label" for="id-save-info">
-                            <a class="text-info" href="{% url '' %}">Create an account</a> or
-                            <a class="text-info" href="{% url '' %}">login</a> to save this information
-                        </label>
-                    {% endif %}
-                    <!--Submit button-->
+                    <div class="row">
+                        <!-- Used to display form errors -->
+                        <div class="col s12">
+                            {% if user.is_authenticated %}
+                                <p class="save-info-check-box">
+                                    <input type="checkbox" id="save-info"/>
+                                    <label for="save-info">Save information</label>
+                                </p>
+                            {% else %}
+                                <label class="form-check-label" for="id-save-info">
+                                    <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or
+                                    <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                                </label>
+                            {% endif %}
+                        </div>
+                    </div>
                     <br>
+                    <!--Submit button-->
                     <div class="row right">
                         <!--Buton buy more-->
                         <div class="col s7 m5 button-checkout">

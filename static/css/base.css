@@ -171,11 +171,6 @@ nav .brand-logo{
 /* ------------------------------------------------*/
 /* TABLE TOAST */
 /* ------------------------------------------------*/
-tbody {
-    display:block;
-    height:540px;
-    overflow:auto;
-}
 
 .thead-bag, .tbody-bag > tr{
     display:table;
@@ -187,10 +182,23 @@ tbody {
 .thead-bag {
     width: calc( 100% - 1em )
 }
+
+tbody {
+    display:block;
+    height:540px;
+    overflow:auto;
+}
+
 table {
     width:100%;
 }
 
 .login-icon{
     font-size: 40px!important;
+}
+
+.button-checkout{
+    padding-right: 0px!important;
+    padding-left: 0px!important;
+    width: auto!important;
 }

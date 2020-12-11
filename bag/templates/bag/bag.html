@@ -96,26 +96,20 @@
                             </tbody>
                         </table>
                         <br><br>
-                        <div class="row">
-                            <div class="col s1">
+                        <div class="row right">
+                            <!--Buton buy more-->
+                            <div class="col s7 m5 button-checkout">
+                                <a href="{% url 'products' %}"
+                                   class="right waves-effect waves-light btn-large light-green black-text">
+                                    <i class="material-icons right">add_shopping_cart</i>Buy more
+                                </a>
                             </div>
-                            <div class="col s12 right">
-                                {#                                <div class="row ">#}
-                                <!--Buton buy more-->
-                                <div class="col s5 l8">
-                                    <a href="{% url 'products' %}"
-                                       class="waves-effect waves-light btn-large light-green black-text right"><i
-                                            class="material-icons right">add_shopping_cart</i>Buy more</a>
-                                </div>
-                                <!--Buton Add to cart-->
-                                <div class="col s7 l4">
-                                    <a style="align-content: flex-end"
-                                       onclick="document.getElementById('checkout_bag_form').submit()"
-                                       class="waves-effect waves-light btn-large black red-text"><i
-                                            class="material-icons right">credit_card</i>Check out €{{ sum_total }}
-                                    </a>
-                                </div>
-                                {#                                </div>#}
+                            <!--Buton Add to cart-->
+                            <div class="col s5 m7 button-checkout">
+                                <a onclick="document.getElementById('checkout_bag_form').submit()"
+                                   class="right waves-effect waves-light btn-large black red-text">
+                                    <i class="material-icons right">credit_card</i>Checkout €{{ sum_total }}
+                                </a>
                             </div>
                         </div>
 

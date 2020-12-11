@@ -60,6 +60,9 @@
         flex: 1 0 auto;
     }
 
+    .table-checkout {
+        width:88%;
+    }
 }
 
 

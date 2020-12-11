@@ -16,7 +16,8 @@ class OrderAdmin(admin.ModelAdmin):
         'order_number', 'full_name', 'email', 'phone_number', 'country', 'city', 'address', 'postcode', 'total_to_pay',
         'stripe_pid', 'date')
 
-    list_display = ('order_number', 'date', 'full_name', 'total_to_pay',)
+    list_display = ('order_number', 'full_name', 'email', 'phone_number', 'country', 'city', 'address', 'postcode',
+                    'total_to_pay', 'date')
 
     ordering = ('-date',)
 

@@ -1,3 +1,4 @@
+
 /**
  * Stripe css
  */
@@ -70,4 +71,9 @@ tr:last-child{
 
 .success-checkout-icon{
     font-size: 40px;
+}
+
+#order-info{
+    text-transform: uppercase;
+    font-max-size: 21px;
 }

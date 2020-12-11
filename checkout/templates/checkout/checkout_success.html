@@ -2,11 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    {#    <link href="{% static 'bag/css/bag.css' %}" rel="stylesheet">#}
-    {#    <link href="{% static 'bag/css/bag-queries.css' %}" rel="stylesheet">#}
     <link href="{% static 'css/checkout.css' %}" rel="stylesheet">
-{% endblock %}
-{% block extra_js %}
 {% endblock %}
 
 <!--Header-->
@@ -14,7 +10,8 @@
     <div class="container black-text header-container">
         <div class="row">
             <div class="col s12 m12 l12 center">
-                <h3><i class="material-icons empty_bag green-text">done</i> Thanks for your purchase</h3>
+                <h3><i class="material-icons empty_bag green-text prefix">done</i> Thanks for your purchase</h3>
+                <p>Your order information is <strong>{{ order }}</strong>. A confirmation email will be sent to <a href="{{ order.email }}">{{ order.email }}</a></p>
             </div>
         </div>
         <br><br>
@@ -23,27 +20,84 @@
 
 {% block content %}
     <div class="overlay "></div>
-    <!--Content Table-->
     <div class="black-text">
         <div class="row">
-            <div class="row">
-                <div class="col m3">
-
-                </div>
-                <div class="col s12 m9">
-                    <p>Your order information is {{ order }}. A confirmation email will be sent to <a href="{{ order.email }}">{{ order.email }}</a></p>
-
-                    <br><br><br>
-                    <a href="{% url 'products' %}" class="waves-effect waves-light btn-large"><i
-                            class="material-icons left">keyboard_backspace</i>Continue Shopping</a>
+            <!--Order details-->
+            <div class="col s12 offset-m4 m4">
+                <div id="order-info" class="amber lighten-4">
+                    <div class="row">
+                        <!--Order number-->
+                        <div class=" col s12">
+                            <p>Order number: <strong>{{ order.order_number }}</strong></p>
+                        </div>
+                        <!--Full name-->
+                        <div class=" col s12">
+                            <p>Full name: <strong>{{ order.full_name }}</strong></p>
+                        </div>
+                        <!--Email-->
+                        <div class=" col s12">
+                            <p> Email: {{ order.email }}</p>
+                        </div>
+                        <!--Phone number-->
+                        <div class=" col s12">
+                            <p>Phone number: <strong>{{ order.phone_number }}</strong></p>
+                        </div>
+                        <!--Country-->
+                        <div class=" col s12">
+                            <p>Country: <strong>{{ order.country }}</strong></p>
+                        </div>
+                        <!--City-->
+                        <div class=" col s12">
+                            <p> City: <strong>{{ order.city }}</strong></p>
+                        </div>
+                        <!--Address-->
+                        <div class=" col s12">
+                            <p>Address: <strong>{{ order.address }}</strong></p>
+                        </div>
+                        <!--Postcode-->
+                        <div class=" col s12">
+                            <p>Postcode: <strong>{{ order.postcode }}</strong></p>
+                        </div>
+                        <!--Date-->
+                        <div class=" col s12">
+                            <p>Date:<strong>{{ order.date }}</strong></p>
+                        </div>
+                    </div>
+                    <!--Table Products Details-->
+                    <table class="centered">
+                        <thead class="thead-bag">
+                        </thead>
+                        <tbody class="tbody-checkout-success">
+                        {% for product in order.lineitems.all %}
+                            <tr>
+                                <!--Quantity-->
+                                <td>
+                                    <div class="amount-cell valign-wrapper">
+                                        <p class="center">{{ product.quantity }}<strong>.</strong></p>
+                                    </div>
+                                </td>
+                                <!--Name-->
+                                <td>
+                                    <p class="center">{{ product.product }}</p>
+                                </td>
+                                <!--Total Price-->
+                                <td>
+                                    <p class="center">€{{ product.product_price }}</p>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <br><br>
+                    <!--Total to pay-->
+                    <div class="row grey">
+                        <div class=" col s11">
+                            <h5 class="large right"><strong>TOTAL :  {{ order.total_to_pay }}</strong></h5>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
     </div>
 {% endblock %}
 
-{% block postloadjs %}
-    {{ block.super }}
-    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-    {{ client_secret|json_script:"id_client_secret" }}
-    <script src="{% static 'js/stripe_elements.js' %}"></script>
-{% endblock %}

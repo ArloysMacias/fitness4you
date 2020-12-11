@@ -179,6 +179,15 @@ nav .brand-logo{
     width: calc( 100% - 1em );
 }
 
+
+.tbody-checkout-success{
+    height:317px;
+    display:table;
+    width:100%;
+    table-layout:fixed;
+    width: calc( 100% - 1em );
+}
+
 .thead-bag {
     width: calc( 100% - 1em )
 }

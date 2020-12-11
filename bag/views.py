@@ -17,7 +17,6 @@ def add_to_bag(request, product_id):
     product_added = Product.objects.get(pk=product_id)
     quantity = 1
     redirect_url = '/products'
-    print(redirect_url)
     if request.POST:
         if 'amount_to_buy' in request.POST:
             quantity = int(request.POST.get('amount_to_buy'))

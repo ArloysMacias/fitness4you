@@ -34,6 +34,7 @@
 
 
 .empty_bag{
+    margin-bottom: 0;
     font-size: 107px!important;
 }
 
@@ -65,4 +66,8 @@
 
 tr:last-child{
     border:0!important;
+}
+
+.success-checkout-icon{
+    font-size: 40px;
 }

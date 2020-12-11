@@ -32,8 +32,11 @@ class Order(models.Model):
 
     def update_price(self):
         """Suma the price of each product and return the total"""
-        self.order_total = self.lineitems.aggregate(Sum('product_price'))['product_price__sum']
-        self.total_to_pay = self.order_total
+        self.total_to_pay = self.lineitems.aggregate(Sum('product_price'))['product_price__sum'] or 1
+
+        print(f'Total is : {self.total_to_pay}')
+        print('------------------------')
+
         self.save()
 
     def __str__(self):
@@ -43,11 +46,17 @@ class Order(models.Model):
 class ProductOrder(models.Model):
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
     product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
+    print("Product:")
+    print(product)
+    print("Price:")
+
     quantity = models.IntegerField(null=False, blank=False, default=0)
     product_price = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
+    print(product_price)
+
     def save(self, *args, **kwargs):
-        """Overwrite the original save method by calculating the price of each product"""
+        """Overwrite the original save method by calculating the price of each product and update the order total"""
         self.product_price = self.product.price * self.quantity
         super().save(*args, **kwargs)
 

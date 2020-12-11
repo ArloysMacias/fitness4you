@@ -42,10 +42,10 @@ def add_to_bag(request, product_id):
 
 
 def update_bag_amount(request):
-    # redirect_url = '/bag'
+    redirect_url = '/bag'
     if request.GET:
-        # if 'the_checkout_url' in request.GET:
-        #     redirect_url = request.GET['the_checkout_url']
+        if 'the_checkout_url' in request.GET:
+            redirect_url = request.GET['the_checkout_url']
         if 'update' in request.GET:
             list_of_parameter = request.GET['update'].split(',')
             id_product_to_update = list_of_parameter[0]
@@ -69,5 +69,5 @@ def update_bag_amount(request):
 
         request.session['bag'] = bag
 
-    return redirect(reverse('shopping_bag'))
-    # return redirect(redirect_url)
+    # return redirect(reverse('shopping_bag'))
+    return redirect(redirect_url)

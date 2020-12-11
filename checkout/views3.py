@@ -10,7 +10,7 @@ from bag.contexts import bag_content
 import stripe
 from django.conf import settings
 
-from .models import Order, ProductOrder
+from .models import Order
 
 
 def checkout(request):
@@ -29,58 +29,54 @@ def checkout(request):
             'address': request.POST.get('address'),
             'postcode': request.POST.get('postcode'),
         }
-
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            # order = order_form.save(commit=False)
-            # pid = request.POST.get('client_secret').split('_secret')[0]
-            # order.stripe_pid = pid
-            # order.original_bag = json.dumps(bag)
-            # order.save()
-            order = order_form.save()
-            for item_id, item_data in bag.items():
-                try:
-                    product = Product.objects.get(id=item_id)
-                    if isinstance(item_data, int):
-                        order_line_item = ProductOrder(
-                            order=order,
-                            product=product,
-                            quantity=item_data,
-                        )
-                        order_line_item.save()
-                except Product.DoesNotExist:
-                    messages.error(request, "Sorry : Some product that you bought does not exist in our database")
-                    order.delete()
-                    return redirect(reverse('view_bag'))
-
-            # Save the info to if all is well
+            order = order_form.save(commit=False)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_bag = json.dumps(bag)
+            order.save()
+            order_form.save()
+            # order = order_form.save()
+            try:
+                for item_id, quantity in bag.items():
+                    product = get_object_or_404(Product, pk=item_id)
+                    bag_items.append({
+                        'order': order,
+                        'id': item_id,
+                        'quantity': quantity,
+                        'product': product,
+                    })
+            except Product.DoesNotExist:
+                messages.error(request, "Sorry : Some product that you bought does not exist in our database")
+                order.delete()
+                return redirect(reverse('shopping_bag'))
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
-            messages.error(request, 'There was an error with your form. ' 'Please double check your information.')
+            messages.error(request, "Sorry : Your order is not valid, please check again your information")
     else:
         bag = request.session.get('bag', {})
         if not bag:
+            return redirect(reverse('shopping_bag'))
             messages.error(request, "There is nothing in the bag at the moment")
-            return redirect(reverse('products'))
 
-        current_bag = bag_content(request)
-        total = current_bag['sum_total']
-        stripe_total = round(total * 100)
-        stripe.api_key = stripe_secret_key
-        intent = stripe.PaymentIntent.create(
-            amount=stripe_total,
-            currency=settings.STRIPE_CURRENCY,
-        )
-        order_form = OrderForm()
+    current_bag = bag_content(request)
+    total_to_pay_from_bag = current_bag['sum_total']
+    stripe_total_to_pay = round(total_to_pay_from_bag)
+    stripe.api_key = stripe_secret_key
+    intent = stripe.PaymentIntent.create(
+        amount=stripe_total_to_pay,
+        currency=settings.STRIPE_CURRENCY,
+    )
+    order_form = OrderForm()
 
-    template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
-        'client_secret': intent.client_secret,
+        'client_secret': intent.client_secret
     }
-
+    template = 'checkout/checkout.html'
     return render(request, template, context)
 
 

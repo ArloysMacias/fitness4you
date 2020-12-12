@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block extra_css %}
-    <link href="{% static 'css/checkout.css' %}" rel="stylesheet">
+    <link href="{% static 'checkout/css/checkout.css' %}" rel="stylesheet">
+    <link href="{% static 'checkout/css/queries.css' %}" rel="stylesheet">
 {% endblock %}
 
 <!--Header-->
@@ -18,13 +19,30 @@
 {% endblock %}
 
 {% block content %}
+    <!--White Overlay-->
     <div class="overlay "></div>
+    <!--Loading-->
+    <div id="loading" class="hidden">
+        <div class="preloader-wrapper big active spinner-align">
+            <div class="spinner-layer spinner-red">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="black-text">
         <div class="row">
             <div class="col m1 hide-on-small-only"></div>
             <!--Table Bag Details-->
             <div class="col s12 m5">
-                <table class="centered">
+                <table id="table-checkout" class="centered">
                     <thead class="thead-bag">
                     <tr>
                         <th></th>
@@ -84,9 +102,9 @@
                     </tbody>
                 </table>
             </div>
-            <!--User data and Stripe payment-->
+            <!--Form User data and Stripe payment-->
             <div class="col s12 m5">
-                <form id="checkout-payment" action="{% url 'checkout' %}" method="post">
+                <form id="checkout-payment" action="{% url 'checkout' %}" method="POST">
                     {% csrf_token %}
                     <!--Name Email-->
                     <div class="row ">
@@ -157,7 +175,8 @@
                             {% else %}
                                 <label class="form-check-label" for="id-save-info">
                                     <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or
-                                    <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                                    <a class="text-info" href="{% url 'account_login' %}">login</a> to save this
+                                    information
                                 </label>
                             {% endif %}
                         </div>
@@ -172,12 +191,11 @@
                                 <i class="material-icons right">add_shopping_cart</i>Buy more
                             </a>
                         </div>
-                        <!--Buton Add to cart-->
+                        <!--Submit Button-->
                         <div class="col s5 m7 button-checkout">
-                            <a onclick="document.getElementById('checkout-payment').submit()"
-                               class="right waves-effect waves-light btn-large black red-text">
-                                <i class="material-icons right">credit_card</i>Pay €{{ sum_total }}
-                            </a>
+                            <button class="btn waves-effect waves-light btn-large black red-text right" type="submit" name="action">Pay €{{ sum_total }}
+                                <i class="material-icons right">credit_card</i>
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -191,5 +209,5 @@
     {{ block.super }}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}
-    <script src="{% static 'js/stripe_elements.js' %}"></script>
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}

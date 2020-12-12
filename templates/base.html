@@ -158,8 +158,10 @@
         <script type="text/javascript">
             $(function(){
                 let content= $('.toast-message').html();
-                let classMessage= document.getElementById('toast-class-color').value.toString();
-
+                let classMessage=document.getElementById('toast-class-color');
+                if (classMessage){
+                    classMessage= classMessage.value.toString();
+                }
                 if(content){
                     $('#toast-container').remove();
                     Materialize.toast(content, 4000, ""+classMessage)

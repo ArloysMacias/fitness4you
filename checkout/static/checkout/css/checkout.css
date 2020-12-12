@@ -77,3 +77,22 @@ tr:last-child{
     text-transform: uppercase;
     font-max-size: 21px;
 }
+
+#loading{
+    display: none;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    background: #000000a8;
+    z-index: 99;
+}
+
+.spinner-align{
+    display: flex;
+    top: 45vh;
+    left: 45vw;
+    margin: 0;
+    height: 100%;
+}

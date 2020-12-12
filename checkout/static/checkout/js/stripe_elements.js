@@ -36,24 +36,29 @@ card.addEventListener('change', function (event) {
 });
 
 //On submit
-var form = document.getElementById('payment-form');
+var form = document.getElementById('checkout-payment');
 
 form.addEventListener('submit', function (ev) {
     ev.preventDefault();
     card.update({'disable': true});
-    $('#submit-button').attr('disable', true)
-    stripe.confirmCardPayment(clientSecret, {
+    $('#submit-button').attr('disable', true);
+    $('#checkout-payment').fadeToggle(100);
+    $('#table-checkout').fadeToggle(100);
+    $('#loading').fadeToggle(100);
+    stripe.confirmCardPayment(
+        client_secret, {
         payment_method: {
             card: card,
-            billing_details: {
-                name: 'Jenny Rosen'
-            }
         }
     }).then(function (result) {
         if (result.error) {
             let html = `<i class="material-icons">error</i>${result.error.message}</span>`;
             $(displayError).html(html);
-            console.log(result.error.message);
+
+            $('#checkout-payment').fadeToggle(100);
+            $('#table-checkout').fadeToggle(100);
+            $('#loading').fadeToggle(100);
+
             card.update({'disable': false});
             $('#submit-button').attr('disable', false)
         } else {

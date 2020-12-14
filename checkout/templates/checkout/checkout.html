@@ -167,12 +167,12 @@
                     <div class="row">
                         <div class="col s12">
                             {% if user.is_authenticated %}
-                                <p class="save-info-check-box">
-                                    <input type="checkbox" id="save-info"/>
-                                    <label for="save-info">Save information</label>
+                                <p class="save_info-check-box">
+                                    <input type="checkbox" id="save_info"/>
+                                    <label for="save_info">Save information</label>
                                 </p>
                             {% else %}
-                                <label class="form-check-label" for="id-save-info">
+                                <label class="form-check-label" for="id-save_info">
                                     <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or
                                     <a class="text-info" href="{% url 'account_login' %}">login</a> to save this
                                     information

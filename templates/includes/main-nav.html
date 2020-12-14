@@ -20,6 +20,10 @@
     <li><a class="red-text" href="#!">Prices</a></li>
 </ul>
 <ul id="dropdown2" class="dropdown-content black">
-    <li><a class="red-text" href="{% url 'account_login' %}">Login</a></li>
+    {% if user.is_authenticated %}
+        <li><a class="red-text" href="{% url 'profile' %}">My Profile</a></li>
+        {% else %}
+        <li><a class="red-text" href="{% url 'account_login' %}">Login</a></li>
+    {% endif %}
     <li><a class="red-text" href="{% url 'account_logout' %}">Logout</a></li>
 </ul>

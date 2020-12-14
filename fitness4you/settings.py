@@ -19,7 +19,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
+
+## To be able to makemigrations
+# SECRET_KEY = 'sss'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -46,14 +50,7 @@ INSTALLED_APPS = [
     'checkout',
     'crispy_forms',
     'profiles',
-    # 'bootstrapform',
 ]
-
-# REST_FRAMEWORK = {
-#     'DEFAULT_FILTER_BACKENDS': (
-#         'django_filters.rest_framework.DjangoFilterBackend',
-#     ),
-# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

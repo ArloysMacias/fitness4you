@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link href="{% static 'profiles/css/profiles.css' %}" rel="stylesheet">
+{% endblock %}
+
+<!--Header-->
+{% block page_header %}
+    <div class="container black-text header-container">
+        <div class="row">
+            <div class="col s12 m12 l12 center">
+                <h3>My Profile</h3>
+            </div>
+        </div>
+        <br><br>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <!--White Overlay-->
+    <div class="overlay "></div>
+    <div class="black-text">
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+{% endblock %}

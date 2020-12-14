@@ -6,6 +6,7 @@ from checkout.webhook_handler import StripeWH_Handler
 from django.views.decorators.http import require_POST
 import stripe
 
+
 # Using Django
 @require_POST
 @csrf_exempt
@@ -23,31 +24,24 @@ def webhook(request):
         event = stripe.Webhook.construct_event(
             payload, sig_header, wh_secret
         )
+        print("It call the webhook")
     except ValueError as e:
         # Invalid payload
+        print("Invalid payload")
         return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError as e:
+        print("Invalid signature")
         # Invalid signature
         return HttpResponse(status=400)
     except Exception as e:
+        print("Bad request")
         return HttpResponse(content=e, status=400)
-
-    # # Handle the event
-    # if event.type == 'payment_intent.succeeded':
-    #     payment_intent = event.data.object  # contains a stripe.PaymentIntent
-    #     print('PaymentIntent was successful!')
-    # elif event.type == 'payment_method.attached':
-    #     payment_method = event.data.object  # contains a stripe.PaymentMethod
-    #     print('PaymentMethod was attached to a Customer!')
-    # # ... handle other event types
-    # else:
-    #     print('Unhandled event type {}'.format(event.type))
 
     handler = StripeWH_Handler(request)
 
     event_map = {
-        'payment_succeeded': handler.handle_payment_succeeded,
-        'payment_failed': handler.handle_payment_failed,
+        'payment_succeeded': handler.handle_payment_intent_succeeded,
+        'payment_failed': handler.handle_payment_intent_payment_failed,
 
     }
 
@@ -55,7 +49,5 @@ def webhook(request):
     event_handler = event_map.get(event_type, handler.handle_event)
 
     response = event_handler(event)
-
-    print('AAAAAAA')
 
     return response

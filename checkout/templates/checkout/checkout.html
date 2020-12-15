@@ -125,7 +125,7 @@
                         </div>
                         <div class="input-field col s12 l5 ">
                             <i class="material-icons prefix">public</i>
-                            {{ order_form.country}}
+                            {{ order_form.country }}
                         </div>
                     </div>
                     <!--Address-->
@@ -183,7 +183,6 @@
                         </div>
                     </div>
 
-                    <br>
                     <!--Submit button-->
                     <div class="row right">
                         <!--Buton buy more-->
@@ -195,7 +194,8 @@
                         </div>
                         <!--Submit Button-->
                         <div class="col s5 m7 button-checkout">
-                            <button class="btn waves-effect waves-light btn-large black red-text right" type="submit" name="action">Pay €{{ sum_total }}
+                            <button class="btn waves-effect waves-light btn-large black red-text right" type="submit"
+                                    name="action">Pay €{{ sum_total }}
                                 <i class="material-icons right">credit_card</i>
                             </button>
                         </div>
@@ -212,4 +212,5 @@
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}
     <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+    <script src="{% static 'checkout/js/checkout.js' %}"></script>
 {% endblock %}

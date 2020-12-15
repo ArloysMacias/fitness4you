@@ -19,10 +19,12 @@
         {% endif %}
         {% if user.is_authenticated %}
             <a href="{% url 'profile' %}" class="collapsible-body black center red-text">My Profile</a>
+            <a href="{% url 'account_logout' %}" class="collapsible-body black center red-text">Logout</a>
             {% else %}
                 <a href="{% url 'account_login' %}" class="collapsible-body black center red-text">Login</a>
+            <a href="{% url 'account_signup' %}" class="collapsible-body black center red-text">Register</a>
         {% endif %}
-        <a href="{% url 'account_logout' %}" class="collapsible-body black center red-text">Logout</a>
+
     </li>
     <!--Bag button with quantity-->
     <li>

@@ -194,7 +194,7 @@ nav .brand-logo{
 
 tbody {
     display:block;
-    height:540px;
+    height:440px;
     overflow:auto;
 }
 
@@ -210,4 +210,7 @@ table {
     padding-right: 0px!important;
     padding-left: 0px!important;
     width: auto!important;
+}
+.select-dropdown{
+    color: #d1d1d1;
 }

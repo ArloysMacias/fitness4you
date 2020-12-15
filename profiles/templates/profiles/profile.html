@@ -20,11 +20,29 @@
 {% block content %}
     <!--White Overlay-->
     <div class="overlay "></div>
-    <div class="black-text">
-    {{ profile }}
+    <div class="black-text container">
+        <div class="row">
+            <div class="col s12 m4 offset-m2">
+                <form action="{% url 'profile' %}" method="POST" id="update-user-form">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <!--Submit Button-->
+                    <button class="btn waves-effect waves-light btn-large black red-text right" type="submit"
+                            name="action">Update
+                        <i class="material-icons right">wifi_protected_setup</i>
+                    </button>
+                </form>
+            </div>
+            <div class="col s12 m4">
+                <p class=" center grey-text">ORDER HISTORY</p>
+
+                {{ orders }}
+            </div>
+        </div>
     </div>
 {% endblock %}
 
 {% block postloadjs %}
     {{ block.super }}
+    <script src="{% static 'profiles/js/profile.js' %}"></script>
 {% endblock %}

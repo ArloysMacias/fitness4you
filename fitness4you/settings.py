@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django_filters',
     'checkout',
     'crispy_forms',
+    'crispy_forms_materialize',
     'profiles',
 ]
 
@@ -63,8 +64,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'fitness4you.urls'
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'materialize_css_forms'
+# CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {

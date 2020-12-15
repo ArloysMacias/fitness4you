@@ -1,0 +1,79 @@
+{% extends "account/baselogin.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block inner_content %}
+
+    <div class="row">
+        <div class="card">
+            <div class="col s12 offset-m3 m5 offset-l3 l5 ">
+                <div class="card-action black-text" style="background: #000000ba">
+                    <hr>
+                    <h3 class="logo-font mb-4 white-text center">{% trans "Sign In" %}</h3>
+                    <hr>
+                </div>
+                <div class="card-content" style="background: #000000b5">
+                    <!--This part is irrelevant because I have not created social account-->
+                    {% if socialaccount_providers %}
+                        <p class="black-text">
+                            {% blocktrans with site.name as site_name %}Please sign in with one
+                                of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+                                for a {{ site_name }} account and sign in below:{% endblocktrans %}
+                        </p>
+
+                        <div class="socialaccount_ballot">
+
+                            <ul class="socialaccount_providers">
+                                {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                            </ul>
+
+                            <div class="login-or">{% trans 'or' %}</div>
+
+                        </div>
+
+                        {% include "socialaccount/snippets/login_extra.html" %}
+
+                    {% else %}
+                        <p class="white-text center">{% blocktrans %}If you have not created an account yet, then please
+                            <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+                        </p>
+                        <br><br>
+                    {% endif %}
+
+                    <p class="white-text">
+                        {% get_providers as socialaccount_providers %}
+                    </p>
+
+
+                        <form class="login" method="POST" action="{% url 'account_login' %}">
+                            {% csrf_token %}
+                            <div class="form-field">
+                                {{ form|crispy }}
+                            </div>
+                            <div class="form-field">
+                                {% if redirect_field_value %}
+                                    <input class="white-text" type="hidden" name="{{ redirect_field_name }}"
+                                           value="{{ redirect_field_value }}"/>
+                                {% endif %}
+                            </div>
+
+                            <a class="btn hoverable " href="{% url 'home' %}">Home</a>
+
+                            <button class="btn hoverable primaryAction waves-effect waves-light  red white-text" type="submit">{% trans "Sign In" %}</button>
+
+                            <p class="mt-2">
+                                <a class="button secondaryAction"
+                                   href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                            </p>
+                        </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

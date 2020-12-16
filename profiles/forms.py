@@ -12,18 +12,18 @@ class UserProfileForm(forms.ModelForm):
 
         super().__init__(*args, **kwargs)
         placeholders = {
-            'full_name_default': 'Full Name',
-            'email_default': 'Email Address',
-            'phone_number_default': 'Phone Number',
-            'city_default': 'City',
-            'address_default': 'Address',
-            'postcode_default': 'Postal Code',
+            'full_name_profile': 'Full Name',
+            'email_profile': 'Email Address',
+            'phone_number_profile': 'Phone Number',
+            'city_profile': 'City',
+            'address_profile': 'Address',
+            'postcode_profile': 'Postal Code',
         }
         """Set the cursor to the full name field when the user loads the page"""
-        self.fields['full_name_default'].widget.attrs['autofocus'] = True
+        self.fields['full_name_profile'].widget.attrs['autofocus'] = True
 
         for field in self.fields:
-            if field != 'country_default':
+            if field != 'country_profile':
                 if self.fields[field].required:
                     placeholder = f'{placeholders[field]} *'
                 else:

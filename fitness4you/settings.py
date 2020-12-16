@@ -22,8 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
-## To be able to makemigrations
-# SECRET_KEY = 'sss'
+#To be able to makemigrations
+#SECRET_KEY = 'sss'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'django_filters',
+    'django_countries',
     'checkout',
     'crispy_forms',
     'crispy_forms_materialize',
@@ -186,3 +187,6 @@ STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+
+
+#COUNTRIES_FLAG_URL = 'flags/{code}.gif'

@@ -1,4 +1,6 @@
 from django import forms
+from django_countries.widgets import CountrySelectWidget
+
 from .models import Order
 
 
@@ -6,6 +8,7 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = ('full_name', 'email', 'phone_number', 'country', 'city', 'address', 'postcode')
+        widgets = {'country': CountrySelectWidget()}
 
     def __init__(self, *args, **kwargs):
 
@@ -29,4 +32,6 @@ class OrderForm(forms.ModelForm):
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
                 self.fields[field].widget.attrs['class'] = 'stripe-style'
+                if field == 'country':
+                    self.files[field].widget.attrs['class'] = 'large country-select-flag'
             self.fields[field].label = False

@@ -17,7 +17,7 @@
             {% if bag_items %}
                 <div class="row">
                     <table class="centered">
-                        <tbody >
+                        <tbody class="tbody-scroll" >
                         {% for item in bag_items %}
                             <tr>
                                 <!--Image-->
@@ -39,14 +39,14 @@
 
                             </tr>
                         {% endfor %}
-                        <tr>
-                            <td colspan="7">
-                                <a href="{% url 'checkout' %}" class="waves-effect waves-light btn-large black red-text right"><i
-                                        class="material-icons right">credit_card</i>Check out €{{ sum_total }}</a>
-                            </td>
-                        </tr>
                         </tbody>
                     </table>
+                    <tr>
+                        <td colspan="7">
+                            <a href="{% url 'checkout' %}" class="waves-effect waves-light btn-large black red-text right"><i
+                                    class="material-icons right">credit_card</i>Check out €{{ sum_total }}</a>
+                        </td>
+                    </tr>
                 </div>
             {% else %}
                 {{ message }}

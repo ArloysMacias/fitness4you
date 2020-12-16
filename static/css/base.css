@@ -192,13 +192,13 @@ nav .brand-logo{
     width: calc( 100% - 1em )
 }
 
-tbody {
+.tbody-scroll {
     display:block;
     height:440px;
     overflow:auto;
 }
 
-table {
+.table-scroll {
     width:100%;
 }
 
@@ -211,6 +211,11 @@ table {
     padding-left: 0px!important;
     width: auto!important;
 }
-.select-dropdown{
-    color: #d1d1d1;
+
+.country-select-flag{
+    position: absolute;
+    height: 18px;
+    display: inline;
+    float: right;
+    top: 3px;
 }

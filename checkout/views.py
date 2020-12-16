@@ -7,6 +7,8 @@ from django.contrib import messages
 from django.views.decorators.http import require_POST
 
 from products.models import Product
+from profiles.forms import UserProfileForm
+from profiles.models import UserProfile
 from .forms import OrderForm
 from bag.contexts import bag_content
 import stripe
@@ -38,7 +40,7 @@ def cache_checkout(request):
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-
+    order_form = {}
     if request.method == 'POST':
         bag = request.session.get('bag', {})
 
@@ -75,7 +77,7 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('view_bag'))
 
-            # Save the info to if all is well
+            # Get the save variable value
             request.session['save_info'] = 'save_info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
@@ -94,7 +96,21 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-        order_form = OrderForm()
+        if request.user.is_authenticated:
+            # profile = get_object_or_404(UserProfile, user=request.user)
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                order_form = OrderForm(initial={
+                    'full_name': profile.full_name_profile,
+                    'email': profile.email_profile,
+                    'phone_number': profile.phone_number_profile,
+                    'country': profile.country_profile,
+                    'postcode': profile.postcode_profile,
+                    'address': profile.address_profile,
+                    'city': profile.city_profile,
+                })
+            except UserProfile.DoesNotExist:
+                order_form = OrderForm()
 
     template = 'checkout/checkout.html'
     context = {
@@ -110,6 +126,24 @@ def checkout_success(request, order_number):
     """A view to show the successful user payment"""
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
+    if request.user.is_authenticated:
+        profile = UserProfile.objects.get(user=request.user)
+        order.user_profile = profile
+        order.save()
+        # Save the info in the profile if it was checked in the checkout page
+        if save_info:
+            profile_data = {
+                'full_name_profile': order.full_name,
+                'email_profile': order.email,
+                'phone_number_profile': order.phone_number,
+                'country_profile': order.country,
+                'city_profile': order.city,
+                'address_profile': order.address,
+                'postcode_profile': order.postcode,
+            }
+            user_profile_form = UserProfileForm(profile_data, instance=profile)
+            if user_profile_form.is_valid():
+                user_profile_form.save()
 
     messages.success(request,
                      f'Successful order: Your order {order_number} will be processed. A confirmation email will be ' f'sent to {order.email}')

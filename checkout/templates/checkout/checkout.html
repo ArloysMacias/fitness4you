@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
+{% load countries %}
+{% get_countries as countries %}
 
 {% block extra_css %}
     <link href="{% static 'checkout/css/checkout.css' %}" rel="stylesheet">
     <link href="{% static 'checkout/css/queries.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'flags/sprite.css' %}">
 {% endblock %}
 
 <!--Header-->
@@ -53,7 +56,7 @@
                         <th></th>
                     </tr>
                     </thead>
-                    <tbody class="tbody-bag">
+                    <tbody class="tbody-bag tbody-scroll">
                     {% for item in bag_items %}
                         <tr>
                             <!--Image-->
@@ -123,9 +126,9 @@
                             <i class="material-icons prefix">phone</i>
                             {{ order_form.phone_number }}
                         </div>
-                        <div class="input-field col s12 l5 ">
-                            <i class="material-icons prefix">public</i>
-                            {{ order_form.country }}
+                        <div class="input-field col s12 l5 " style="position: relative">
+                            <i id="country-world" class="material-icons prefix">public</i>
+                            {{order_form.country}}
                         </div>
                     </div>
                     <!--Address-->
@@ -152,7 +155,7 @@
                         <div class="col s12 right">
                             {% if user.is_authenticated %}
                                 <p class="save_info-check-box right">
-                                    <input type="checkbox" id="save_info"/>
+                                    <input type="checkbox" name="save_info" id="save_info"/>
                                     <label for="save_info">Save information</label>
                                 </p>
                             {% else %}

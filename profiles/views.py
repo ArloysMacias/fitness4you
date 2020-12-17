@@ -10,8 +10,6 @@ def profile(request):
     """Display user's profile"""
     the_profile = get_object_or_404(UserProfile, user=request.user)
 
-    print(the_profile.full_name_profile)
-
     form = UserProfileForm(instance=the_profile)
     orders = the_profile.orders.all()
     template = 'profiles/profile.html'

@@ -23,14 +23,14 @@ def cache_checkout(request):
     try:
         pid = request.POST.get('client_secret').split('secret')[0]
         pid = pid[:-1]
-        print(pid)
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        stripe.PaymentIntent.modify(
-            pid, metadata={
-                'bag': json.dumps(request.session.get('bag', {})),
-                'save_info': request.POST.get('save_info'),
-                'username': request.user,
-            })
+        save_info = request.POST.get('save_info')
+        request.session['save_info'] = save_info
+        stripe.PaymentIntent.modify(pid, metadata={
+            'bag': json.dumps(request.session.get('bag', {})),
+            'save_info': save_info,
+            'username': request.user,
+        })
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, 'Sorry we can not process your payment. Try later')
@@ -40,7 +40,6 @@ def cache_checkout(request):
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-    order_form = {}
     if request.method == 'POST':
         bag = request.session.get('bag', {})
 
@@ -78,10 +77,13 @@ def checkout(request):
                     return redirect(reverse('view_bag'))
 
             # Get the save variable value
-            request.session['save_info'] = 'save_info' in request.POST
+            # request.session['save_info'] = 'save-info' in request.POST
+            request.session['save_info'] = request.POST.get('save_info')
             return redirect(reverse('checkout_success', args=[order.order_number]))
+
         else:
             messages.error(request, 'There was an error with your form. ' 'Please double check your information.')
+
     else:
         bag = request.session.get('bag', {})
         if not bag:
@@ -96,6 +98,7 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
+
         if request.user.is_authenticated:
             # profile = get_object_or_404(UserProfile, user=request.user)
             try:
@@ -111,10 +114,13 @@ def checkout(request):
                 })
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
+        else:
+            order_form = OrderForm()
 
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
+        'saved': request.session.get('save_info'),
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
     }
@@ -122,9 +128,12 @@ def checkout(request):
     return render(request, template, context)
 
 
+# Fill UserProfile info
 def checkout_success(request, order_number):
     """A view to show the successful user payment"""
     save_info = request.session.get('save_info')
+    print(f"Sve Info {save_info}")
+    print(f"Order info checkoutsuccess{order_number}")
     order = get_object_or_404(Order, order_number=order_number)
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)

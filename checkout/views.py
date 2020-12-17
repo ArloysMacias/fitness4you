@@ -132,8 +132,6 @@ def checkout(request):
 def checkout_success(request, order_number):
     """A view to show the successful user payment"""
     save_info = request.session.get('save_info')
-    print(f"Sve Info {save_info}")
-    print(f"Order info checkoutsuccess{order_number}")
     order = get_object_or_404(Order, order_number=order_number)
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)

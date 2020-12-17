@@ -1,10 +1,12 @@
 import json
 import time
 from django.http import HttpResponse, request
-
+from django.core.mail import send_mail
 from checkout.models import Order, ProductOrder
 from products.models import Product
 from profiles.models import UserProfile
+from django.template.loader import render_to_string
+from django.conf import settings
 
 
 class StripeWH_Handler:
@@ -45,7 +47,6 @@ class StripeWH_Handler:
         username = intent.metadata.username
         if username != "AnonymousUser":
             profile_data = UserProfile.objects.get(user__username=username)
-            print(save)
             if save == 'true':
                 profile_data.full_name_profile: billing_details.name
                 profile_data.email_profile: billing_details.email
@@ -55,10 +56,6 @@ class StripeWH_Handler:
                 profile_data.address_profile: billing_details.address.line1
                 profile_data.postcode_profile: billing_details.address.postal_code
                 profile_data.save()
-                print(billing_details)
-                print(f"New name {profile_data.full_name_profile}")
-                print(f"Phone {profile_data.phone_number_profile}")
-                print(f"User {profile_data.user}")
         tried = 1
         order_exists = False
         order = None
@@ -83,6 +80,7 @@ class StripeWH_Handler:
                 time.sleep(1)
 
         if order_exists:
+            self._send_email(order)
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: Order {order} already in database',
                 status=200
@@ -120,16 +118,7 @@ class StripeWH_Handler:
                     status=500
                 )
 
-        print(order.full_name)
-        print(order.email)
-        print(order.phone_number)
-        print(order.country)
-        print(order.city)
-        print(order.address)
-        print(order.postcode)
-        print(order.original_bag)
-
-
+        self._send_email(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} success: Created order {order} in webhook',
             status=200
@@ -141,4 +130,15 @@ class StripeWH_Handler:
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200
+        )
+
+    def _send_email(self, order):
+        email_to_send = order.email
+        subject = render_to_string('checkout/email/email_order_confirmation_subject.html', {'order': order})
+        body = render_to_string('checkout/email/email_order_confirmation_body.html', {'order': order, 'contact_email': settings.EMAIL_HOST_USER})
+        send_mail(
+            subject,
+            body,
+            settings.EMAIL_HOST_USER,
+            [email_to_send]
         )

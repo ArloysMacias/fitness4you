@@ -1,6 +1,7 @@
 from decimal import Decimal
 from django.shortcuts import render, get_object_or_404
 from .filters import ProductFilter, CategoryFilter
+from .form import ProductForm
 from .models import Product, Category
 
 
@@ -68,9 +69,16 @@ def all_products(request):
 
 
 def product_details(request, id):
-
     product = get_object_or_404(Product, pk=id)
     context = {
         'product': product,
     }
     return render(request, 'products/product_details.html', context)
+
+
+def add_product(request):
+    form = ProductForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'products/add_product.html', context)

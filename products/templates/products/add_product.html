@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% load countries %}
+{% get_countries as countries %}
+
+<!--Header-->
+{% block page_header %}
+    <div class="container black-text header-container">
+        <div class="row">
+            <div class="col s12 m12 l12 center">
+                <h3>Add Product</h3>
+            </div>
+        </div>
+        <br><br>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <!--White Overlay-->
+    <div class="overlay "></div>
+    <div class="black-text">
+        <div class="row">
+            <!--Form User data and Stripe payment-->
+            <div class="col s12 offset-m4 m4">
+                <form id="add-product-form" action="{% url 'products' %}" method="GEST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <!--Submit button-->
+                    <div class="row right">
+                        <!--Submit Button-->
+                        <div class="col s5 m7 button-checkout">
+                            <button class="btn waves-effect waves-light btn-large black red-text right" type="submit"
+                                    name="action">Add Product
+                                <i class="material-icons right">add</i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script src="{% static 'products/js/products.js' %}"></script>
+{% endblock %}

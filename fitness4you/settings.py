@@ -22,9 +22,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
-#To be able to makemigrations
-#SECRET_KEY = 'sss'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -51,6 +48,7 @@ INSTALLED_APPS = [
     'checkout',
     'crispy_forms',
     'crispy_forms_materialize',
+    'materializecssform',
     'profiles',
 ]
 
@@ -173,7 +171,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]

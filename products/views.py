@@ -1,5 +1,9 @@
 from decimal import Decimal
-from django.shortcuts import render, get_object_or_404
+
+from django.contrib import messages
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
+
 from .filters import ProductFilter, CategoryFilter
 from .form import ProductForm
 from .models import Product, Category
@@ -70,15 +74,30 @@ def all_products(request):
 
 def product_details(request, id):
     product = get_object_or_404(Product, pk=id)
+    from_add_products= request.GET.get('from_add_products')
     context = {
         'product': product,
+        'from_add_products': from_add_products
     }
     return render(request, 'products/product_details.html', context)
 
 
 def add_product(request):
-    form = ProductForm()
+    products_list = Product.objects.all()
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'SUCCESS | Product added Successfully')
+            return redirect(reverse('add_product'))
+        else:
+            messages.success(request, 'ERROR | Sorry there is some error in your form')
+    else:
+        form = ProductForm()
+
     context = {
         'form': form,
+        'products': products_list,
+        'from_add_products': True
     }
     return render(request, 'products/add_product.html', context)

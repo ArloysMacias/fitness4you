@@ -32,6 +32,6 @@ class OrderForm(forms.ModelForm):
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
                 self.fields[field].widget.attrs['class'] = 'stripe-style'
-                if field == 'country':
-                    self.files[field].widget.attrs['class'] = 'large country-select-flag'
+            # if field == 'country':
+            #     self.fields[field].widget.attrs['class'] = 'select-wrapper'
             self.fields[field].label = False

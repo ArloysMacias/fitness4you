@@ -10,7 +10,6 @@ def profile(request):
     """Display user's profile"""
     the_profile = get_object_or_404(UserProfile, user=request.user)
 
-    form = UserProfileForm(instance=the_profile)
     orders = the_profile.orders.all()
     template = 'profiles/profile.html'
     if request.method == 'POST':
@@ -18,6 +17,11 @@ def profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Your profile have been successfully updated')
+        else:
+            messages.error(request, 'ERROR | Update failed. Please check the form')
+    else:
+        form = UserProfileForm(instance=the_profile)
+
     context = {
         'form': form,
         'orders': orders,

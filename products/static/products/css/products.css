@@ -33,6 +33,7 @@
 
 .product-detail-image{
     margin: 0 auto;
+    width: 80%!important;
 }
 
 .product-detail {

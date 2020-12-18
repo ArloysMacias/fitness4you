@@ -38,14 +38,15 @@
     <div class="row">
         <!--Image-->
         <div class="col s12 m6 l6">
-            {% if product.image_url %}
-                <img class="materialboxed product-detail-image" height="380" src="{{ product.image_url }}"
+            {% if product.image %}
+                <img class="materialboxed product-detail-image" height="380" src="{{ product.image.url }}"
                      alt="product-image">
             {% else %}
                 <img class="materialboxed product-detail-image" height="380"
-                     src="{{ MEDIA_URL }}images/products_images/no-image.png"
+                     src="{{ MEDIA_URL }}no-image.png"
                      alt="no-images">
             {% endif %}
+
         </div>
         <!--Product Detail-->
         <div class="col s12 m6 l6 black-text product-detail">
@@ -81,12 +82,21 @@
                 <!--Hidden path-->
                 <input type="hidden" name="the_url" value="{{ request.path }}">
                 <div class="row">
-                    <!--Buton buy more-->
-                    <div class="col s6 button-prod-details">
-                        <a href="{% url 'products' %}"
-                           class="waves-effect waves-light btn-large buy-button light-green black-text"><i
-                                class="material-icons right">add_shopping_cart</i>Buy more</a>
-                    </div>
+                    {% if from_add_products%}
+                        <!--Go back-->
+                        <div class="col s6 button-prod-details">
+                            <a href="{% url 'add_product' %}"
+                               class="waves-effect waves-light btn-large buy-button light-green black-text"><i
+                                    class="material-icons right">undo</i>Back</a>
+                        </div>
+                        {% else %}
+                            <!--Buton buy more-->
+                            <div class="col s6 button-prod-details">
+                                <a href="{% url 'products' %}"
+                                   class="waves-effect waves-light btn-large buy-button light-green black-text"><i
+                                        class="material-icons right">add_shopping_cart</i>Buy more</a>
+                            </div>
+                    {% endif %}
                     <!--Buton Add to cart-->
                     <div class="col s6 button-prod-details">
                         <a onclick="document.getElementById('add_to_bag_form').submit()"
@@ -125,6 +135,5 @@
             }
         })
     </script>
-    <script src="{% static '/products/js/myjs.js' %}"></script>
 {% endblock %}
 

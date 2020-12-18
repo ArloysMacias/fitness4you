@@ -61,15 +61,16 @@
                         <tr>
                             <!--Image-->
                             <td>
-                                {% if item.product.image_url %}
+                                {% if item.product.image %}
                                     <img class="materialboxed bag-image" {% comment %}width="80"{% endcomment %}
-                                         src="{{ item.product.image_url }}"
+                                         src="{{ item.product.image.url }}"
                                          alt="product-image">
                                 {% else %}
                                     <img class="materialboxed bag-image" {% comment %}width="80"{% endcomment %}
-                                         src="{{ MEDIA_URL }}images/products_images/no-image.png"
+                                         src="{{ MEDIA_URL }}no-image.png"
                                          alt="no-images">
                                 {% endif %}
+
                             </td>
                             <!--Name-->
                             <td>

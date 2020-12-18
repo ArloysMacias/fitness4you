@@ -17,7 +17,9 @@
 <!-- Dropdown Structure Desktop-->
 <ul id="dropdown1" class="dropdown-content black">
     <li><a class="red-text" href="{% url 'products' %}">Products</a></li>
-    <li><a class="red-text" href="#!">Prices</a></li>
+    {% if user.is_superuser %}
+        <li><a class="red-text" href="{% url 'add_product' %}">Management</a></li>
+    {% endif %}
 </ul>
 <ul id="dropdown2" class="dropdown-content black">
     {% if user.is_authenticated %}

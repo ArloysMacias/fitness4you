@@ -5,12 +5,16 @@
                 <div class="col s6 m6 l4 xl3">
                     <div class="card hoverable waves-effect waves-block waves-light">
                         <div id="card-image-container" class="card-image animate__animated animate__fadeIn">
-                            {% if product.image_url %}
-                                <img class="activator" src="{{ product.image_url }}" alt="product-image">
+
+
+                            {% if product.image %}
+                                <img class="activator" src="{{ product.image.url}}" alt="product-image">
                             {% else %}
-                                <img class="activator" src="{{ MEDIA_URL }}images/products_images/no-image.png"
+                                <img class="activator" src="{{ MEDIA_URL }}no-image.png"
                                      alt="no-images">
                             {% endif %}
+
+
                             <span class="card-title small black-text">{{ product.product_name }}</span>
                             <div class="extra-button">
                                 <a href="{% url 'update_bag_amount' %}?update={{ product.id }},increase,1;"

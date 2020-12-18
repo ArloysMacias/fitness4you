@@ -189,7 +189,7 @@ nav .brand-logo{
 }
 
 .thead-bag {
-    width: calc( 100% - 1em )
+    width: calc( 99% - 1em )
 }
 
 .tbody-scroll {

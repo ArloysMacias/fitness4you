@@ -11,7 +11,7 @@
                         class="material-icons">close</i></a>
             </div>
         </div>
-        {% if fromprofile %}
+        {% if fromprofile or from_add_products %}
             {{ message }}
             {% else %}
             {% if bag_items %}
@@ -22,15 +22,16 @@
                             <tr>
                                 <!--Image-->
                                 <td>
-                                    {% if item.product.image_url %}
+                                    {% if item.product.image %}
                                         <img class="materialboxed bag-image" width="60"
-                                             src="{{ item.product.image_url }}"
+                                             src="{{ item.product.image.url }}"
                                              alt="product-image">
                                     {% else %}
                                         <img class="materialboxed bag-image" width="60"
-                                             src="{{ MEDIA_URL }}images/products_images/no-image.png"
+                                             src="{{ MEDIA_URL }}no-image.png"
                                              alt="no-images">
                                     {% endif %}
+
                                 </td>
                                 <!--Name-->
                                 <td class="name-cell"><p class="center">{{ item.product.product_name }}</p></td>

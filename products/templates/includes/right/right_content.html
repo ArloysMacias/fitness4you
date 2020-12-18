@@ -8,7 +8,7 @@
 
 
                             {% if product.image %}
-                                <img class="activator" src="{{ product.image.url}}" alt="product-image">
+                                <img class="activator" src="{{ product.image.url }}" alt="product-image">
                             {% else %}
                                 <img class="activator" src="{{ MEDIA_URL }}no-image.png"
                                      alt="no-images">
@@ -17,14 +17,16 @@
 
                             <span class="card-title small black-text">{{ product.product_name }}</span>
                             <div class="extra-button">
+
                                 {% if user.is_superuser %}
-                                    <a href="{% url 'edit_product' product.id%}"
+                                    <a href="{% url 'edit_product' product.id %}"
                                        class="btn-floating add-to-cart small waves-effect waves-light black"><i
                                             class="material-icons">create</i></a>
-                                    <a href="{% url 'delete_product' product.id%}"
-                                       class="btn-floating add-to-cart small waves-effect waves-light black"><i
-                                            class="material-icons">delete_outline</i></a>
+                                    <!-- Modal Trigger -->
+                                    <a class="btn-floating add-to-cart black waves-effect waves-light modal-trigger"
+                                       href="#{{ product.id }}"><i class="medium material-icons">delete_outline</i></a>
                                 {% endif %}
+
                                 <a href="{% url 'add_to_bag' product.id %}"
                                    class="btn-floating add-to-cart waves-effect waves-light light-green"><i
                                         class="material-icons">add_shopping_cart</i></a>
@@ -52,7 +54,24 @@
                         </div>
                     </div>
                 </div>
+                <!-- Modal Structure -->
+                <div id="{{ product.id }}" class="modal hoverable">
+                    <div class="modal-content">
+                        <h4>Delete Confirmation</h4>
+                        <p>Are you sure you want to delete {{ product.product_name }} ?</p>
+                        <div class="modal-body">
+                            {#                                <input type="hidden" name="category_id" id="cat_id" value="">#}
+                        </div>
+                        <div class="modal-footer">
+                            <a href="{% url 'products' %}" class="hoverable btn modal-close waves-effect waves-green"
+                               data-dismiss="modal">No, Cancel</a>
+                            <a href="{% url 'delete_product' product.id %}"
+                               class="hoverable btn waves-effect waves-light red black-text">Yes, Delete</a>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
+
             <!--Floating button back to the top-->
             <div class="fixed-action-btn back_to_top">
                 <a class="btn-floating btn-large waves-effect waves-light red btt-link">

@@ -11,5 +11,6 @@ function initializeMaterialize() {
     $(".button-collapse").sideNav();
     $('.dropdown-buttonh').dropdown();
     $('.parallax').parallax();
+    $('.modal').modal();
     // $('.materialboxed').materialbox();
 }

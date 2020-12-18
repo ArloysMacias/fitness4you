@@ -60,7 +60,8 @@ def update_bag_amount(request):
                     quantity = quantity - 1
                 if type_update == 'remove' or quantity <= 0:
                     bag.pop(id_product_to_update)
-                    message = format_html(u'{} <strong>{}</strong> {}', "Remove", product_to_update.product_name, "from the bag")
+                    message = format_html(u'{} <strong>{}</strong> {}', "Remove", product_to_update.product_name,
+                                          "from the bag")
                     messages.info(request, message)
                     # messages.info(request, f'Remove product {product_to_update.product_name} from the bag')
                 else:

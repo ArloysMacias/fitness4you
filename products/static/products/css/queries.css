@@ -12,6 +12,11 @@
     .extra-button{
         padding-top: 82px!important;
     }
+
+    .product-detail-image{
+        margin: 0 auto;
+        max-width:119%!important;
+    }
 }
 
 

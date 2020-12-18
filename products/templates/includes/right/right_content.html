@@ -17,10 +17,14 @@
 
                             <span class="card-title small black-text">{{ product.product_name }}</span>
                             <div class="extra-button">
-                                <a href="{% url 'edit_product' product.id%}"
-                                   class="btn-floating add-to-cart waves-effect waves-light black"><i
-                                        class="material-icons">edit</i></a>
-
+                                {% if user.is_superuser %}
+                                    <a href="{% url 'edit_product' product.id%}"
+                                       class="btn-floating add-to-cart small waves-effect waves-light black"><i
+                                            class="material-icons">create</i></a>
+                                    <a href="{% url 'delete_product' product.id%}"
+                                       class="btn-floating add-to-cart small waves-effect waves-light black"><i
+                                            class="material-icons">delete_outline</i></a>
+                                {% endif %}
                                 <a href="{% url 'add_to_bag' product.id %}"
                                    class="btn-floating add-to-cart waves-effect waves-light light-green"><i
                                         class="material-icons">add_shopping_cart</i></a>

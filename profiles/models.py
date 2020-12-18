@@ -7,7 +7,6 @@ from django.dispatch import receiver
 
 
 class UserProfile(models.Model):
-    """A view to manage order history"""
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     full_name_profile = models.CharField(max_length=50, null=True, blank=True)
     email_profile = models.EmailField(max_length=254, null=True, blank=True)
@@ -26,7 +25,6 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     """
     Create or update the user profile when users are saved
     """
-    print("Signals")
     if created:
         UserProfile.objects.create(user=instance)
     instance.userprofile.save()

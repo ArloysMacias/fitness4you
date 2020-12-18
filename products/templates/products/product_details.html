@@ -37,19 +37,19 @@
     <div class="container">
     <div class="row">
         <!--Image-->
-        <div class="col s12 m6 l6">
+        <div class="col s12 m12 l6">
             {% if product.image %}
-                <img class="materialboxed product-detail-image" height="380" src="{{ product.image.url }}"
+                <img class="materialboxed product-detail-image" height="384" src="{{ product.image.url }}"
                      alt="product-image">
             {% else %}
-                <img class="materialboxed product-detail-image" height="380"
+                <img class="materialboxed product-detail-image" height="384"
                      src="{{ MEDIA_URL }}no-image.png"
                      alt="no-images">
             {% endif %}
 
         </div>
         <!--Product Detail-->
-        <div class="col s12 m6 l6 black-text product-detail">
+        <div class="col s12 m12 l6 black-text product-detail">
             <form id="add_to_bag_form" action="{% url 'add_to_bag' product.id %}" method="POST">
                 {% csrf_token %}
                 <h4>{{ product.product_name }}</h4>
@@ -118,7 +118,6 @@
 
 {% block postloadjs %}
     {{ block.super }}
-    <script src="{% static 'home/js/materialize.js' %}"></script>
     <script>
         $(document).ready(function () {
             let rat =

@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
+from django.utils.html import format_html
 
 from .filters import ProductFilter, CategoryFilter
 from .form import ProductForm
@@ -109,7 +110,7 @@ def edit_product(request, product_id):
     the_product = get_object_or_404(Product, pk=product_id)
 
     if request.method == 'POST':
-        #form = ProductForm(request.POST, request.FILES, instance=the_product)
+        # form = ProductForm(request.POST, request.FILES, instance=the_product)
         form = ProductForm(request.POST, instance=the_product)
         if form.is_valid():
             form.save()
@@ -128,3 +129,15 @@ def edit_product(request, product_id):
         'from_edit_products': True
     }
     return render(request, template, context)
+
+
+def delete_product(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    bag = request.session.get('bag', {})
+    if str(product_id) in list(bag.keys()):
+        messages.info(request, f'Please check your bag first and delete {product} from it')
+        return redirect(reverse('shopping_bag'))
+    else:
+        messages.info(request, f'Product  {product} successfully deleted')
+        product.delete()
+    return redirect(reverse('products'))

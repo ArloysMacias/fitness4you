@@ -2,30 +2,43 @@
 <ul id="nav-mobile" class="right hide-on-med-and-down red-text">
     <li><a href="#">Home</a></li>
     <li><a href="#what_we_offer">Services</a></li>
-    <!-- Dropdown Trigger -->
-    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Merchendise<i class="material-icons right">arrow_drop_down</i></a></li>
+
+    <!-- View all products -->
+    <li><a href="{% url 'products' %}">Products</a></li>
+
+    <!-- Dropdown Management Trigger -->
+    {% if user.is_superuser %}
+        <li><a class="dropdown-button" href="{% url 'products' %}" data-activates="dropdown1">Management<i class="material-icons right">arrow_drop_down</i></a>
+        </li>
+    {% endif %}
+
     <!-- Dropdown Account -->
     {% if user.is_authenticated %}
-        <li><a class="dropdown-button" href="#!" data-activates="dropdown2">{{ user }}<i class="login-icon red-text material-icons left">account_circle</i></a></li>
-        {% else %}
-            <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Account<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown2">{{ user }}<i
+                class="login-icon red-text material-icons left">account_circle</i><i class="material-icons right">arrow_drop_down</i></a></li>
+    {% else %}
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Account<i class="material-icons right">arrow_drop_down</i></a>
+        </li>
     {% endif %}
 
     <!--Bag button with quantity-->
-    <li><a class="red-text" href="{% url 'shopping_bag' %}">{{ amount_of_products }}<i class="material-icons right">local_grocery_store</i></a></li>
+    <li><a class="red-text" href="{% url 'shopping_bag' %}">{{ amount_of_products }}<i class="material-icons right">local_grocery_store</i></a>
+    </li>
 </ul>
-<!-- Dropdown Structure Desktop-->
+
+
+<!-- dropdown1 Management-->
 <ul id="dropdown1" class="dropdown-content black">
-    <li><a class="red-text" href="{% url 'products' %}">Products</a></li>
-    {% if user.is_superuser %}
-        <li><a class="red-text" href="{% url 'add_product' %}">Management</a></li>
-    {% endif %}
+    <li><a class="red-text" href="{% url 'add_product' %}">Edit Products</a></li>
+    <li><a class="red-text" href="{% url 'add_product' %}">Add Products</a></li>
 </ul>
+
+
 <ul id="dropdown2" class="dropdown-content black">
     {% if user.is_authenticated %}
         <li><a class="red-text" href="{% url 'profile' %}">My Profile</a></li>
         <li><a class="red-text" href="{% url 'account_logout' %}">Logout</a></li>
-        {% else %}
+    {% else %}
         <li><a class="red-text" href="{% url 'account_login' %}">Login</a></li>
         <li><a class="red-text" href="{% url 'account_signup' %}">Register</a></li>
     {% endif %}

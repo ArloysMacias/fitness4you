@@ -1,6 +1,7 @@
 from decimal import Decimal
 
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
@@ -74,7 +75,7 @@ def all_products(request):
 
 def product_details(request, id):
     product = get_object_or_404(Product, pk=id)
-    from_add_products= request.GET.get('from_add_products')
+    from_add_products = request.GET.get('from_add_products')
     context = {
         'product': product,
         'from_add_products': from_add_products
@@ -101,3 +102,29 @@ def add_product(request):
         'from_add_products': True
     }
     return render(request, 'products/add_product.html', context)
+
+
+def edit_product(request, product_id):
+    products_list = Product.objects.all()
+    the_product = get_object_or_404(Product, pk=product_id)
+
+    if request.method == 'POST':
+        #form = ProductForm(request.POST, request.FILES, instance=the_product)
+        form = ProductForm(request.POST, instance=the_product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'The product have been successfully updated')
+            return redirect(reverse('product_details', args=[the_product.id]))
+        else:
+            messages.error(request, 'ERROR | Update failed. Please check the form')
+    else:
+        form = ProductForm(instance=the_product)
+
+    template = 'products/edit_product.html'
+    context = {
+        'form': form,
+        'products': products_list,
+        'product': the_product,
+        'from_edit_products': True
+    }
+    return render(request, template, context)

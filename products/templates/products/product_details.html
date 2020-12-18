@@ -82,12 +82,18 @@
                 <!--Hidden path-->
                 <input type="hidden" name="the_url" value="{{ request.path }}">
                 <div class="row">
-                    {% if from_add_products%}
+                    {% if from_add_products or from_edit_products %}
                         <!--Go back-->
-                        <div class="col s6 button-prod-details">
+                        <div class="col s3 button-prod-details">
                             <a href="{% url 'add_product' %}"
                                class="waves-effect waves-light btn-large buy-button light-green black-text"><i
                                     class="material-icons right">undo</i>Back</a>
+                        </div>
+                        <!--Edit-->
+                        <div class="col s3 button-prod-details">
+                            <a href="{% url 'edit_product' product.id %}"
+                               class="waves-effect waves-light btn-large buy-button light-green black-text"><i
+                                    class="material-icons right">edit</i>Edit</a>
                         </div>
                         {% else %}
                             <!--Buton buy more-->

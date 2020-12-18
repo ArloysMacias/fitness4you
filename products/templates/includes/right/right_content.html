@@ -17,7 +17,7 @@
 
                             <span class="card-title small black-text">{{ product.product_name }}</span>
                             <div class="extra-button">
-                                <a href="{% url 'update_bag_amount' %}?update={{ product.id }},increase,1;"
+                                <a href="{% url 'edit_product' product.id%}"
                                    class="btn-floating add-to-cart waves-effect waves-light black"><i
                                         class="material-icons">edit</i></a>
 

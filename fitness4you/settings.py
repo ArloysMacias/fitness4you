@@ -23,7 +23,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 #SECRET_KEY = 'rzlku%t6u8*1e&o8%&enjb&zcydc^@y2b92@l^_m&40gj3h+2^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['fitness4you.herokuapp.com', '127.0.0.1:8000', '127.0.0.1', '4d317cc4e698.ngrok.io']
 

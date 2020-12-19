@@ -1,0 +1,26 @@
+{% load static %}
+<div class="picture-container">
+    {% if widget.value %}
+        <p class="center">{{ widget.initial_text }}</p>
+
+        <div class="picture hoverable">
+            <img class="picture-src" src="{{ widget.value.url }}" id="wizardPicturePreview">
+            <input id="wizard-picture" type="file" name="{{ widget.name }}"{% include "includes/attrs.html" %}>
+        </div>
+
+        {% else %}
+            <div class="picture">
+                <img class="picture-src center" src="{{ MEDIA_URL }}no-image.png"  id="wizardPicturePreview">
+                <input id="wizard-picture" type="file" name="{{ widget.name }}"{% include "includes/attrs.html" %}>
+            </div>
+    {% endif %}
+
+        <br>
+        {% if not widget.required %}
+            <div class="custom-control custom-checkbox mt-2">
+                <input type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}">
+                <label class="red-text" for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
+            </div>
+        {% endif %}
+    <strong class="center"><p class="red-text center" id="filename"></p></strong>
+</div>

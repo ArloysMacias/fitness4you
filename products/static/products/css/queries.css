@@ -13,21 +13,27 @@
         padding-top: 82px!important;
     }
 
-    .product-detail-image{
-        margin: 0 auto;
-        max-width:119%!important;
-    }
+    /*.product-detail-image{*/
+    /*    margin: 0 auto;*/
+    /*    max-width:119%!important;*/
+    /*}*/
 
     i.medium{
         font-size: 2rem;
     }
+
+    .edit-product-detail-container{
+        margin-top: -69px;
+    }
+
 }
 
 
 /** Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-
-
+    .edit-product-detail-table-container{
+        margin-top: 264px;
+    }
 }
 
 /** Extra large devices (large desktops, 1200px and up) */

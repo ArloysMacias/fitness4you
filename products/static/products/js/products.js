@@ -3,19 +3,54 @@ $(document).ready(function () {
     $('#myTable').pageMe({
         pagerSelector: '#myPager',
         activeColor: 'red',
-        perPage: 6,
+        perPage: 16,
         showPrevNext: true,
         nextText: 'Prev',
         prevText: 'Next',
         hidePageNumbers: false
     });
 
+    function searchTable() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    $("#wizard-picture").change(function () {
+        readURL(this);
+        var file = $('#wizard-picture')[0].files[0];
+        $('#filename').text(`New Image:  ${file.name}`);
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
     var selectedCategory = $("#id_category").children("option:selected").val();
 
     if (selectedCategory == "0") {
         $('.select-dropdown').css('color', 'rgb(158 158 158)');
-    }
-    else{
+    } else {
         $('.select-dropdown').css('color', 'black');
     }
 

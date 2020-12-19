@@ -91,12 +91,13 @@ def add_product(request):
         return redirect(reverse('products'))
 
     products_list = Product.objects.all()
+
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            the_product = form.save()
             messages.success(request, 'SUCCESS | Product added Successfully')
-            return redirect(reverse('add_product'))
+            return redirect(reverse('product_details', args=[the_product.id]))
         else:
             messages.success(request, 'ERROR | Sorry there is some error in your form')
     else:
@@ -105,6 +106,7 @@ def add_product(request):
     context = {
         'form': form,
         'products': products_list,
+        # 'from_add_products': request.GET.get('from_add_products')
         'from_add_products': True
     }
     return render(request, 'products/add_product.html', context)
@@ -121,7 +123,7 @@ def edit_product(request, product_id):
 
     if request.method == 'POST':
         # form = ProductForm(request.POST, request.FILES, instance=the_product)
-        form = ProductForm(request.POST, instance=the_product)
+        form = ProductForm(request.POST, request.FILES, instance=the_product)
         if form.is_valid():
             form.save()
             messages.success(request, 'The product have been successfully updated')

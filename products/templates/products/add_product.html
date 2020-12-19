@@ -1,15 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
-{% load countries %}
-{% get_countries as countries %}
 {% load materializecss %}
 
+
+{% block extra_css %}
+    <link href="{% static 'products/css/products.css' %}" rel="stylesheet">
+    <link href="{% static 'products/css/queries.css' %}" rel="stylesheet">
+{% endblock %}
 <!--Header-->
 {% block page_header %}
     <div class="container black-text header-container">
         <div class="row">
             <div class="col s12 m12 l12 center">
-                <h3>Product Management</h3>
+                <h3>Add Product</h3>
             </div>
         </div>
         <br><br>
@@ -22,29 +25,23 @@
     <div class="black-text">
         <div class="row">
             <div class="col s12 offset-m6 m5">
-                <p>Select a product from the table if you want to edit it</p>
-                <nav>
-                    <div class="nav-wrapper">
-                        <form>
-                            <div class="input-field">
-                                <input type="search" id="myInput" onkeyup="searchTable()" placeholder="Search for products.." title="Type in a name">
-                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                                <i class="material-icons">close</i>
-                            </div>
-                        </form>
-                    </div>
-                </nav>
+
             </div>
         </div>
         <div class="row">
             <!--Form Product-->
             <div class="col s12 offset-l1 l5">
-                <form id="add-product-form" action="{% url 'add_product' %}" method="POST" enctype="multipart/form-data">
+                <form id="add-product-form" action="{% url 'add_product' %}?from_add_products=True" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ form|materializecss }}
+                    {% for field in form %}
+                        {% if field.name != 'image' %}
+                            {{ field | materializecss }}
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                    {% endfor %}
                     <!--Submit button-->
                     <div class="row right">
-                        <!--Submit Button-->
                         <div class="col s5 m7 button-checkout">
                             <button class="btn waves-effect waves-light btn-large black red-text right" type="submit"
                                     name="action">Add Product
@@ -55,7 +52,19 @@
                 </form>
             </div>
             <!--Product Table-->
-            <div class="col s12 l5">
+            <div class="col s12 l5 edit-product-detail-table-container">
+                <p>Select a product from the table if you want to edit it</p>
+                <nav class="black">
+                    <div class="nav-wrapper">
+                        <form>
+                            <div class="input-field">
+                                <input type="search" id="myInput" onkeyup="searchTable()" placeholder="Search for products.." title="Type in a name">
+                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                <i class="material-icons">close</i>
+                            </div>
+                        </form>
+                    </div>
+                </nav>
                 <table id="myTable" class="example">
                     <thead class="thead-bag">
                     <tr>
@@ -95,25 +104,5 @@
 {% block postloadjs %}
     {{ block.super }}
     <script src="{% static 'products/js/pagination.js' %}"></script>
-    <script>
-        function searchTable() {
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("myTable");
-            tr = table.getElementsByTagName("tr");
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-    </script>
     <script src="{% static 'products/js/products.js' %}"></script>
 {% endblock %}

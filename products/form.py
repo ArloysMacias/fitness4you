@@ -1,15 +1,19 @@
 from django import forms
 from .models import Product, Category
+from .widgets import CustomClearableFileInput
 
 
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         # To include all fields
-        fields = ('product_name', 'category', 'price', 'overall_rating', 'brand_name', 'product_description', 'image')
+        fields = ('image', 'product_name', 'category', 'price', 'overall_rating', 'brand_name', 'product_description', )
         # fields = '__all__'
 
-    # To make changes to the fields
+    image = forms.ImageField(label='Image',
+                             required=False,
+                             widget=CustomClearableFileInput)
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         categories = Category.objects.all()

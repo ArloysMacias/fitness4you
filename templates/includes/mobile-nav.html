@@ -7,7 +7,7 @@
     {% if user.is_superuser %}
         <li>
             <a class="collapsible-header white-text" href="#"><i class="material-icons">miscellaneous_services</i>Management<i class="material-icons right">arrow_drop_down</i></a>
-            <a href="{% url 'add_product' %}" class="collapsible-body black center red-text">Edit Products</a>
+            <a href="{% url 'edit_product' 1 %}" class="collapsible-body black center red-text">Edit Products</a>
             <a href="{% url 'add_product' %}" class="collapsible-body black center red-text">Add products</a>
         </li>
     {% endif %}

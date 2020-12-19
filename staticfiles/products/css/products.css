@@ -1,0 +1,148 @@
+
+/* ------------------------------------------------*/
+/* CARDS */
+/* ------------------------------------------------*/
+#card-image-container{
+    margin: 0 auto;
+    height: 341px;
+    width: 168px;
+}
+#card-image-container > img {
+    width: 100%;
+    height: 72%;
+}
+#card-content-container{
+    height: 141px;
+}
+
+/* ------------------------------------------------*/
+/* Price range */
+/* ------------------------------------------------*/
+.noUi-handle {
+    border: 1px solid #b7b7b7;
+    /* border-radius: 4px; */
+    border-bottom-left-radius: 89px!important;
+    border-bottom-right-radius: 87px!important;
+    background: #ee6e72!important;
+    /* box-shadow: inset 0 0 1px #FFF, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB; */
+}
+
+/* ------------------------------------------------*/
+/* Product details */
+/* ------------------------------------------------*/
+
+.product-detail-image{
+    margin: 0 auto;
+    max-width:100%!important;
+}
+
+.product-detail {
+    text-align: initial
+}
+.buy-button{
+    width: 100%;
+    text-align: center;
+}
+
+.btn {
+    padding: 6px 12px!important;
+    border: 1px solid transparent!important;
+    color: #fff!important;
+}
+
+.btn:disabled, .btn:disabled:hover {
+    background-color: darkgrey!important;
+    cursor: not-allowed!important;
+}
+
+.btn-primary { background-color: #009dda!important; }
+
+.btn-primary:hover, .btn-primary:focus { background-color: #0486b9!important; }
+
+.extra-button{
+    padding-top: 76px!important;
+    padding-left: 10px;
+}
+
+.extra-button a{
+    opacity: 0.6;
+    height: 37px;
+    width: 36px;
+}
+
+.extra-button a:hover{
+    opacity: 1;
+}
+
+.button-prod-details{
+    margin: 0 auto!important;
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
+.checkout-button{
+    width: fit-content!important;
+}
+
+
+/* ------------------------------------------------*/
+/* PROFILE PIC */
+/* ------------------------------------------------*/
+.picture-container{
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 25px;
+}
+.picture{
+    width: 165px;
+    height: 208px;
+    /*background-color: #999999;*/
+    border: 4px solid #CCCCCC;
+    color: #FFFFFF;
+    /*border-radius: 50%;*/
+    margin: 0px auto;
+    overflow: hidden;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+
+/*.picture img {*/
+/*    margin-top: -7px;*/
+/*    position: relative;*/
+/*    border: 0;*/
+/*    width: 218px;*/
+/*    height: 133px;*/
+/*    margin-left: -46px;*/
+/*}*/
+
+.picture:hover{
+    border-color: #2ca8ff;
+}
+.content.ct-wizard-green .picture:hover{
+    border-color: #05ae0e;
+}
+.content.ct-wizard-blue .picture:hover{
+    border-color: #3472f7;
+}
+.content.ct-wizard-orange .picture:hover{
+    border-color: #ff9500;
+}
+.content.ct-wizard-red .picture:hover{
+    border-color: #ff3b30;
+}
+.picture input[type="file"] {
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0 !important;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.picture-src{
+    width: 100%;
+    height: 200px;
+
+}

@@ -20,19 +20,19 @@
 
                                 {% if user.is_superuser %}
                                     <a href="{% url 'edit_product' product.id %}"
-                                       class="btn-floating add-to-cart small waves-effect waves-light black"><i
+                                       class="hoverable btn-floating add-to-cart small waves-effect waves-light blue"><i
                                             class="material-icons">create</i></a>
                                     <!-- Modal Trigger -->
-                                    <a class="btn-floating add-to-cart black waves-effect waves-light modal-trigger"
+                                    <a class="hoverable btn-floating add-to-cart red waves-effect waves-light modal-trigger"
                                        href="#{{ product.id }}"><i class="medium material-icons">delete_outline</i></a>
                                 {% endif %}
 
                                 <a href="{% url 'add_to_bag' product.id %}"
-                                   class="btn-floating add-to-cart waves-effect waves-light light-green"><i
+                                   class="hoverable btn-floating add-to-cart waves-effect waves-light light-green"><i
                                         class="material-icons">add_shopping_cart</i></a>
 
                                 <a href="{% url 'product_details' product.id %}"
-                                   class="btn-floating {% comment %}halfway-fab{% endcomment %} waves-effect waves-light red"><i
+                                   class="hoverable btn-floating {% comment %}halfway-fab{% endcomment %} waves-effect waves-light black"><i
                                         class="material-icons">visibility</i></a>
                             </div>
                         </div>

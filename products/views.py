@@ -83,8 +83,13 @@ def product_details(request, id):
     }
     return render(request, 'products/product_details.html', context)
 
-
+@login_required()
 def add_product(request):
+
+    if not request.user.is_superuser:
+        messages.error(request, "Sorry, you don't seem to have clearance to do that 🤭")
+        return redirect(reverse('products'))
+
     products_list = Product.objects.all()
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
@@ -104,8 +109,13 @@ def add_product(request):
     }
     return render(request, 'products/add_product.html', context)
 
-
+@login_required()
 def edit_product(request, product_id):
+
+    if not request.user.is_superuser:
+        messages.error(request, f"Sorry, you don't seem to have clearance to do that 🤭")
+        return redirect(reverse('products'))
+
     products_list = Product.objects.all()
     the_product = get_object_or_404(Product, pk=product_id)
 
@@ -130,8 +140,13 @@ def edit_product(request, product_id):
     }
     return render(request, template, context)
 
-
+@login_required()
 def delete_product(request, product_id):
+
+    if not request.user.is_superuser:
+        messages.error(request, "Sorry, you don't seem to have clearance to do that 🤭")
+        return redirect(reverse('products'))
+
     product = get_object_or_404(Product, pk=product_id)
     bag = request.session.get('bag', {})
     if str(product_id) in list(bag.keys()):

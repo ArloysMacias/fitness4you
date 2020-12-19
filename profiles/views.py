@@ -1,13 +1,21 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
+
 from .models import UserProfile
 from .forms import UserProfileForm
 from checkout.models import Order
 
-
+@login_required
 def profile(request):
     """Display user's profile"""
+
+    if not request.user.is_superuser:
+        messages.error(request, "Sorry, you don't seem to have clearance to do that 🤭")
+        return redirect(reverse('products'))
+
     the_profile = get_object_or_404(UserProfile, user=request.user)
 
     orders = the_profile.orders.all()

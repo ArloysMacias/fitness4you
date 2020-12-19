@@ -1,4 +1,5 @@
 # import generics as generics
+from cloudinary.models import CloudinaryField
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db.models.signals import post_delete
@@ -40,6 +41,7 @@ class Product(models.Model):
                                                             MaxValueValidator(9999)], null=True, blank=True)
     verified_buyer_rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
+    #image = CloudinaryField('image')
 
     def __str__(self, **kwargs):
         return self.product_name

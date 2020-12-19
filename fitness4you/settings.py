@@ -9,8 +9,13 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from django.conf import settings
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -20,10 +25,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
-#SECRET_KEY = 'rzlku%t6u8*1e&o8%&enjb&zcydc^@y2b92@l^_m&40gj3h+2^'
+SECRET_KEY = 'rzlku%t6u8*1e&o8%&enjb&zcydc^@y2b92@l^_m&40gj3h+2^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+# DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = ['fitness4you.herokuapp.com', '127.0.0.1:8000', '127.0.0.1', '4d317cc4e698.ngrok.io']
 
@@ -50,6 +56,7 @@ INSTALLED_APPS = [
     'crispy_forms_materialize',
     'materializecssform',
     'profiles',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -182,6 +189,26 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CLOUDINARY_URL = os.getenv('CLOUDINARY_URL', '')
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'arloys',  # required
+    'API_KEY': os.getenv('API_KEY', ''),  # required
+    'API_SECRET': os.getenv('API_SECRET', ''),  # required
+    'SECURE': True,
+    'MEDIA_TAG': 'media',
+    'INVALID_VIDEO_ERROR_MESSAGE': 'Please upload a valid video file.',
+    'EXCLUDE_DELETE_ORPHANED_MEDIA_PATHS': (),
+    'STATIC_TAG': 'static',
+    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'manifest'),
+    'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr',
+                                 'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
+    'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'flv', 'mov', 'ogv', '3gp', '3g2', 'wmv',
+                                 'mpeg', 'flv', 'mkv', 'avi'],
+    'MAGIC_FILE_PATH': 'magic',
+    'PREFIX': settings.MEDIA_URL
+}
 
 # Stripe
 STRIPE_CURRENCY = 'usd'

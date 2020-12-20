@@ -199,10 +199,10 @@ if 'DEVELOPMENT' in os.environ:
 
     MEDIA_URL = "/media/"
 
-    MEDIA_ROOT = os.path.join(BASE_DIR, "live-static", "media-root")
+    #MEDIA_ROOT = os.path.join(BASE_DIR, "live-static", "media-root")
 
-    DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-    GS_BUCKET_NAME = 'fitness4you'
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 else:
     STATIC_URL = '/static/'

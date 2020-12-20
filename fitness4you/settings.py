@@ -203,8 +203,8 @@ if 'DEVELOPMENT' in os.environ:
         'CLOUD_NAME': 'arloys',  # required
         'API_KEY': os.getenv('API_KEY', ''),  # required
         'API_SECRET': os.getenv('API_SECRET', ''),  # required
-        'SECURE': False,
-        #'INVALIDATE':True,
+        'SECURE': True,
+        'INVALIDATE':True,
         'MEDIA_TAG': 'media',
         'INVALID_VIDEO_ERROR_MESSAGE': 'Please upload a valid video file.',
         'EXCLUDE_DELETE_ORPHANED_MEDIA_PATHS': (),

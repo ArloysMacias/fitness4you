@@ -185,7 +185,7 @@ USE_TZ = True
 if 'DEVELOPMENT' in os.environ:
 
     CLOUDINARY_STORAGE = {
-        'CLOUD_NAME': arloys,  # required
+        'CLOUD_NAME': 'arloys',  # required
         'API_KEY': os.getenv('API_KEY', ''),  # required
         'API_SECRET': os.getenv('API_SECRET', ''),  # required
         'SECURE': True,

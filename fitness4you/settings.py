@@ -13,12 +13,6 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
-cloudinary.config(
-    cloud_name="arloys",
-    api_key="523851989569287",
-    api_secret="QzNEYi1WhCfYeOUaNaYl4QBX1H0"
-)
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from django.conf import settings
 
@@ -30,8 +24,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
-
-SECRET_KEY = 'rzlku%t6u8*1e&o8%&enjb&zcydc^@y2b92@l^_m&40gj3h+2^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = 'DEVELOPMENT' in os.environ
@@ -195,27 +187,35 @@ STATICFILES_DIRS = [
 #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+cloudinary.config(
+    cloud_name="arloys",
+    api_key=os.getenv('API_KEY', ''),
+    api_secret=os.getenv('API_SECRET', '')
+)
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # CLOUDINARY_URL = os.getenv('CLOUDINARY_URL', '')
 #
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': 'arloys',  # required
-#     'API_KEY': os.getenv('API_KEY', ''),  # required
-#     'API_SECRET': os.getenv('API_SECRET', ''),  # required
-#     'SECURE': True,
-#     'MEDIA_TAG': 'media',
-#     'INVALID_VIDEO_ERROR_MESSAGE': 'Please upload a valid video file.',
-#     'EXCLUDE_DELETE_ORPHANED_MEDIA_PATHS': (),
-#     'STATIC_TAG': 'static',
-#     'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'manifest'),
-#     'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr',
-#                                  'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
-#     'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'flv', 'mov', 'ogv', '3gp', '3g2', 'wmv',
-#                                  'mpeg', 'flv', 'mkv', 'avi'],
-#     'MAGIC_FILE_PATH': 'magic',
-#     'PREFIX': settings.MEDIA_URL
-# }
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'arloys',  # required
+    'API_KEY': os.getenv('API_KEY', ''),  # required
+    'API_SECRET': os.getenv('API_SECRET', ''),  # required
+    'SECURE': True,
+    'MEDIA_TAG': 'media',
+    'INVALID_VIDEO_ERROR_MESSAGE': 'Please upload a valid video file.',
+    'EXCLUDE_DELETE_ORPHANED_MEDIA_PATHS': (),
+    'STATIC_TAG': 'static',
+    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'manifest'),
+    'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr',
+                                 'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
+    'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'flv', 'mov', 'ogv', '3gp', '3g2', 'wmv',
+                                 'mpeg', 'flv', 'mkv', 'avi'],
+    'MAGIC_FILE_PATH': 'magic',
+    'PREFIX': settings.MEDIA_URL
+}
 
 # Stripe
 STRIPE_CURRENCY = 'usd'

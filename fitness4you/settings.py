@@ -184,6 +184,15 @@ USE_TZ = True
 
 if 'DEVELOPMENT' in os.environ:
 
+    STATIC_URL = '/static/'
+
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, "static"),
+    )
+    STATIC_ROOT = os.path.join(BASE_DIR, "live-static", "static-root")
+
+    MEDIA_URL = "/media/"
+
     CLOUDINARY_STORAGE = {
         'CLOUD_NAME': 'arloys',  # required
         'API_KEY': os.getenv('API_KEY', ''),  # required
@@ -202,23 +211,12 @@ if 'DEVELOPMENT' in os.environ:
         'PREFIX': settings.MEDIA_URL
     }
 
-    # https://warehouse.python.org/project/whitenoise/
-
-    STATIC_URL = '/static/'
-
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, "static"),
-    )
-
-    STATIC_ROOT = os.path.join(BASE_DIR, "live-static", "static-root")
-
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-    MEDIA_URL = "/media/"
-
-    #MEDIA_ROOT = os.path.join(BASE_DIR, "live-static", "media-root")
+    # MEDIA_ROOT = os.path.join(BASE_DIR, "live-static", "media-root")
 
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 else:

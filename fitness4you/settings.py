@@ -13,6 +13,12 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
+cloudinary.config(
+    cloud_name="arloys",
+    api_key="523851989569287",
+    api_secret="QzNEYi1WhCfYeOUaNaYl4QBX1H0"
+)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from django.conf import settings
 
@@ -183,33 +189,33 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-CLOUDINARY_URL = os.getenv('CLOUDINARY_URL', '')
-
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'arloys',  # required
-    'API_KEY': os.getenv('API_KEY', ''),  # required
-    'API_SECRET': os.getenv('API_SECRET', ''),  # required
-    'SECURE': True,
-    'MEDIA_TAG': 'media',
-    'INVALID_VIDEO_ERROR_MESSAGE': 'Please upload a valid video file.',
-    'EXCLUDE_DELETE_ORPHANED_MEDIA_PATHS': (),
-    'STATIC_TAG': 'static',
-    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'manifest'),
-    'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr',
-                                 'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
-    'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'flv', 'mov', 'ogv', '3gp', '3g2', 'wmv',
-                                 'mpeg', 'flv', 'mkv', 'avi'],
-    'MAGIC_FILE_PATH': 'magic',
-    'PREFIX': settings.MEDIA_URL
-}
+# CLOUDINARY_URL = os.getenv('CLOUDINARY_URL', '')
+#
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': 'arloys',  # required
+#     'API_KEY': os.getenv('API_KEY', ''),  # required
+#     'API_SECRET': os.getenv('API_SECRET', ''),  # required
+#     'SECURE': True,
+#     'MEDIA_TAG': 'media',
+#     'INVALID_VIDEO_ERROR_MESSAGE': 'Please upload a valid video file.',
+#     'EXCLUDE_DELETE_ORPHANED_MEDIA_PATHS': (),
+#     'STATIC_TAG': 'static',
+#     'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'manifest'),
+#     'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr',
+#                                  'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
+#     'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'flv', 'mov', 'ogv', '3gp', '3g2', 'wmv',
+#                                  'mpeg', 'flv', 'mkv', 'avi'],
+#     'MAGIC_FILE_PATH': 'magic',
+#     'PREFIX': settings.MEDIA_URL
+# }
 
 # Stripe
 STRIPE_CURRENCY = 'usd'

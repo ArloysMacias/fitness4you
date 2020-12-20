@@ -205,8 +205,8 @@ if 'DEVELOPMENT' in os.environ:
         'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'manifest'),
         'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr',
                                      'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
-        'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'flv', 'mov', 'ogv' ,'3gp' ,'3g2' ,'wmv' ,
-                                     'mpeg' ,'flv' ,'mkv' ,'avi'],
+        'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'flv', 'mov', 'ogv', '3gp', '3g2', 'wmv',
+                                     'mpeg', 'flv', 'mkv', 'avi'],
         'MAGIC_FILE_PATH': 'magic',
         'PREFIX': settings.MEDIA_URL
     }
@@ -215,8 +215,12 @@ if 'DEVELOPMENT' in os.environ:
 
     # MEDIA_ROOT = os.path.join(BASE_DIR, "live-static", "media-root")
 
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'  # Where to upload
+    #
+    # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Where to take from
+
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'  # Where to upload
+    MEDIA_ROOT = 'cloudinary_storage.storage.MediaCloudinaryStorage'  # Where to upload
 
 
 else:

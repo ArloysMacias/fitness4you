@@ -32,6 +32,7 @@
             </div>
         </div>
     </section>
+
     <!--POPULAR PRODUCTS-->
     <section id="popular_products" class="black white-text hide-on-small-only">
         <br><br>
@@ -119,16 +120,97 @@
                 <div class="become_a_member_container">
                     <h2 class="header center white-text text-lighten-2">Become a member to get more deals</h2>
                     <div class="row center">
-                        <h5 class="header col s12 light">FIND OUR EXCLUSIVE PRODUCTS</h5>
+                        <h5 class="header col s12 light">FIND HEALTH AND BEAUTY WITH US</h5>
                     </div>
                     <div class="row center">
                         <a href="{% url 'account_login' %}" id="download-button"
-                           class="animate__animated animate__bounce btn-large waves-effect waves-light red lighten-1">Sign up</a>
+                           class="animate__animated animate__bounce btn-large waves-effect waves-light red lighten-1">Get
+                            Started</a>
                     </div>
                 </div>
             </div>
             <div class="parallax"><img src="{{ MEDIA_URL }}images/becomeAmember/kettlebell-3290296_1920.jpg"
                                        alt="becomeAmember">
+            </div>
+        </div>
+    </section>
+
+    <!--CHOOSE YOUR PLAN-->
+    <section id="choose_your_plan">
+
+        <div class="container">
+            <h4 class="center">CHOOSE YOUR PLAN</h4>
+            <br><br><br>
+            <div class="section">
+                <!--   Cards Section   -->
+                <div class="row">
+                    <div class="col s12 m4 l4">
+                        <div class="black-box">
+                            <h3><i class="red-text medium material-icons">people</i></h3>
+                            <div class="pi-price">
+                                <span>Regular</span>
+                                <h2>$ 29.0</h2>
+                            </div>
+                            <ul>
+
+                                <li>Unlimited equipments</li>
+                                <li>Personal trainer</li>
+                                <li>Weight losing classes</li>
+                                <li>Month to mouth</li>
+                                <li>No time restriction</li>
+                            </ul>
+                            <a href="{% url 'account_login' %}" class="btn btn-large animate__animated animate__bounce btn waves-effect waves-light red lighten-1"
+                               name="action">SUBSCRIBE
+                            </a>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="col s12 m4 l4">
+                        <div class="black-box">
+                            <h3><i class="red-text medium material-icons">school</i></h3>
+                            <div class="pi-price">
+                                <span>Student</span>
+                                <h2>$ 19.0</h2>
+                            </div>
+                            <ul>
+
+                                <li>Unlimited equipments</li>
+                                <li>Personal trainer</li>
+                                <li>Weight losing classes</li>
+                                <li>Month to mouth</li>
+                                <li>No time restriction</li>
+                            </ul>
+                            <a {% if user.is_authenticated %}{% else %}href="{% url 'account_login' %}"{% endif %} class="btn btn-large animate__animated animate__bounce btn waves-effect waves-light red lighten-1"
+                               name="action">SUBSCRIBE
+                            </a>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="col s12 m4 l4">
+                        <div class="black-box">
+                            <h3><i class="red-text medium material-icons">elderly</i></h3>
+                            <div class="pi-price">
+                                <span>Pensioner</span>
+                                <h2>$ 19.0</h2>
+                            </div>
+                            <ul>
+
+                                <li>Unlimited equipments</li>
+                                <li>Personal trainer</li>
+                                <li>Weight losing classes</li>
+                                <li>Month to mouth</li>
+                                <li>No time restriction</li>
+                            </ul>
+                            <a href="{% url 'account_login' %}" class="btn btn-large animate__animated animate__bounce waves-effect waves-light red lighten-1"
+                               name="action">SUBSCRIBE
+                            </a>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

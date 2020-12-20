@@ -196,7 +196,7 @@ if 'DEVELOPMENT' in os.environ:
 
     STATIC_ROOT = os.path.join(BASE_DIR, "live-static", "static-root")
 
-    STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+    STATICFILES_STORAGE = 'whitenoise.django.CompressedManifestStaticFilesStorage'
 
     MEDIA_URL = "/media/"
 

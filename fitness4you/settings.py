@@ -191,8 +191,6 @@ if 'DEVELOPMENT' in os.environ:
     )
     STATIC_ROOT = os.path.join(BASE_DIR, "live-static", "static-root")
 
-    MEDIA_URL = "/media/"
-
     CLOUDINARY_STORAGE = {
         'CLOUD_NAME': 'arloys',  # required
         'API_KEY': os.getenv('API_KEY', ''),  # required
@@ -218,9 +216,10 @@ if 'DEVELOPMENT' in os.environ:
     # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'  # Where to upload
     #
     # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Where to take from
-
+    MEDIA_URL = 'cloudinary_storage.storage.MediaCloudinaryStorage'  # Where to upload
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'  # Where to upload
-    MEDIA_ROOT = 'cloudinary_storage.storage.MediaCloudinaryStorage'  # Where to upload
+
 
 
 else:

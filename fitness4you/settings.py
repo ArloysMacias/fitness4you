@@ -203,7 +203,8 @@ if 'DEVELOPMENT' in os.environ:
         'CLOUD_NAME': 'arloys',  # required
         'API_KEY': os.getenv('API_KEY', ''),  # required
         'API_SECRET': os.getenv('API_SECRET', ''),  # required
-        'SECURE': True,
+        'SECURE': False,
+        #'INVALIDATE':True,
         'MEDIA_TAG': 'media',
         'INVALID_VIDEO_ERROR_MESSAGE': 'Please upload a valid video file.',
         'EXCLUDE_DELETE_ORPHANED_MEDIA_PATHS': (),
@@ -230,3 +231,9 @@ STRIPE_CURRENCY = 'usd'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+
+https://res.cloudinary.com/arloys/image/upload/v1608486233/media/favicon_qb8nwb.ico
+
+https://res.cloudinary.com/arloys/image/upload/v1608486234/media/image_skuBSN6190210_largeImage_X_450_white_jugtxi.jpg
+
+https://res.cloudinary.com/arloys/image/upload/v1/media/image_skuBSN6190210_largeImage_X_450_white.jpg

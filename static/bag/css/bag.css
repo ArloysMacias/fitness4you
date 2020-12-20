@@ -1,0 +1,32 @@
+
+.empty_bag{
+    font-size: 107px!important;
+}
+
+.bag-image{
+    width: 50px;
+}
+
+.name-cell{
+    width:33% ;
+}
+
+.amount-cell{
+    display: block;
+}
+
+.description-cell{
+    width:200% ;
+}
+
+
+.delete-icon{
+    font-size: 36px!important;
+    color: #f16868!important;
+}
+
+
+
+tr:last-child{
+    border:0!important;
+}

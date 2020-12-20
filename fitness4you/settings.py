@@ -23,7 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = os.environ.get('SECRET_KEY', '')
+# SECRET_KEY = os.environ.get('SECRET_KEY', '')
+SECRET_KEY = 'ss'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = 'DEVELOPMENT' in os.environ
@@ -180,35 +181,43 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_URL = '/media/'
+# MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-cloudinary.config(
-    cloud_name="arloys",
-    api_key=os.getenv('API_KEY', ''),
-    api_secret=os.getenv('API_SECRET', '')
-)
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# cloudinary.config(
+#     cloud_name="arloys",
+#     api_key=os.getenv('API_KEY', ''),
+#     api_secret=os.getenv('API_SECRET', '')
+# )
+
+
+STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
 
 # CLOUDINARY_URL = os.getenv('CLOUDINARY_URL', '')
 #
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'arloys',  # required
-    'API_KEY': os.getenv('API_KEY', ''),  # required
-    'API_SECRET': os.getenv('API_SECRET', ''),  # required
+    # 'API_KEY': os.getenv('API_KEY', ''),  # required
+    # 'API_SECRET': os.getenv('API_SECRET', ''),  # required
+    'API_KEY': '523851989569287',  # required
+    'API_SECRET': 'QzNEYi1WhCfYeOUaNaYl4QBX1H0',  # required
     'SECURE': True,
     'MEDIA_TAG': 'media',
     'INVALID_VIDEO_ERROR_MESSAGE': 'Please upload a valid video file.',
     'EXCLUDE_DELETE_ORPHANED_MEDIA_PATHS': (),
+    'DEFAULT_FILE_STORAGE': 'cloudinary_storage.storage.MediaCloudinaryStorage',
+    'STATICFILES_STORAGE': 'cloudinary_storage.storage.StaticHashedCloudinaryStorage',
     'STATIC_TAG': 'static',
-    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'manifest'),
+    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'manage.py'),
     'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr',
                                  'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
     'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'flv', 'mov', 'ogv', '3gp', '3g2', 'wmv',

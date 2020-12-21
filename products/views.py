@@ -27,7 +27,6 @@ def all_products(request):
     for product in products_list:
         if product.exclusive:
             list_popular_exclusive.append(product)
-        print(list_to_show)
 
     list_to_show = list(filter(lambda product: product not in list_popular_exclusive, products_filter))
     if request.user.is_authenticated:

@@ -20,7 +20,19 @@ def all_products(request):
 
     brands_column = products_list.values_list('brand_name', flat=True).distinct()
 
-    products_filter = ProductFilter(request.GET, queryset=products_list)
+    products_filter = ProductFilter(request.GET, queryset=products_list).qs
+
+    list_to_show = []
+    list_popular_exclusive = []
+    for product in products_list:
+        if product.exclusive:
+            list_popular_exclusive.append(product)
+        print(list_to_show)
+
+    list_to_show = list(filter(lambda product: product not in list_popular_exclusive, products_filter))
+    if request.user.is_authenticated:
+        list_to_show = products_filter  # ALL
+
     category_filter = CategoryFilter(request.GET, queryset=categories_list)
 
     overall_rating_selected = 0
@@ -52,7 +64,7 @@ def all_products(request):
             current_sorting = (request.GET['ordering'])
 
     context = {
-        'products': products_filter,
+        'products': list_to_show,
 
         'categories': category_filter,
 
@@ -84,9 +96,9 @@ def product_details(request, id):
     }
     return render(request, 'products/product_details.html', context)
 
+
 @login_required()
 def add_product(request):
-
     if not request.user.is_superuser:
         messages.error(request, "Sorry, you don't seem to have clearance to do that 🤭")
         return redirect(reverse('products'))
@@ -112,9 +124,9 @@ def add_product(request):
     }
     return render(request, 'products/add_product.html', context)
 
+
 @login_required()
 def edit_product(request, product_id):
-
     if not request.user.is_superuser:
         messages.error(request, f"Sorry, you don't seem to have clearance to do that 🤭")
         return redirect(reverse('products'))
@@ -143,9 +155,9 @@ def edit_product(request, product_id):
     }
     return render(request, template, context)
 
+
 @login_required()
 def delete_product(request, product_id):
-
     if not request.user.is_superuser:
         messages.error(request, "Sorry, you don't seem to have clearance to do that 🤭")
         return redirect(reverse('products'))

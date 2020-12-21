@@ -14,6 +14,7 @@ class ProducAdmin(admin.ModelAdmin):
         'overall_rating',
         'number_of_reviews',
         'top_flavor_rated',
+        'exclusive',
     )
 
     ordering = ('price',)

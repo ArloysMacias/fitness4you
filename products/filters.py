@@ -33,6 +33,7 @@ class ProductFilter(django_filters.FilterSet):
     price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt')
     price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt')
     overall_rating = django_filters.NumberFilter(field_name='overall_rating', lookup_expr='gt')
+    #exclusive = django_filters.BooleanFilter(field_name='exclusive', lookup_expr='exact')
     search = django_filters.CharFilter(method='search_filter')
 
     class Meta:
@@ -40,6 +41,7 @@ class ProductFilter(django_filters.FilterSet):
         fields = {
             'brand_name': ['exact', ],
             'category': ['exact'],
+            'exclusive': ['exact', ],
         }
 
     @staticmethod

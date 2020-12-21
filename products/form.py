@@ -7,7 +7,7 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         # To include all fields
-        fields = ('image', 'product_name', 'category', 'price', 'overall_rating', 'brand_name', 'product_description', )
+        fields = ('image', 'product_name', 'category', 'price', 'overall_rating', 'brand_name', 'product_description','exclusive' )
         # fields = '__all__'
 
     image = forms.ImageField(label='Image',

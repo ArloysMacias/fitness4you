@@ -119,8 +119,6 @@ class StripeWH_Handler:
                 )
 
         self._send_email(order)
-        print(order)
-        print("email sended")
         return HttpResponse(
             content=f'Webhook received: {event["type"]} success: Created order {order} in webhook',
             status=200

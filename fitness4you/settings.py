@@ -28,7 +28,7 @@ SECRET_KEY = 'ss'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = 'DEVELOPMENT' in os.environ
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['fitness4you.herokuapp.com', '127.0.0.1:8000', '127.0.0.1', '4d317cc4e698.ngrok.io']
 

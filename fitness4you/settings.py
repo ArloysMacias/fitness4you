@@ -223,5 +223,22 @@ STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 # print(os.environ.get('EMAIL_HOST_USER'))
 # print(os.environ.get('EMAIL_HOST_PASS'))
 
+
+# if 'DEVELOPMENT' in os.environ:
+#     EMAIL_BACKEND = "sgbackend.SendGridBackend"
+# else:
+#     SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+#     EMAIL_HOST = 'smtp.sendgrid.net'
+#     EMAIL_HOST_USER = 'apikey' # this is exactly the value 'apikey'
+#     EMAIL_HOST_PASSWORD = os.getenv('SENDGRID_API_KEY')
+#     EMAIL_PORT = 587
+#     EMAIL_USE_TLS = True
+
+
 EMAIL_BACKEND = "sgbackend.SendGridBackend"
-SENDGRID_API_KEY = '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'
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey' # this is exactly the value 'apikey'
+EMAIL_HOST_PASSWORD = os.getenv('SENDGRID_API_KEY')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

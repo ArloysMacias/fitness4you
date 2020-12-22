@@ -61,9 +61,6 @@ class StripeWH_Handler:
         tried = 1
         order_exists = False
         order = None
-        print(order.email)
-        print(render_to_string('checkout/email/email_order_confirmation_subject.html', {'order': order}))
-        print(render_to_string('checkout/email/email_order_confirmation_body.html', {'order': order, 'contact_email': settings.EMAIL_HOST_USER}))
         while tried <= 5:
             try:
                 order = Order.objects.get(

@@ -176,7 +176,7 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-if 'DEVELOPMENT' in os.environ:
+if 'USE_CLOUDINARY' in os.environ:
     # Heroku static files with whitenoise
     STATIC_ROOT = os.path.join(BASE_DIR, "live-static", "static-root")
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -208,7 +208,7 @@ STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 
 
-if 'USE_CLOUDINARY' in os.environ:
+if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'boutiqueado@example.com'
 else:

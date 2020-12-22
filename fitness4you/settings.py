@@ -221,8 +221,6 @@ else:
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
 
-
-
 # EMAIL_BACKEND = "sgbackend.SendGridBackend"
 # SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 # EMAIL_HOST = 'smtp.sendgrid.net'

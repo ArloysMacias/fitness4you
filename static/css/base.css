@@ -221,3 +221,21 @@ footer{
     float: right;
     top: 3px;
 }
+
+.map-size{
+    width: 350px;
+}
+
+/** Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .map-size{
+        width: 413px;
+    }
+}
+/** Medium devices (tablets, 768px and up) */
+@media (min-width: 1200px) {
+    .map-size{
+        width: 550px;
+    }
+}
+

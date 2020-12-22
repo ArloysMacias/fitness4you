@@ -5,6 +5,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css" rel="stylesheet">
     <link href="{% static 'products/css/products.css' %}" rel="stylesheet">
     <link href="{% static 'products/css/queries.css' %}" rel="stylesheet">
+    <link href="{% static 'home/css/home.css' %}" rel="stylesheet">
+
 {% endblock %}
 
 {% block content %}
@@ -33,7 +35,7 @@
         </div>
     </section>
     <!--POPULAR PRODUCTS-->
-    <section id="popular_products" class="black white-text hide-on-small-only">
+    <section id="popular_products" class="hide-on-small-only">
         <br><br>
         <h4 class="center">POPULAR PRODUCTS</h4>
         <br><br><br>
@@ -41,8 +43,8 @@
             <div class="row">
                 {% for product in products %}
                     <div class="col m4 l4">
-                        <div class="card hoverable waves-effect waves-block waves-light black">
-                            <div id="card-image-container" class="card-image animate__animated animate__fadeIn">
+                        <div class="card hoverable waves-effect black white-text waves-block waves-light">
+                            <div id="card-image-container" class="card-image animate__animated animate__fadeIn white-background-custom">
 
                                 {% if product.image %}
                                     <img class="activator" src="{{ product.image.url }}" alt="product-image">
@@ -51,7 +53,7 @@
                                          alt="no-images">
                                 {% endif %}
 
-                                <span class="card-title small black-text">{{ product.product_name }}</span>
+                                <span class="card-title small">{{ product.product_name }}</span>
                                 <div class="extra-button">
 
                                     {% if user.is_superuser %}
@@ -91,7 +93,7 @@
                     </div>
                     <!-- Modal Structure -->
                     <div id="{{ product.id }}" class="modal hoverable">
-                        <div class="modal-content">
+                        <div class="modal-content black-text">
                             <h4>Delete Confirmation</h4>
                             <p>Are you sure you want to delete {{ product.product_name }} ?</p>
                             <div class="modal-body">

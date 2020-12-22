@@ -2,6 +2,8 @@ import json
 import time
 from django.http import HttpResponse, request
 from django.core.mail import send_mail
+from stripe.api_resources import order
+
 from checkout.models import Order, ProductOrder
 from products.models import Product
 from profiles.models import UserProfile
@@ -59,6 +61,9 @@ class StripeWH_Handler:
         tried = 1
         order_exists = False
         order = None
+        print(order.email)
+        print(render_to_string('checkout/email/email_order_confirmation_subject.html', {'order': order}))
+        print(render_to_string('checkout/email/email_order_confirmation_body.html', {'order': order, 'contact_email': settings.EMAIL_HOST_USER}))
         while tried <= 5:
             try:
                 order = Order.objects.get(
@@ -117,7 +122,9 @@ class StripeWH_Handler:
                     content=f'Webhook received: {event["type"]} error: {e}',
                     status=500
                 )
-
+        print(order.email)
+        print(render_to_string('checkout/email/email_order_confirmation_subject.html', {'order': order}))
+        print(render_to_string('checkout/email/email_order_confirmation_body.html', {'order': order, 'contact_email': settings.EMAIL_HOST_USER}))
         self._send_email(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} success: Created order {order} in webhook',
@@ -133,6 +140,9 @@ class StripeWH_Handler:
         )
 
     def _send_email(self, order):
+        print(order.email)
+        print(render_to_string('checkout/email/email_order_confirmation_subject.html', {'order': order}))
+        print(render_to_string('checkout/email/email_order_confirmation_body.html', {'order': order, 'contact_email': settings.EMAIL_HOST_USER}))
         email_to_send = order.email
         subject = render_to_string('checkout/email/email_order_confirmation_subject.html', {'order': order})
         body = render_to_string('checkout/email/email_order_confirmation_body.html', {'order': order, 'contact_email': settings.EMAIL_HOST_USER})

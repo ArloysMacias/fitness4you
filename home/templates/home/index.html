@@ -30,93 +30,101 @@
                 </div>
             </div>
             <div class="parallax">
-                <img src="{{ MEDIA_URL }}images/background/background2.jpg" alt="background">
+                <img src="{{ MEDIA_URL }}images/background/bodybuilding-legal-steroid-deadly-1512049189.jpg" alt="background">
             </div>
         </div>
     </section>
-    <!--POPULAR PRODUCTS-->
+
+    <!--POPULAR_PRODUCTS-->
     <section id="popular_products" class="hide-on-small-only">
-        <br><br>
-        <h4 class="center">POPULAR PRODUCTS</h4>
-        <br><br><br>
-        <div class="container">
-            <div class="row">
-                {% for product in products %}
-                    <div class="col m4 l4">
-                        <div class="card hoverable waves-effect white-background-custom white-text waves-block waves-light">
-                            <div id="card-image-container" class="card-image animate__animated animate__fadeIn">
+        <div id="index-banner" class="parallax-container parallax-background ">
+            <div class="section no-pad-bot">
+                <br><br>
+                <h4 class="center">POPULAR PRODUCTS</h4>
+                <br><br><br>
+                <div class="container">
+                    <div class="row">
+                        {% for product in products %}
+                            <div class="col m4 l4">
+                                <div class="card hoverable waves-effect white-background-custom white-text waves-block waves-light">
+                                    <div id="card-image-container" class="card-image animate__animated animate__fadeIn">
 
-                                {% if product.image %}
-                                    <img class="activator" src="{{ product.image.url }}" alt="product-image">
-                                {% else %}
-                                    <img class="activator" src="{{ MEDIA_URL }}no-image.png"
-                                         alt="no-images">
-                                {% endif %}
+                                        {% if product.image %}
+                                            <img class="activator" src="{{ product.image.url }}" alt="product-image">
+                                        {% else %}
+                                            <img class="activator" src="{{ MEDIA_URL }}no-image.png"
+                                                 alt="no-images">
+                                        {% endif %}
 
-                                <span class="card-title small">{{ product.product_name }}</span>
-                                <div class="extra-button">
+                                        <span class="card-title small">{{ product.product_name }}</span>
+                                        <div class="extra-button">
 
-                                    {% if user.is_superuser %}
-                                        <a href="{% url 'edit_product' product.id %}"
-                                           class="hoverable btn-floating add-to-cart small waves-effect waves-light blue"><i
-                                                class="material-icons">create</i></a>
-                                        <!-- Modal Trigger -->
-                                        <a class="hoverable btn-floating add-to-cart red waves-effect waves-light modal-trigger"
-                                           href="#{{ product.id }}"><i class="medium material-icons">delete_outline</i></a>
-                                    {% endif %}
+                                            {% if user.is_superuser %}
+                                                <a href="{% url 'edit_product' product.id %}"
+                                                   class="hoverable btn-floating add-to-cart small waves-effect waves-light blue"><i
+                                                        class="material-icons">create</i></a>
+                                                <!-- Modal Trigger -->
+                                                <a class="hoverable btn-floating add-to-cart red waves-effect waves-light modal-trigger"
+                                                   href="#{{ product.id }}"><i class="medium material-icons">delete_outline</i></a>
+                                            {% endif %}
 
-                                    <a href="{% url 'add_to_bag' product.id %}"
-                                       class="hoverable btn-floating add-to-cart waves-effect waves-light light-green"><i
-                                            class="material-icons">add_shopping_cart</i></a>
+                                            <a href="{% url 'add_to_bag' product.id %}"
+                                               class="hoverable btn-floating add-to-cart waves-effect waves-light light-green"><i
+                                                    class="material-icons">add_shopping_cart</i></a>
 
-                                    <a href="{% url 'product_details' product.id %}"
-                                       class="hoverable btn-floating {% comment %}halfway-fab{% endcomment %} waves-effect waves-light black"><i
-                                            class="material-icons">visibility</i></a>
+                                            <a href="{% url 'product_details' product.id %}"
+                                               class="hoverable btn-floating {% comment %}halfway-fab{% endcomment %} waves-effect waves-light black"><i
+                                                    class="material-icons">visibility</i></a>
+                                        </div>
+                                    </div>
+                                    <div id="card-content-container" class="card-content">
+                                        <p>Price: €{{ product.price }}</p>
+                                        {% if product.overall_rating %}
+                                            {#                                <p id="rating" class="text-lighten-5" oninput="rating()">Rating: <small>{{ product.overall_rating }}</small></p>#}
+                                            <p id="rat" class="text-lighten-5">Rating: {{ product.overall_rating }}</p>
+                                        {% else %}
+                                            <small class="text-lighten-1">No Rating</small>
+                                        {% endif %}
+                                        <p class="truncate">Brand: {{ product.brand_name }}</p>
+                                    </div>
+                                    <div class="card-reveal black-text">
+                                        <span class="card-title grey-text text-darken-4 "><i class="material-icons right">close</i>{{ product.product_name }}</span>
+                                        <p>Description:</p>
+                                        <p>{{ product.product_description }}</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div id="card-content-container" class="card-content">
-                                <p>Price: €{{ product.price }}</p>
-                                {% if product.overall_rating %}
-                                    {#                                <p id="rating" class="text-lighten-5" oninput="rating()">Rating: <small>{{ product.overall_rating }}</small></p>#}
-                                    <p id="rat" class="text-lighten-5">Rating: {{ product.overall_rating }}</p>
-                                {% else %}
-                                    <small class="text-lighten-1">No Rating</small>
-                                {% endif %}
-                                <p class="truncate">Brand: {{ product.brand_name }}</p>
+                            <!-- Modal Structure -->
+                            <div id="{{ product.id }}" class="modal hoverable">
+                                <div class="modal-content black-text">
+                                    <h4>Delete Confirmation</h4>
+                                    <p>Are you sure you want to delete {{ product.product_name }} ?</p>
+                                    <div class="modal-body">
+                                        {#                                <input type="hidden" name="category_id" id="cat_id" value="">#}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="{% url 'products' %}"
+                                           class="hoverable btn modal-close waves-effect waves-green"
+                                           data-dismiss="modal">No, Cancel</a>
+                                        <a href="{% url 'delete_product' product.id %}"
+                                           class="hoverable btn waves-effect waves-light red black-text">Yes, Delete</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-reveal black-text">
-                                <span class="card-title grey-text text-darken-4 "><i class="material-icons right">close</i>{{ product.product_name }}</span>
-                                <p>Description:</p>
-                                <p>{{ product.product_description }}</p>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
-                    <!-- Modal Structure -->
-                    <div id="{{ product.id }}" class="modal hoverable">
-                        <div class="modal-content black-text">
-                            <h4>Delete Confirmation</h4>
-                            <p>Are you sure you want to delete {{ product.product_name }} ?</p>
-                            <div class="modal-body">
-                                {#                                <input type="hidden" name="category_id" id="cat_id" value="">#}
-                            </div>
-                            <div class="modal-footer">
-                                <a href="{% url 'products' %}"
-                                   class="hoverable btn modal-close waves-effect waves-green"
-                                   data-dismiss="modal">No, Cancel</a>
-                                <a href="{% url 'delete_product' product.id %}"
-                                   class="hoverable btn waves-effect waves-light red black-text">Yes, Delete</a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
 
+                </div>
+            </div>
+            <div class="parallax">
+                <img src="{{ MEDIA_URL }}images/background/abstract-red-and-black-background-vector-illustation.jpg" alt="background">
+            </div>
         </div>
     </section>
 
     <!--BECOME A MEMBER-->
     <section id="become_a_member" class="hide-on-small-only">
-        <div id="index-banner" class="parallax-container parallax-background">
+        <div id="index-banner" class="parallax-container parallax-background-become-a-member">">
             <div class="section no-pad-bot">
                 <div class="become_a_member_container">
                     <h2 class="header center white-text text-lighten-2">Become a member to get more deals</h2>
@@ -129,9 +137,13 @@
                     </div>
                 </div>
             </div>
-            <div class="parallax"><img src="{{ MEDIA_URL }}images/becomeAmember/kettlebell-3290296_1920.jpg"
+{#            <div class="parallax"><img src="{{ MEDIA_URL }}images/background/Creating+your+First+Supplement+Stack_+For+Him.jpeg"#}
+{#                                       alt="becomeAmember">#}
+{#            </div>#}
+            <div class="parallax"><img src="{{ MEDIA_URL }}images/becomeAmember/transparent.png"
                                        alt="becomeAmember">
             </div>
+
         </div>
     </section>
 

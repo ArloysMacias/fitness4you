@@ -5,3 +5,7 @@
     background: linear-gradient(180deg, rgba(255,255,255,1) 27%, rgba(221,220,220,1) 38%, rgba(193,192,192,1) 47%, rgba(136,135,135,0.8491771708683473) 57%, rgba(95,95,95,0.8995973389355743) 67%, rgba(0,0,0,0) 78%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#000000",GradientType=1);
 }
+
+.parallax-background-become-a-member{
+    background-color: #000000d6;
+}

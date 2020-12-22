@@ -9,3 +9,9 @@
 .parallax-background-become-a-member{
     background-color: #000000d6;
 }
+
+#card-image-container {
+    margin: 0 auto;
+    height: 341px;
+    width: 100%;
+}

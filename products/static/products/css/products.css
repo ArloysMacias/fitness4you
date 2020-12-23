@@ -8,6 +8,7 @@
     width: 168px;
 }
 #card-image-container > img {
+    margin-top: 5px;
     width: 92%;
     height: 72%;
 }

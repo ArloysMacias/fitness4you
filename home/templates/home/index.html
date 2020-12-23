@@ -61,10 +61,7 @@
                                             <span class="card-title small">{{ product.product_name }}</span>
                                         </div>
 
-                                        <br class="hide-on-med-and-down">
-
                                         <div class="extra-button">
-
                                             {% if user.is_superuser %}
                                                 <a href="{% url 'edit_product' product.id %}"
                                                    class="hoverable btn-floating add-to-cart small waves-effect waves-light blue"><i

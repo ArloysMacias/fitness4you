@@ -56,7 +56,12 @@
                                                  alt="no-images">
                                         {% endif %}
 
-                                        <span class="card-title small">{{ product.product_name }}</span>
+                                        <div class="row">
+                                            <span class="card-title small">{{ product.product_name }}</span>
+                                        </div>
+
+                                        <br class="hide-on-med-and-down">
+
                                         <div class="extra-button">
 
                                             {% if user.is_superuser %}
@@ -77,6 +82,7 @@
                                                     class="material-icons">visibility</i></a>
                                         </div>
                                     </div>
+                                    <br><br>
                                     <div id="card-content-container" class="card-content">
                                         <p>Price: €{{ product.price }}</p>
                                         {% if product.overall_rating %}

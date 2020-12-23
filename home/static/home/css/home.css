@@ -24,6 +24,10 @@
     height: 86%;
 }
 
+.parallax-image{
+    filter: blur(2px);
+}
+
 /** Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
     #card-image-container {

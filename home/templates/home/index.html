@@ -30,7 +30,8 @@
                 </div>
             </div>
             <div class="parallax">
-                <img src="{{ MEDIA_URL }}images/background/bodybuilding-legal-steroid-deadly-1512049189.jpg" alt="background">
+                <img src="{{ MEDIA_URL }}images/background/bodybuilding-legal-steroid-deadly-1512049189.jpg"
+                     alt="background">
             </div>
         </div>
     </section>
@@ -86,7 +87,8 @@
                                     <div id="card-content-container" class="card-content">
                                         <p>Price: €{{ product.price }}</p>
                                         {% if product.overall_rating %}
-                                            {#                                <p id="rating" class="text-lighten-5" oninput="rating()">Rating: <small>{{ product.overall_rating }}</small></p>#}
+                                            <p id="rating" class="text-lighten-5" oninput="rating()">Rating:
+                                                <small>{{ product.overall_rating }}</small></p>
                                             <p id="rat" class="text-lighten-5">Rating: {{ product.overall_rating }}</p>
                                         {% else %}
                                             <small class="text-lighten-1">No Rating</small>
@@ -94,7 +96,8 @@
                                         <p class="truncate">Brand: {{ product.brand_name }}</p>
                                     </div>
                                     <div class="card-reveal black-text">
-                                        <span class="card-title grey-text text-darken-4 "><i class="material-icons right">close</i>{{ product.product_name }}</span>
+                                        <span class="card-title grey-text text-darken-4 "><i
+                                                class="material-icons right">close</i>{{ product.product_name }}</span>
                                         <p>Description:</p>
                                         <p>{{ product.product_description }}</p>
                                     </div>
@@ -106,7 +109,7 @@
                                     <h4>Delete Confirmation</h4>
                                     <p>Are you sure you want to delete {{ product.product_name }} ?</p>
                                     <div class="modal-body">
-                                        {#                                <input type="hidden" name="category_id" id="cat_id" value="">#}
+                                        <input type="hidden" name="category_id" id="cat_id" value="">
                                     </div>
                                     <div class="modal-footer">
                                         <a href="{% url 'products' %}"
@@ -123,7 +126,8 @@
                 </div>
             </div>
             <div class="parallax">
-                <img src="{{ MEDIA_URL }}images/background/abstract-red-and-black-background-vector-illustation.jpg" alt="background">
+                <img src="{{ MEDIA_URL }}images/background/abstract-red-and-black-background-vector-illustation.jpg"
+                     alt="background">
             </div>
         </div>
     </section>
@@ -139,13 +143,14 @@
                     </div>
                     <div class="row center">
                         <a href="{% url 'account_login' %}" id="download-button"
-                           class="animate__animated animate__bounce btn-large waves-effect waves-light red lighten-1">Sign up</a>
+                           class="animate__animated animate__bounce btn-large waves-effect waves-light red lighten-1">Sign
+                            up</a>
                     </div>
                 </div>
             </div>
-{#            <div class="parallax"><img src="{{ MEDIA_URL }}images/background/Creating+your+First+Supplement+Stack_+For+Him.jpeg"#}
-{#                                       alt="becomeAmember">#}
-{#            </div>#}
+            {#            <div class="parallax"><img src="{{ MEDIA_URL }}images/background/Creating+your+First+Supplement+Stack_+For+Him.jpeg"#}
+            {#                                       alt="becomeAmember">#}
+            {#            </div>#}
             <div class="parallax"><img src="{{ MEDIA_URL }}images/becomeAmember/transparent.png"
                                        alt="becomeAmember">
             </div>

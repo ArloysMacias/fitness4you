@@ -12,5 +12,10 @@ function initializeMaterialize() {
     $('.dropdown-buttonh').dropdown();
     $('.parallax').parallax();
     $('.modal').modal();
+    $('.carousel').carousel({
+        duration:120,
+        dist:-150,
+        numVisible:6
+    });
     // $('.materialboxed').materialbox();
 }

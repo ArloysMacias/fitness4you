@@ -20,6 +20,7 @@
 @media (min-width: 992px) {
     #card-image-container {
         height: 380px;
+        width: 100%;
     }
 }
 
@@ -27,5 +28,6 @@
 @media (min-width: 1200px) {
     #card-image-container {
         height: 400px;
+        width: 100%;
     }
 }

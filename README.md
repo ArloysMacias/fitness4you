@@ -4,6 +4,7 @@ It is a web-based store where users can view and purchase fitness and nutritiona
 
 ##Demo
 
+
 ##Planning Fitness4You
 The planning done prior to developing the project can be found in the document below:
 

@@ -21,7 +21,7 @@
     width: 34px;
 }
 .extra-button{
-    padding-top: 30px!important;
+    padding-top: 15px!important;
     padding-left: 8px!important;
 }
 #card-image-container > img {
@@ -37,7 +37,7 @@
     box-shadow: 0 8px 17px 0 rgb(255 255 255), 0 6px 20px 0 rgb(255 255 255)!important;
 }
 .parallax-container-products-home {
-    height: 154vh!important;
+    height: 166vh!important;
 }
 /** Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
@@ -51,6 +51,9 @@
     }
     .container{
         width: 90%!important;
+    }
+    .extra-button{
+        padding-top: 30px!important;
     }
 }
 

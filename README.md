@@ -10,9 +10,6 @@ The planning done prior to developing the project can be found in the document b
 
 [Project Planning document](https://github.com/ArloysMacias/fitness4you/blob/master/PLANNING.md)
 
-************Have this at all as a seperate readme or just incorporate vision statement with the UX?
-
-
 
 
 ##Features

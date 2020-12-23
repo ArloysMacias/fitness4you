@@ -14,8 +14,10 @@
                                      alt="no-images">
                             {% endif %}
 
+                            <row>
+                                <span class="card-title small black-text">{{ product.product_name|truncatechars:20 }}</span>
+                            </row>
 
-                            <span class="card-title small black-text">{{ product.product_name }}</span>
                             <div class="extra-button">
 
                                 {% if user.is_superuser %}

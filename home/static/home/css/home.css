@@ -28,6 +28,11 @@
     filter: blur(1px);
 }
 
+.hoverable:hover {
+    -webkit-box-shadow: 0 8px 17px 0 rgb(255 255 255), 0 6px 20px 0 rgb(255 255 255)!important;
+    box-shadow: 0 8px 17px 0 rgb(255 255 255), 0 6px 20px 0 rgb(255 255 255)!important;
+}
+
 /** Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
     #card-image-container {

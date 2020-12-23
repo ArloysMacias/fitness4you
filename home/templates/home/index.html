@@ -35,8 +35,8 @@
     </section>
 
     <!--POPULAR_PRODUCTS-->
-    <section id="popular_products" class="hide-on-small-only">
-        <div id="index-banner" class="parallax-container parallax-background ">
+    <section id="popular_products" >
+        <div id="index-banner" class="parallax-container parallax-container-products-home parallax-background ">
             <div class="section no-pad-bot">
                 <br><br>
                 <h4 class="center">POPULAR PRODUCTS</h4>
@@ -44,7 +44,7 @@
                 <div class="container">
                     <div class="row">
                         {% for product in products %}
-                            <div class="col m4 l4">
+                            <div class="col s6 m6 l3">
                                 <div class="card hoverable waves-effect white-background-custom white-text waves-block waves-light">
                                     <div id="card-image-container" class="card-image animate__animated animate__fadeIn">
 
@@ -54,9 +54,9 @@
                                             <img class="activator" src="{{ MEDIA_URL }}no-image.png"
                                                  alt="no-images">
                                         {% endif %}
-
+                                        <br class="hide-on-med-and-down"><br class="hide-on-med-and-down">
                                         <div class="row">
-                                            <span class="card-title small">{{ product.product_name }}</span>
+                                            <span class="card-title small" title="{{ product.product_name }}">{{ product.product_name|truncatechars:17}}</span>
                                         </div>
 
                                         <div class="extra-button">

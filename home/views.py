@@ -21,6 +21,6 @@ def index(request):
 
 
     context = {
-        'products': list_to_show[:3],
+        'products': list_to_show[:4],
     }
     return render(request, 'home/index.html', context)

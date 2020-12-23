@@ -84,8 +84,6 @@
                                     <div id="card-content-container" class="card-content">
                                         <p>Price: €{{ product.price }}</p>
                                         {% if product.overall_rating %}
-                                            <p id="rating" class="text-lighten-5" oninput="rating()">Rating:
-                                                <small>{{ product.overall_rating }}</small></p>
                                             <p id="rat" class="text-lighten-5">Rating: {{ product.overall_rating }}</p>
                                         {% else %}
                                             <small class="text-lighten-1">No Rating</small>

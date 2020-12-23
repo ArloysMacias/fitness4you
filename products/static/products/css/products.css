@@ -106,16 +106,6 @@
     transition: all 0.2s;
     -webkit-transition: all 0.2s;
 }
-
-/*.picture img {*/
-/*    margin-top: -7px;*/
-/*    position: relative;*/
-/*    border: 0;*/
-/*    width: 218px;*/
-/*    height: 133px;*/
-/*    margin-left: -46px;*/
-/*}*/
-
 .picture:hover{
     border-color: #2ca8ff;
 }

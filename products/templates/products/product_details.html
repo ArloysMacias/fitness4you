@@ -2,16 +2,9 @@
 {% load static %}
 
 {% block extra_css %}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.css" rel="stylesheet">
     <link href="{% static 'products/css/products.css' %}" rel="stylesheet">
     <link href="{% static 'products/css/queries.css' %}" rel="stylesheet">
 {% endblock %}
-{% block extra_js %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js"></script>
-    {% comment %}<script src="{% static 'products/js/nouislider/nouislider.js' %}"></script>{% endcomment %}
-    <script src="{% static 'products/js/wnumb/wNumb.min.js' %}"></script>
-{% endblock %}
-
 <!--Header-->
 {% block page_header %}
     <div class="container black-text header-container">

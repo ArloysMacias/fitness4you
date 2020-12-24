@@ -79,8 +79,12 @@ For all fonts I used Roboto, from Google Fonts. This font works well with the de
 
 
 ###Wireframes
+####Before:
+![Home page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/desktop.png)
+
+####After:
 ####Desktop
-![Desktop](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/desktop.png)
+![Home page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/desktop.png)
 
 ####Mobile
 ![Desktop](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/desktop.png)

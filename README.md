@@ -13,6 +13,7 @@ It is a web-based store where users can view and purchase fitness and nutritiona
       - [Buttons:](#buttons-)
     + [Product Page](#product-page)
       - [Product details:](#product-details--1)
+      - [Buttons:](#buttons--1)
     + [Register Page](#register-page)
     + [Login Page](#login-page)
     + [Logout Page](#logout-page)
@@ -21,12 +22,12 @@ It is a web-based store where users can view and purchase fitness and nutritiona
     + [Checkout Page](#checkout-page)
     + [Checkout Successful Page](#checkout-successful-page)
   * [Features Left to Implement](#features-left-to-implement)
-  * [Languages and Technologies](#languages-and-technologies)
-    + [Languages](#languages)
-    + [Technologies](#technologies)
-  * [Main problems and their solutions](#main-problems-and-their-solutions)
-  * [Model:](#model-)
-    + [Database Schema](#database-schema)
+- [Languages and Technologies](#languages-and-technologies)
+  * [Languages](#languages)
+  * [Technologies](#technologies)
+- [Model:](#model-)
+  * [Database Schema](#database-schema)
+- [Main problems and their solutions](#main-problems-and-their-solutions)
 - [Testing](#testing)
   * [Unit tests](#unit-tests)
     + [CSS Validation](#css-validation)
@@ -34,10 +35,10 @@ It is a web-based store where users can view and purchase fitness and nutritiona
     + [PHP Validation](#php-validation)
     + [JavaScrip Validation](#javascrip-validation)
   * [Functional tests](#functional-tests)
-  * [Browser Compatibility test](#browser-compatibility-test)
-- [Code Validation](#code-validation)
+- [Browser Compatibility test](#browser-compatibility-test)
 - [Deployment](#deployment)
 - [Credits](#credits)
+
 
 ## Demo
 
@@ -93,7 +94,7 @@ Created with the intent on drawing the interest of the user with bold colors and
 ##### Product details:
 * As opposed to the Product list, the Product page displays information about a specific product in a larger view such as name, brand, price, rating and description. Each product also displays an image which is clickable for an enlarged view.
 
-#####Buttons:
+##### Buttons:
 * An 'add-to-cart' button will place the product in the cart, showing a success message when completed and a 'continue shopping' button will take the user back to the Product List.
 
 #### Register Page
@@ -169,6 +170,12 @@ To achieve this the following features would need to be implemented:
 * [Django-filter](https://django-filter.readthedocs.io/en/stable/)
     * Django-filter is a generic, reusable application to alleviate writing some of the more mundane bits of view code. Specifically, it allows users to filter down a queryset based on a model’s fields, displaying the form to let them do this.
 
+## Model:
+
+### Database Schema
+
+![Data Base](https://github.com/ArloysMacias/fitness4you/blob/master/media/DataBaseDiagram/DataBase.png)
+
 
 ## Main problems and their solutions
 
@@ -180,11 +187,6 @@ To achieve this the following features would need to be implemented:
 | 4  | Webhook not working                                             | When doing the webhook, because I am using intellij idea (and I am working locally) I am not able to obtain the address of the webhook to pass it to stripe                                                                                                           | I look for a tool that allows me to expose a my local development server to the Internet https://www.pubnub.com/learn/glossary/what-is-ngrok/ ngrok https://ngrok.com/  1. The setting.py allowed the address provided by Ngrok: ALLOWED_HOSTS = ['2a0d946fed40.ngrok.io'] 2. Copy the address in Stripe / Webhooks / Webhooks Data: http://2a0d946fed40.ngrok.io/checkout/wh/ 3. Write the Stripe WebHooks key for the local development environment: STRIPE_WH_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'.  (Should not be in environment STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')) |
 | 5  | Pagination and drop-down from materialize cancel each other out | When I enter this jquery version: <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> The pagination works but the drop-down from materialize does not work.   When I delete it the drop-down works but the pagination does not. | In jQuery 3 size() was deprecated and completely removed The norm is to use length property instead. So I changed the function size to length in children.length from :http://cdn.rawgit.com/pinzon1992/materialize_table_pagination/f9a8478f/js/pagination.js                                                                                                                                                                                                                                                                                                                                |
 
-## Model:
-
-### Database Schema
-
-![Data Base](https://github.com/ArloysMacias/fitness4you/blob/master/media/DataBaseDiagram/DataBase.png)
 
 ## Testing
 
@@ -194,21 +196,20 @@ I used [W3C Validator](https://validator.w3.org/) to check the markup validity o
 
 ### Unit tests
 
+#### Python Validation
+I used [Flake8](https://simpleisbetterthancomplex.com/packages/2016/08/05/flake8.html) for checking the code base against coding style (PEP8), programming errors (like “library imported but unused” and “Undefined name”) and to check cyclomatic complexity
 
-#### CSS Validation
-I used [W3C Validator](https://jigsaw.w3.org/css-validator/validator) to check myscript.js, the code was syntactically valid:
-![cssTest](static/images/codeValidation/before/beforecss.png)
+[This is the link to the Python test folder](https://github.com/ArloysMacias/fitness4you/tree/master/media/tests/Flake8)
 
 #### HTML Validation
-Before:
-![htmlTest](static/images/codeValidation/before/beforehtml.png)
+I used [W3C Validator](https://validator.w3.org/): By the World Wide Web Consortium (W3C) that allows Internet users to check HTML and XHTML documents for well-formed markup
+[This is the link to the HTML test folder](https://github.com/ArloysMacias/fitness4you/tree/master/media/tests/HTML)
 
-After:
-![htmlTest](static/images/codeValidation/after/afterhtml.png)
 
-#### PHP Validation
-![Flask8 validations](media/tests/Flake8)
 
+#### CSS Validation
+I used [W3C Validator](https://pypi.org/project/flake8-django/) to check myscript.js, the code was syntactically valid:
+![cssTest](static/images/codeValidation/before/beforecss.png)
 
 #### JavaScrip Validation
 I used [Esprima](https://esprima.org/demo/validate.html) Syntax Validator to check myscript.js, the code was syntactically valid:

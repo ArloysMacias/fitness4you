@@ -23,19 +23,17 @@ var card = elements.create('card', {style: style});
 
 card.mount('#stripe-card-input');
 
-let displayError = document.getElementById('card-errors');
+var displayError = document.getElementById('card-errors');
 
-//Validation errors on the card div
 card.addEventListener('change', function (event) {
     if (event.error) {
-        let html = `<i class="material-icons">error</i>${event.error.message}</span>`;
+        var html = `<i class="material-icons">error</i>${event.error.message}</span>`;
         $(displayError).html(html);
     } else {
         displayError.textContent = '';
     }
 });
 
-//On submit
 var form = document.getElementById('checkout-payment');
 
 form.addEventListener('submit', function (ev) {
@@ -85,7 +83,7 @@ form.addEventListener('submit', function (ev) {
                 },
             }).then(function (result) {
             if (result.error) {
-                let html = `<i class="material-icons">error</i>${result.error.message}</span>`;
+                var html = `<i class="material-icons">error</i>${result.error.message}</span>`;
                 $(displayError).html(html);
 
                 $('#checkout-payment').fadeToggle(100);
@@ -93,17 +91,16 @@ form.addEventListener('submit', function (ev) {
                 $('#loading').fadeToggle(100);
 
                 card.update({'disable': false});
-                $('#submit-button').attr('disable', false)
+                $('#submit-button').attr('disable', false);
             } else {
                 // The payment has been processed!
                 if (result.paymentIntent.status === 'succeeded') {
-                    form.submit()
+                    form.submit();
                 }
             }
         });
     }).fail(function () {
         location.reload();
-    })
+    });
 
 });
-

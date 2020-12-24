@@ -14,7 +14,7 @@
     background-color: white!important;
 
     box-shadow: 0 1px 3px 0 #e6ebf1!important;
-    -webkit-transition: box-shadow 150ms ease!important;
+    /*-webkit-transition: box-shadow 150ms ease!important;*/
     transition: box-shadow 150ms ease!important;
 }
 
@@ -75,7 +75,6 @@ tr:last-child{
 
 #order-info{
     text-transform: uppercase;
-    font-max-size: 21px;
 }
 
 #loading{

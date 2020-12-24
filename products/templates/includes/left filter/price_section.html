@@ -1,7 +1,7 @@
 <div id="price-section" class="left-filter-section">
     <br><br>
     <div id="test-slider" onclick="filterByPrice()"></div>
-    <input type="number" class="hide" id="lower" {% if lower_price %}value={{ lower_price }}{% else %}value="10"{% endif %} >
-    <input type="number" class="hide" id="upper"{% if upper_price %}value={{ upper_price }}{% else %}value="400"{% endif %} >
+    <input type="number" class="hide" id="lower" {% if lower_price %}value={{ lower_price }}{% else %} value="10"{% endif %} >
+    <input type="number" class="hide" id="upper"{% if upper_price %}value={{ upper_price }}{% else %} value="400"{% endif %} >
     <br><br>
 </div>

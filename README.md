@@ -10,8 +10,6 @@ The planning done prior to developing the project can be found in the document b
 
 [Project Planning document](https://github.com/ArloysMacias/fitness4you/blob/master/PLANNING.md)
 
-
-
 ##Features
 ###Existing Features
 ####Navbar
@@ -74,15 +72,12 @@ This template is from django's inbuilt allauth.
 * The admin page gives the superuser the option of modifying the products, delete and add new. In the 'Product list' the superuser can view individual products, delete, or modify them with the click of a button. The super user also has an added 'Management' option in the navbar where they can choose 'Add product' or 'Edit product' which takes the superuser to a form where all products can be accessed. 
 
 ####Cart Page
-
 * The Cart page displays the shopping cart with the items the user had added previously. It shows the product quantity, individual price, total price and product description. It also allows the user to change the quantity of individual products as well as deleting a product from the cart. If the quantity of an item is reduced to zero it will automatically be removed from the cart. Buttons to continue shopping or to proceed to checkout are displayed. If the user visits their cart but hasn't added any products, they will be informed that their cart is empty and no checkout button will be visible.
 
 ####Checkout Page
-
 * The checkout page contains the forms used to insert the user's personal details and to insert payment details. At the bottom of the page is the 'Submit payment' button which will initiate interaction with Stripe API.
 
 ####Checkout Successful Page
-
 * If checkout is successful the user will be redirected to the 'Checkout Successful Page' where they will be informed that the payment went through and a confirmation email has been sent to the email provided in the previous form. The user will also see a "receipt" or a complete list showing the order they just placed.
 
 ###Features Left to Implement
@@ -93,17 +88,9 @@ To achieve this the following features would need to be implemented:
 * The option to sign up for a gym membership
 * The option for users to leave product reviews
 
-
-## Technologies
 ###Languages and Technologies
 
-###Django
-
-
-
-###PostgreSQL
-
-### Languages
+####Languages
 * [HTML5](https://html.spec.whatwg.org/multipage/)
     * A markup language that it is used for structuring and presenting content. 
 * [CSS](https://www.w3.org/Style/CSS/)
@@ -112,45 +99,35 @@ To achieve this the following features would need to be implemented:
     * Used to make web development easier and more attractive.
 * [Python3](https://www.python.org/download/releases/3.0/)
     * an interpreted, high-level and general-purpose programming language.
-###JQuery
-
-###[Heroku](https://www.heroku.com/)
-
-###[Cloudinary](https://pypi.org/project/cloudinary/)
-
-###[Whitenoise](https://pypi.org/project/whitenoise/)
-
-
-
-####[Materialize (0.100.2)](http://archives.materializecss.com/0.100.2/)
-Materialize is a modern responsive CSS framework based on Material Design by Google.
-
-####[Bootstrap](https://getbootstrap.com/)
-Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS- and (optionally) JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components.
-
-####[noUislider](https://refreshless.com/nouislider/)
-NoUiSlider is a lightweight range slider with multi-touch support and a ton of features. It supports non-linear ranges, requires no external dependencies, has keyboard support, and it works great in responsive designs
-
-####[Wnumb](https://refreshless.com/wnumb/)
-WNumb is a formatting library with a dead-simple interface. It has two methods: to and from. Licensed MIT, so free for personal and commercial use.
-
-####[Django-Crispy-Forms](https://django-crispy-forms.readthedocs.io/en/latest/index.html)django-crispy-forms)
-Is a pluggable Django app that helps to write DRY forms by providing additional capability to configure and control the rendered HTML.
-
-####[Gunicorn](https://en.wikipedia.org/wiki/Gunicorn) 
-Green Unicorn is a Python Web Server Gateway Interface (WSGI) HTTP server. It is a pre-fork worker model, ported from Ruby's Unicorn project.he Gunicorn server is broadly compatible with a number of web frameworks, simply implemented, light on server resources and fairly fast.
-
-####[Pillow](https://en.wikipedia.org/wiki/Python_Imaging_Library)
-Python Imaging Library (abbreviated as PIL) (in newer versions known as Pillow) is a free and open-source additional library for the Python programming language that adds support for opening, manipulating, and saving many different image file formats
-
-####[Requests](https://www.django-rest-framework.org/api-guide/requests/)
-REST framework's Request class extends the standard HttpRequest, adding support for REST framework's flexible request parsing and request authentication.
-
-####[Stripe](https://stripe.com/es-se)
-Payment processing software and application programming interfaces (APIs) for e-commerce websites and mobile applications.
-
-####[Django-filter](https://django-filter.readthedocs.io/en/stable/)
-Django-filter is a generic, reusable application to alleviate writing some of the more mundane bits of view code. Specifically, it allows users to filter down a queryset based on a model’s fields, displaying the form to let them do this.
+* [JQuery](https://jquery.com/)
+    * Is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation
+ 
+####Technologies
+* [Heroku](https://www.heroku.com/)
+    * Is a cloud platform as a service (PaaS) supporting several programming languages (Java, Node.js, Scala, Clojure, Python, PHP, and Go).
+* [Cloudinary](https://pypi.org/project/cloudinary/)
+    * Is a cloud service that offers a solution to a web application’s entire image management pipeline.
+      Easily upload images to the cloud. Automatically perform smart image resizing, cropping and conversion without installing any complex software
+* [Whitenoise](https://pypi.org/project/whitenoise/)
+    * Allows your web app to serve its own static files, making it a self-contained unit that can be deployed anywhere without relying on nginx, Amazon S3 or any other external service
+* [Materialize (0.100.2)](http://archives.materializecss.com/0.100.2/)
+    * Materialize is a modern responsive CSS framework based on Material Design by Google.
+* [noUislider](https://refreshless.com/nouislider/)
+    * NoUiSlider is a lightweight range slider with multi-touch support and a ton of features. It supports non-linear ranges, requires no external dependencies, has keyboard support, and it works great in responsive designs
+* [Wnumb](https://refreshless.com/wnumb/)
+    * WNumb is a formatting library with a dead-simple interface. It has two methods: to and from. Licensed MIT, so free for personal and commercial use.
+* [Django-Crispy-Forms](https://django-crispy-forms.readthedocs.io/en/latest/index.html)django-crispy-forms)
+    * Is a pluggable Django app that helps to write DRY forms by providing additional capability to configure and control the rendered HTML.
+* [Gunicorn](https://en.wikipedia.org/wiki/Gunicorn) 
+    * Green Unicorn is a Python Web Server Gateway Interface (WSGI) HTTP server. It is a pre-fork worker model, ported from Ruby's Unicorn project.he Gunicorn server is broadly compatible with a number of web frameworks, simply implemented, light on server resources and fairly fast.
+* [Pillow](https://en.wikipedia.org/wiki/Python_Imaging_Library)
+    * Python Imaging Library (abbreviated as PIL) (in newer versions known as Pillow) is a free and open-source additional library for the Python programming language that adds support for opening, manipulating, and saving many different image file formats
+* [Requests](https://www.django-rest-framework.org/api-guide/requests/)
+    * REST framework's Request class extends the standard HttpRequest, adding support for REST framework's flexible request parsing and request authentication.
+* [Stripe](https://stripe.com/es-se)
+    * Payment processing software and application programming interfaces (APIs) for e-commerce websites and mobile applications.
+* [Django-filter](https://django-filter.readthedocs.io/en/stable/)
+    * Django-filter is a generic, reusable application to alleviate writing some of the more mundane bits of view code. Specifically, it allows users to filter down a queryset based on a model’s fields, displaying the form to let them do this.
 
 
 ###Main problems and their solutions
@@ -163,17 +140,13 @@ Django-filter is a generic, reusable application to alleviate writing some of th
 | 4  | Webhook not working                                             | When doing the webhook, because I am using intellij idea (and I am working locally) I am not able to obtain the address of the webhook to pass it to stripe                                                                                                           | I look for a tool that allows me to expose a my local development server to the Internet https://www.pubnub.com/learn/glossary/what-is-ngrok/ ngrok https://ngrok.com/  1. The setting.py allowed the address provided by Ngrok: ALLOWED_HOSTS = ['2a0d946fed40.ngrok.io'] 2. Copy the address in Stripe / Webhooks / Webhooks Data: http://2a0d946fed40.ngrok.io/checkout/wh/ 3. Write the Stripe WebHooks key for the local development environment: STRIPE_WH_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'.  (Should not be in environment STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')) |
 | 5  | Pagination and drop-down from materialize cancel each other out | When I enter this jquery version: <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> The pagination works but the drop-down from materialize does not work.   When I delete it the drop-down works but the pagination does not. | In jQuery 3 size() was deprecated and completely removed The norm is to use length property instead. So I changed the function size to length in children.length from :http://cdn.rawgit.com/pinzon1992/materialize_table_pagination/f9a8478f/js/pagination.js                                                                                                                                                                                                                                                                                                                                |
 
-#### Model:
+###Model:
+
+####Database Schema
 
 ![Data Base](https://github.com/ArloysMacias/fitness4you/blob/master/media/DataBaseDiagram/DataBase.png)
 
-
-##Database Schema
-
-##Site Configuration
-
 ##Testing
-
 
 ### Functional tests
 | No. | Scenario                      | Test                                                                                                                                                                                                                                                                    | Actual Result                                                                                                                                                                                   | Pass/Fail | Comments                                                                                                                                                                                                                                                                 |
@@ -204,7 +177,17 @@ Django-filter is a generic, reusable application to alleviate writing some of th
 | 7   | User goes to the Product page | The user should be able to choose how many products they want to add to the cart and if they are a superuser and come from clicking on a specific product in the management table they should also have the option (buttons) to come back and edit the specific product | When a user clicks 'add to cart' the chosen number of products will go straight to the cart and when a superuser clicks 'Back' or 'Edit' they will be redirected to the 'Management' page       | Pass      |                                                                                                                                                                                                                                                                          |
 
 
+### Browser Compatibility test
+
+| Browser       | Name | Pass/Fail |
+|:-------------:| :---------------: | :-----:|
+| <img src="static/images/navegators icons/588525cd6f293bbfae451a37.png" width="45px" height="45px%" /> | Chrome | Pass |
+| <img src="static/images/navegators icons/compass-151722_1280.png" width="45px" height="53px%" /> | Safari| Pass |
+| <img src="static/images/navegators icons/firefox-303322_1280.png" width="45px" height="45px%" /> | Firefox| Pass |
+
+
 ##Code Validation
+
 
 ## Deployment
 

@@ -77,16 +77,22 @@ The color scheme for this product is dark to create a feeling of danger and exci
 
 For all fonts I used Roboto, from Google Fonts. This font works well with the design as it is modern and simple. > Roboto has a dual nature. It has a mechanical skeleton and the forms are largely geometric. - [[Google Fonts, 2020]](https://fonts.google.com/specimen/Roboto).
 
-
 ###Wireframes
-####Before:
+#####Before:
 ![Home page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/desktop.png)
 
 ####After:
-####Desktop
-![Home page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/desktop.png)
+#####Desktop
+* ![Home page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Home%20page%20desktop%20view.png)
+* ![Products page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Products%20page%20desktop%20view.png)
+* ![My profile page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/My%20profile%20page%20desktop%20view.png)
+* ![Edit products page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Edit%20products%20page%20desktop%20view.png)
+* ![Add products page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Add%20products%20page%20desktop%20view.png)
 
-####Mobile
-![Desktop](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/desktop.png)
 
-
+#####Mobile
+* ![Home page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Home%20page%20mobile%20view.png)
+* ![Products page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Products%20page%20mobile%20view.png)
+* ![My profile page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/My%20profile%20page%20mobile%20view.png)
+* ![Edit products page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Eddit%20and%20add%20products%20mobile%20view.png)
+* ![Add products page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Eddit%20and%20add%20products%20mobile%20view%20(1).png)

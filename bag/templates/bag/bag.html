@@ -33,67 +33,67 @@
                     {% if bag_items %}
                         <table class="centered">
                             <thead class="thead-bag">
-                                <tr>
-                                    <th></th>
-                                    <th>NAME</th>
-                                    <th>QTY</th>
-                                    <th>PRICE</th>
-                                    <th class="hide-on-small-only">DESCRIPTION</th>
-                                    <th>TOTAL</th>
-                                    <th></th>
-                                </tr>
+                            <tr>
+                                <th></th>
+                                <th>NAME</th>
+                                <th>QTY</th>
+                                <th>PRICE</th>
+                                <th class="hide-on-small-only">DESCRIPTION</th>
+                                <th>TOTAL</th>
+                                <th></th>
+                            </tr>
                             </thead>
                             <tbody class="tbody-bag tbody-scroll">
-                                {% for item in bag_items %}
-                                    <tr>
-                                        <!--Image-->
-                                        <td>
-                                            {% if item.product.image %}
-                                                <img class="materialboxed bag-image" {% comment %}width="80"{% endcomment %}
-                                                     src="{{ item.product.image.url }}"
-                                                     alt="product-image">
-                                            {% else %}
-                                                <img class="materialboxed bag-image" {% comment %}width="80"{% endcomment %}
-                                                     src="{{ MEDIA_URL }}no-image.png"
-                                                     alt="no-images">
-                                            {% endif %}
+                            {% for item in bag_items %}
+                                <tr>
+                                    <!--Image-->
+                                    <td>
+                                        {% if item.product.image %}
+                                            <img class="materialboxed bag-image" {% comment %}width="80"{% endcomment %}
+                                                 src="{{ item.product.image.url }}"
+                                                 alt="product-image">
+                                        {% else %}
+                                            <img class="materialboxed bag-image" {% comment %}width="80"{% endcomment %}
+                                                 src="{{ MEDIA_URL }}no-image.png"
+                                                 alt="no-images">
+                                        {% endif %}
 
-                                        </td>
-                                        <!--Name-->
-                                        <td>
-                                            <p class="center">{{ item.product.product_name }}</p>
-                                        </td>
-                                        <!--Update quantity-->
-                                        <td>
-                                            <div class="amount-cell valign-wrapper">
-                                                <a href="{% url 'update_bag_amount' %}?update={{ item.product.id }},increase,{{ item.quantity }};">
-                                                    <i class="small material-icons green-text">add_circle</i>
-                                                </a>
-                                                <p class="center">{{ item.quantity }}</p>
-                                                <a href="{% url 'update_bag_amount' %}?update={{ item.product.id }},decrease,{{ item.quantity }};">
-                                                    <i class="small material-icons light-green-text">remove_circle</i>
-                                                </a>
-                                            </div>
-                                        </td>
-                                        <!--Price-->
-                                        <td>
-                                            <p class="center">€{{ item.product.price }}</p>
-                                        </td>
-                                        <!--Description-->
-                                        <td class="hide-on-small-only">
-                                            <p class="center">{{ item.product.product_description }}</p>
-                                        </td>
-                                        <!--Total Price-->
-                                        <td>
-                                            <p class="center">€{{ item.total_item_price }}</p>
-                                        </td>
-                                        <!--Delete-->
-                                        <td>
-                                            <a href="{% url 'update_bag_amount' %}?update={{ item.product.id }},remove,{{ item.quantity }};"><i
-                                                    class="delete-icon material-icons valign-wrapper">delete</i></a>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
+                                    </td>
+                                    <!--Name-->
+                                    <td>
+                                        <p class="center">{{ item.product.product_name }}</p>
+                                    </td>
+                                    <!--Update quantity-->
+                                    <td>
+                                        <div class="amount-cell valign-wrapper">
+                                            <a href="{% url 'update_bag_amount' %}?update={{ item.product.id }},increase,{{ item.quantity }};">
+                                                <i class="small material-icons green-text">add_circle</i>
+                                            </a>
+                                            <p class="center">{{ item.quantity }}</p>
+                                            <a href="{% url 'update_bag_amount' %}?update={{ item.product.id }},decrease,{{ item.quantity }};">
+                                                <i class="small material-icons light-green-text">remove_circle</i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <!--Price-->
+                                    <td>
+                                        <p class="center">€{{ item.product.price }}</p>
+                                    </td>
+                                    <!--Description-->
+                                    <td class="hide-on-small-only">
+                                        <p class="center">{{ item.product.product_description }}</p>
+                                    </td>
+                                    <!--Total Price-->
+                                    <td>
+                                        <p class="center">€{{ item.total_item_price }}</p>
+                                    </td>
+                                    <!--Delete-->
+                                    <td>
+                                        <a href="{% url 'update_bag_amount' %}?update={{ item.product.id }},remove,{{ item.quantity }};"><i
+                                                class="delete-icon material-icons valign-wrapper">delete</i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
                         <br><br>

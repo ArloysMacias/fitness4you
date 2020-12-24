@@ -129,7 +129,7 @@
                         </div>
                         <div class="input-field col s12 l5 " style="position: relative">
                             <i id="country-world" class="material-icons prefix">public</i>
-                            {{order_form.country}}
+                            {{ order_form.country }}
                         </div>
                     </div>
                     <!--Address-->
@@ -156,10 +156,10 @@
                         <div class="col s12 right">
                             {% if user.is_authenticated %}
                                 <p class="save_info-check-box right">
-{#                                    <input type="checkbox" {% if saved %}checked{% else %}{% endif %} name="save_info_name" id="save_info_checkbox"/>#}
-{#                                    <label for="save_info_checkbox">Save information</label>#}
-{#                                    <input type="hidden" name="save_info" value={{ saved }}>#}
-                                    <input type="checkbox" id="id-save-info" name="save-info" checked />
+                                    {#                                    <input type="checkbox" {% if saved %}checked{% else %}{% endif %} name="save_info_name" id="save_info_checkbox"/>#}
+                                    {#                                    <label for="save_info_checkbox">Save information</label>#}
+                                    {#                                    <input type="hidden" name="save_info" value={{ saved }}>#}
+                                    <input type="checkbox" id="id-save-info" name="save-info" checked/>
                                     <label for="id-save-info">Save order</label>
                                 </p>
                             {% else %}

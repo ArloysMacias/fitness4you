@@ -19,7 +19,6 @@ def index(request):
     if request.user.is_authenticated:
         list_to_show = popular_products  # ALL
 
-
     context = {
         'products': list_to_show[:4],
     }

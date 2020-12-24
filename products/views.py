@@ -1,12 +1,8 @@
 from decimal import Decimal
-
-from cloudinary import CloudinaryImage
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
-from django.utils.html import format_html
-
 from .filters import ProductFilter, CategoryFilter
 from .form import ProductForm
 from .models import Product, Category
@@ -127,7 +123,7 @@ def add_product(request):
 @login_required()
 def edit_product(request, product_id):
     if not request.user.is_superuser:
-        messages.error(request, f"Sorry, you don't seem to have clearance to do that 🤭")
+        messages.error(request, "Sorry, you don't seem to have clearance to do that 🤭")
         return redirect(reverse('products'))
 
     products_list = Product.objects.all()

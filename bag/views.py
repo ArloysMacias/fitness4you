@@ -1,6 +1,5 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.urls import reverse
 from django.utils.html import format_html
 
 from products.models import Product

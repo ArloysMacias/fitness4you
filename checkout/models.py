@@ -21,7 +21,8 @@ class Order(models.Model):
     stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
     date = models.DateTimeField(auto_now_add=False, default=timezone.now, null=False, verbose_name="Date of order")
     original_bag = models.TextField(null=False, blank=False, default='')
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, null=True, blank=True,
+                                     related_name='orders')
 
     def generate_order_number(self):
         """Generate a unique id usign UUID"""

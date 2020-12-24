@@ -44,7 +44,7 @@
     </div>
     <div class="black-text">
         <form method="GET" action="{% url 'products' %}" enctype="multipart/form-data">
-            {#            {% csrf_token %}#}
+            {% csrf_token %}
             <div class="row">
                 <div class="col s12 m4 l3">
                     <!-- Left filter -->

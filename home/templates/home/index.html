@@ -35,8 +35,8 @@
     </section>
 
     <!--POPULAR_PRODUCTS-->
-    <section id="popular_products" >
-        <div id="index-banner" class="parallax-container parallax-container-products-home parallax-background ">
+    <section id="popular_products">
+        <div class="parallax-container parallax-container-products-home parallax-background ">
             <div class="section no-pad-bot">
                 <br><br class="hide-on-small-only">
                 <h4 class="center">POPULAR PRODUCTS</h4>
@@ -56,7 +56,8 @@
                                         {% endif %}
                                         <br class="hide-on-med-and-up">
                                         <div class="row">
-                                            <span class="card-title small" title="{{ product.product_name }}">{{ product.product_name|truncatechars:11}}</span>
+                                            <span class="card-title small"
+                                                  title="{{ product.product_name }}">{{ product.product_name|truncatechars:11 }}</span>
                                         </div>
 
                                         <div class="extra-button">
@@ -123,7 +124,7 @@
 
     <!--BECOME A MEMBER-->
     <section id="become_a_member" class="hide-on-small-only">
-        <div id="index-banner" class="parallax-container parallax-background-become-a-member">
+        <div  class="parallax-container parallax-background-become-a-member">
             <div class="section no-pad-bot">
                 <div class="become_a_member_container">
                     <h2 class="header center white-text text-lighten-2">Become a member to get more deals</h2>
@@ -131,7 +132,7 @@
                         <h5 class="header col s12 light">FIND OUR EXCLUSIVE PRODUCTS</h5>
                     </div>
                     <div class="row center">
-                        <a href="{% url 'account_login' %}" id="download-button"
+                        <a href="{% url 'account_login' %}"
                            class="animate__animated animate__bounce btn-large waves-effect waves-light red lighten-1">Sign
                             up</a>
                     </div>

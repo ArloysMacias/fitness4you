@@ -1,9 +1,7 @@
 import json
 import time
-from django.http import HttpResponse, request
+from django.http import HttpResponse
 from django.core.mail import send_mail
-from stripe.api_resources import order
-
 from checkout.models import Order, ProductOrder
 from products.models import Product
 from profiles.models import UserProfile

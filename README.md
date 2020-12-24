@@ -1,86 +1,126 @@
-#Fitness4You: An E-commerce site
+# Fitness4You: An E-commerce site
 This e-commerce site is was created as a fourth Mile stone project with Code Institute.
 It is a web-based store where users can view and purchase fitness and nutritional supplements as a part of their fitness routine. They can search and filter the offered products dynamically Users can interact with the site as a guest, including purchasing or users can create a profile, log in and interact with the site through his or her own account. This also allows the user to keep track of his or her information and purchase history.
 
-##Demo
+- [Demo](#demo)
+- [Planning Fitness4You](#planning-fitness4you)
+- [Features](#features)
+  * [Existing Features](#existing-features)
+    + [Navbar](#navbar)
+    + [Home Page](#home-page)
+    + [Product List](#product-list)
+      - [Product details:](#product-details-)
+      - [Buttons:](#buttons-)
+    + [Product Page](#product-page)
+      - [Product details:](#product-details--1)
+    + [Register Page](#register-page)
+    + [Login Page](#login-page)
+    + [Logout Page](#logout-page)
+    + [Admin Page](#admin-page)
+    + [Cart Page](#cart-page)
+    + [Checkout Page](#checkout-page)
+    + [Checkout Successful Page](#checkout-successful-page)
+  * [Features Left to Implement](#features-left-to-implement)
+  * [Languages and Technologies](#languages-and-technologies)
+    + [Languages](#languages)
+    + [Technologies](#technologies)
+  * [Main problems and their solutions](#main-problems-and-their-solutions)
+  * [Model:](#model-)
+    + [Database Schema](#database-schema)
+- [Testing](#testing)
+  * [Unit tests](#unit-tests)
+    + [CSS Validation](#css-validation)
+    + [HTML Validation](#html-validation)
+    + [PHP Validation](#php-validation)
+    + [JavaScrip Validation](#javascrip-validation)
+  * [Functional tests](#functional-tests)
+  * [Browser Compatibility test](#browser-compatibility-test)
+- [Code Validation](#code-validation)
+- [Deployment](#deployment)
+- [Credits](#credits)
+
+## Demo
 
 
-##Planning Fitness4You
+## Planning Fitness4You
 The planning done prior to developing the project can be found in the document below:
 
 [Project Planning document](https://github.com/ArloysMacias/fitness4you/blob/master/PLANNING.md)
 
-##Features
-###Existing Features
-####Navbar
+## Features
+
+### Existing Features
+
+#### Navbar
 Each page on the site has the navbar accessible on the very top of the page. In mobile devices it turns into a hamburger menu in the top left corner of the page.
 
-The following options are presented on the navbar when the user is not logged in:
-* Home
-* Products
-* Account (Dropdown: Login / Register)
-* Shopping cart (with number indication items inside)
+* The following options are presented on the navbar when the user is not logged in:
+    * Home
+    * Products
+    * Account (Dropdown: Login / Register)
+    * Shopping cart (with number indication items inside)
 
-The following options are presented on the navbar when the user is logged in:
-* Home
-* Products
-* Account (Dropdown: My profile / Logout)
-* User name
-* Shopping cart (with number indication items inside)
+* The following options are presented on the navbar when the user is logged in:
+    * Home
+    * Products
+    * Account (Dropdown: My profile / Logout)
+    * User name
+    * Shopping cart (with number indication items inside)
 
-The following options are presented on the navbar when a superuser is logged in:
-* Home
-* Products
-* Management (Dropdown: Edit product / Add product)
-* Account (Dropdown: My profile / Logout)
-* User name
-* Shopping cart (with number indication items inside)
+* The following options are presented on the navbar when a superuser is logged in:
+    * Home
+    * Products
+    * Management (Dropdown: Edit product / Add product)
+    * Account (Dropdown: My profile / Logout)
+    * User name
+    * Shopping cart (with number indication items inside)
 
-####Home Page
+#### Home Page
 Created with the intent on drawing the interest of the user with bold colors and intriguing images. 
 
 * Buttons that makes it easy for the user to create an account, as it directs him or her to the Login/Register page
 * A section showing some of the products available for purchase, with clickable links taking the user to the specific product page
 * Footer with contact information to the owner of the site
 
-####Product List
-#####Product details: 
+#### Product List
+##### Product details: 
 * Displayed in the product cards are information about each product such as name, brand, price, rating and description. Each product also displays an image which is clickable for an enlarged view.
 
-#####Buttons:
+##### Buttons:
 * Each product card has a 'view' button and a 'add-to-cart' button attach to it. Clicking the 'view' button will redirect the user to the specific product page and the 'add-to-cart' button will place the product in the cart, showing a success message when completed.
 
-####Product Page
-#####Product details:
+#### Product Page
+##### Product details:
 * As opposed to the Product list, the Product page displays information about a specific product in a larger view such as name, brand, price, rating and description. Each product also displays an image which is clickable for an enlarged view.
 
 #####Buttons:
 * An 'add-to-cart' button will place the product in the cart, showing a success message when completed and a 'continue shopping' button will take the user back to the Product List.
 
-####Register Page
+#### Register Page
 This template is from django's inbuilt allauth.
 
 * The register page allows new users to be added to the database. This consists of a registration form where the user enters the information needed in order to successfully register as a user on the page. When the user clicks 'Sign up' a new user is added into the database.
 
-####Login Page
+#### Login Page
 * When the user click the 'login' button they are redirected to the login page where they have to input user name and password in order to successfully log in. If an incorrect user name or password is entered the page is refreshed, the user is informed and asked to submit again. After successful login the user is redirected to 'Home' page.
 
-####Logout Page
+#### Logout Page
 * When the user click on the 'logout' button they are redirected to a confirmation page where the user is asked to confirm if they want to complete the log out. Once logged out the user will be redirected to the 'Home' page.
 
-####Admin Page
+#### Admin Page
 * The admin page gives the superuser the option of modifying the products, delete and add new. In the 'Product list' the superuser can view individual products, delete, or modify them with the click of a button. The super user also has an added 'Management' option in the navbar where they can choose 'Add product' or 'Edit product' which takes the superuser to a form where all products can be accessed. 
 
-####Cart Page
+#### Cart Page
 * The Cart page displays the shopping cart with the items the user had added previously. It shows the product quantity, individual price, total price and product description. It also allows the user to change the quantity of individual products as well as deleting a product from the cart. If the quantity of an item is reduced to zero it will automatically be removed from the cart. Buttons to continue shopping or to proceed to checkout are displayed. If the user visits their cart but hasn't added any products, they will be informed that their cart is empty and no checkout button will be visible.
 
-####Checkout Page
+#### Checkout Page
 * The checkout page contains the forms used to insert the user's personal details and to insert payment details. At the bottom of the page is the 'Submit payment' button which will initiate interaction with Stripe API.
 
-####Checkout Successful Page
+#### Checkout Successful Page
 * If checkout is successful the user will be redirected to the 'Checkout Successful Page' where they will be informed that the payment went through and a confirmation email has been sent to the email provided in the previous form. The user will also see a "receipt" or a complete list showing the order they just placed.
 
-###Features Left to Implement
+
+### Features Left to Implement
 Without time constraints it would be ideal to make it a bigger project with gym affiliations and facilities. As shown in the original wireframes, this was the idea from the start.
 To achieve this the following features would need to be implemented:
 
@@ -88,9 +128,9 @@ To achieve this the following features would need to be implemented:
 * The option to sign up for a gym membership
 * The option for users to leave product reviews
 
-###Languages and Technologies
+## Languages and Technologies
 
-####Languages
+### Languages
 * [HTML5](https://html.spec.whatwg.org/multipage/)
     * A markup language that it is used for structuring and presenting content. 
 * [CSS](https://www.w3.org/Style/CSS/)
@@ -102,7 +142,7 @@ To achieve this the following features would need to be implemented:
 * [JQuery](https://jquery.com/)
     * Is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation
  
-####Technologies
+### Technologies
 * [Heroku](https://www.heroku.com/)
     * Is a cloud platform as a service (PaaS) supporting several programming languages (Java, Node.js, Scala, Clojure, Python, PHP, and Go).
 * [Cloudinary](https://pypi.org/project/cloudinary/)
@@ -130,7 +170,7 @@ To achieve this the following features would need to be implemented:
     * Django-filter is a generic, reusable application to alleviate writing some of the more mundane bits of view code. Specifically, it allows users to filter down a queryset based on a model’s fields, displaying the form to let them do this.
 
 
-###Main problems and their solutions
+## Main problems and their solutions
 
 | No | Name                                                            | Description                                                                                                                                                                                                                                                           | Solutions                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 |----|-----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -140,13 +180,40 @@ To achieve this the following features would need to be implemented:
 | 4  | Webhook not working                                             | When doing the webhook, because I am using intellij idea (and I am working locally) I am not able to obtain the address of the webhook to pass it to stripe                                                                                                           | I look for a tool that allows me to expose a my local development server to the Internet https://www.pubnub.com/learn/glossary/what-is-ngrok/ ngrok https://ngrok.com/  1. The setting.py allowed the address provided by Ngrok: ALLOWED_HOSTS = ['2a0d946fed40.ngrok.io'] 2. Copy the address in Stripe / Webhooks / Webhooks Data: http://2a0d946fed40.ngrok.io/checkout/wh/ 3. Write the Stripe WebHooks key for the local development environment: STRIPE_WH_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'.  (Should not be in environment STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')) |
 | 5  | Pagination and drop-down from materialize cancel each other out | When I enter this jquery version: <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> The pagination works but the drop-down from materialize does not work.   When I delete it the drop-down works but the pagination does not. | In jQuery 3 size() was deprecated and completely removed The norm is to use length property instead. So I changed the function size to length in children.length from :http://cdn.rawgit.com/pinzon1992/materialize_table_pagination/f9a8478f/js/pagination.js                                                                                                                                                                                                                                                                                                                                |
 
-###Model:
+## Model:
 
-####Database Schema
+### Database Schema
 
 ![Data Base](https://github.com/ArloysMacias/fitness4you/blob/master/media/DataBaseDiagram/DataBase.png)
 
-##Testing
+## Testing
+
+This site was tested with the inspection function of Chrome and Firefox and the featured mobile view that they provide (iphone 6, 7, 8 plus and ipad). No issues were detected during the testing. Neither were any issues found when tests were performed in devices with high contrast.
+
+I used [W3C Validator](https://validator.w3.org/) to check the markup validity of Web documents in HTML and CSS. Highlighted errors:
+
+### Unit tests
+
+
+#### CSS Validation
+I used [W3C Validator](https://jigsaw.w3.org/css-validator/validator) to check myscript.js, the code was syntactically valid:
+![cssTest](static/images/codeValidation/before/beforecss.png)
+
+#### HTML Validation
+Before:
+![htmlTest](static/images/codeValidation/before/beforehtml.png)
+
+After:
+![htmlTest](static/images/codeValidation/after/afterhtml.png)
+
+#### PHP Validation
+![Flask8 validations](media/tests/Flake8)
+
+
+#### JavaScrip Validation
+I used [Esprima](https://esprima.org/demo/validate.html) Syntax Validator to check myscript.js, the code was syntactically valid:
+![javaScriptTest](static/images/codeValidation/before/beforejavascript.png)
+
 
 ### Functional tests
 | No. | Scenario                      | Test                                                                                                                                                                                                                                                                    | Actual Result                                                                                                                                                                                   | Pass/Fail | Comments                                                                                                                                                                                                                                                                 |
@@ -177,19 +244,15 @@ To achieve this the following features would need to be implemented:
 | 7   | User goes to the Product page | The user should be able to choose how many products they want to add to the cart and if they are a superuser and come from clicking on a specific product in the management table they should also have the option (buttons) to come back and edit the specific product | When a user clicks 'add to cart' the chosen number of products will go straight to the cart and when a superuser clicks 'Back' or 'Edit' they will be redirected to the 'Management' page       | Pass      |                                                                                                                                                                                                                                                                          |
 
 
-### Browser Compatibility test
+## Browser Compatibility test
 
 | Browser       | Name | Pass/Fail |
 |:-------------:| :---------------: | :-----:|
-| <img src="static/images/navegators icons/588525cd6f293bbfae451a37.png" width="45px" height="45px%" /> | Chrome | Pass |
-| <img src="static/images/navegators icons/compass-151722_1280.png" width="45px" height="53px%" /> | Safari| Pass |
-| <img src="static/images/navegators icons/firefox-303322_1280.png" width="45px" height="45px%" /> | Firefox| Pass |
-
-
-##Code Validation
-
+| <img src="media/images/navegatorsicons/588525cd6f293bbfae451a37.png" width="45px" height="45px%" /> | Chrome | Pass |
+| <img src="media/images/navegatorsicons/compass-151722_1280.png" width="45px" height="53px%" /> | Safari| Pass |
+| <img src="media/images/navegatorsicons/firefox-303322_1280.png" width="45px" height="45px%" /> | Firefox| Pass |
 
 ## Deployment
 
-##Credits
+## Credits
 A million thanks to the best wife EVER!!!!

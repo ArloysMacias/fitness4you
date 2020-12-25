@@ -198,22 +198,19 @@ I used [W3C Validator](https://validator.w3.org/) to check the markup validity o
 
 #### Python Validation
 I used [Flake8](https://simpleisbetterthancomplex.com/packages/2016/08/05/flake8.html) for checking the code base against coding style (PEP8), programming errors (like “library imported but unused” and “Undefined name”) and to check cyclomatic complexity
-
-[This is the link to the Python test folder](https://github.com/ArloysMacias/fitness4you/tree/master/media/tests/Flake8)
+* [This is the link to the Python test folder](https://github.com/ArloysMacias/fitness4you/tree/master/media/tests/Flake8)
 
 #### HTML Validation
-I used [W3C Validator](https://validator.w3.org/): By the World Wide Web Consortium (W3C) that allows Internet users to check HTML and XHTML documents for well-formed markup
-[This is the link to the HTML test folder](https://github.com/ArloysMacias/fitness4you/tree/master/media/tests/HTML)
-
-
+I used [W3C Validator](https://validator.w3.org/): By the World Wide Web Consortium (W3C) that allows Internet users to check HTML documents for well-formed markup
+* [This is the link to the HTML test folder](https://github.com/ArloysMacias/fitness4you/tree/master/media/tests/HTML)
 
 #### CSS Validation
-I used [W3C Validator](https://pypi.org/project/flake8-django/) to check myscript.js, the code was syntactically valid:
-![cssTest](static/images/codeValidation/before/beforecss.png)
+I used [W3C CSS Validator](http://jigsaw.w3.org/css-validator/#validate_by_uri+with_options): to ensure that there are no errors in the associated cascading style sheet . CSS validators work in a similar way to HTML and XHTML validators, they apply current CSS standards to referenced CSS documents.
+* [This is the link to the CSS test folder](https://github.com/ArloysMacias/fitness4you/tree/master/media/tests/CSS)
 
 #### JavaScrip Validation
-I used [Esprima](https://esprima.org/demo/validate.html) Syntax Validator to check myscript.js, the code was syntactically valid:
-![javaScriptTest](static/images/codeValidation/before/beforejavascript.png)
+I used [BautyTools](http://beautifytools.com/javascript-validator.php) (Javascript Validator) to check javascript documents, the code was syntactically valid:
+* [This is the link to the JS test folder](https://github.com/ArloysMacias/fitness4you/tree/master/media/tests/JS)
 
 
 ### Functional tests
@@ -254,6 +251,67 @@ I used [Esprima](https://esprima.org/demo/validate.html) Syntax Validator to che
 | <img src="media/images/navegatorsicons/firefox-303322_1280.png" width="45px" height="45px%" /> | Firefox| Pass |
 
 ## Deployment
+### How to run this project locally
+In order to run this project on your idea, you firstly need to have these tools: - An IDE like Visual Studio Code
+
+#### Instaled:
+* An [IDE](https://realpython.com/python-ides-code-editors-guide/) (or Integrated Development Environment)for work with Python
+* [Python3](https://www.python.org/download/releases/3.0/)
+
+#### Accounts in:
+* [Stripe](https://stripe.com/es-se)
+* [Cloudinary](https://pypi.org/project/cloudinary/) or [Amazon S3](https://aws.amazon.com/es/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Categories=categories%23storage&trk=ps_a134p000004f2XNAAY&trkCampaign=acq_paid_search_brand&sc_channel=PS&sc_campaign=acquisition_EMEA&sc_publisher=Google&sc_category=Storage&sc_country=EMEA&sc_geo=EMEA&sc_outcome=acq&sc_detail=amazon%20s3&sc_content=S3_e&sc_matchtype=e&sc_segment=468762436981&sc_medium=ACQ-P|PS-GO|Brand|Desktop|SU|Storage|S3|EMEA|EN|Text|xx|EU&s_kwcid=AL!4422!3!468762436981!e!!g!!amazon%20s3&ef_id=Cj0KCQiAlZH_BRCgARIsAAZHSBkcBQzvxaMMcw4P-UX_hPzpVfz4KxuQQ2NnMzoN66xNhMDKMRNKYI0aAteZEALw_wcB:G:s&s_kwcid=AL!4422!3!468762436981!e!!g!!amazon%20s3)
+
+#### Instructions:
+1. Save/Clone the github repo [https://github.com/ArloysMacias/fitness4you](https://github.com/ArloysMacias/fitness4you). 
+    * You can do this through clicking the "download zip" button at the top of the page and extracting the zip file to your chosen folder. 
+    If you have Git installed on your system, you can clone the repository with the following command: 
+      *   `git clone git@github.com:ArloysMacias/fitness4you.git`      
+2. Open your IDE and a terminal session in the unzip folder or cd to the correct location.
+3. Configure a virtual environment:
+    * [Example for Intellij PYCharm](https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html)
+4. Install the necessary modules with this command:
+    * `pip -r requirements.txt.`
+5. Set up environment variables:
+    ![Enviroment variables](media/deployment/Captura de pantalla 2020-12-25 a las 1.44.53.png)
+6. Migrate the models in the admin panel to make your database template like so:
+    * `python manage.py migrate`
+7. Create a superuser in order to be able to use the admin panel:
+    * `python manage.py createsuperuser`
+8. Run the program:
+    * `python manage.py runserver`
+    
+### Deploy to heroku
+
+* On Heroku create an account and log in.
+* Click `new` and `create new app`.
+* Choose a unique name for your app, select region and click on `Create App`
+* Under the `Settings` click `Reveal Config Vars` and set 
+    ![Enviroment variables](media/deployment/Captura de pantalla 2020-12-25 a las 2.17.18.png)
+* Go to the CLI and type `$ sudo snap install --classic heroku`
+* Type `$ heroku login` command into the terminal
+* Create `requirements.txt` ($ sudo pip3 freeze --local > requirements.txt)
+* Create a `Procfile` (`$ echo web: python app.py > Procfile`)
+* Go back to Heroku, under `Deploy` find `Existing Git repository` and copy the command:`$ heroku git:remote -a <app_name>` Paste this into the terminal.
+* (If repository was not created already, type:
+* `$ cd my-project/`
+* `$ git init`
+* `$ heroku git:remote -a <app_name>`)
+* Type `$ heroku ps:scale web=1` into the terminal.
+* Go back to Heroku, and at `Settings` copy `https://<app_name>.herokuapp.com/` 
+* In the terminal type `git remote add http://<app_name>.herokuapp.com/`
+* Type `git push -u heroku master`
+* Go to the command line of your local IDE, and do the following:
+    1. Enter the heroku postGres shell
+    2. Migrate the database models
+    3. Create your superuser account in your new database
+    4. Instructions on how to do these steps can be found in the heroku devcenter documentation.
+* Go to your dashboard in heroku and click "Deploy". Scroll down to "Manual Deploy", select the master branch then click "Deploy Branch".
+* Once the build is complete, go back to Heroku and click on `Open App`
 
 ## Credits
-A million thanks to the best wife EVER!!!!
+To my mentor Rahul Lakhanpal and all the team in Code Institute / Students Support. 
+To the full-stack-frameworks in the Code Institute Slack-channel in particular for being so kind and responding super quickly to students' questions.
+A big thank you to my colleagues at work for allowing me to finish this project on time and with minimal stress.
+
+A million thanks to the best wife EVER !!!

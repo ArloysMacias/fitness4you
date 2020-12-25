@@ -99,7 +99,7 @@ For all fonts I used Roboto, from Google Fonts. This font works well with the de
 
 ### Wireframes
 ##### Before:
-![Home page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/desktop.png)
+<img src="media/wireframes/desktop.png" width="45%" height="60%" />
 
 #### After:
 ##### Desktop

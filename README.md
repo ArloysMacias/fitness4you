@@ -251,6 +251,17 @@ I used [BautyTools](http://beautifytools.com/javascript-validator.php) (Javascri
 |     |                               | The superuser should be able to see the option to add products                                                                                                                                                                                                          | When a superuser click in the navbar dropdown (Add products) they are redirected to the 'Add products' page with an empty form to add the new product information                               | Pass      | The superuser will also be redirected to the add product page if clicking the 'back' button in a 'Product page'                                                                                                                                                          |
 | 7   | User goes to the Product page | The user should be able to choose how many products they want to add to the cart and if they are a superuser and come from clicking on a specific product in the management table they should also have the option (buttons) to come back and edit the specific product | When a user clicks 'add to cart' the chosen number of products will go straight to the cart and when a superuser clicks 'Back' or 'Edit' they will be redirected to the 'Management' page       | Pass      |                                                                                                                                                                                                                                                                          |
 
+#### Lighthouse test
+I used [Lighthouse](https://en.wikipedia.org/wiki/Google_Lighthouse) to measure the quality of this web page:
+##### Before:
+<img src="media/tests/Lighthouse/before.png" width="60%%" height="50%" />
+
+##### After:
+<img src="media/tests/Lighthouse/after.png" width="60%" height="50%%" />
+
+* [This is the link to the Lighthouse test folder](https://github.com/ArloysMacias/fitness4you/tree/master/media/tests/Lighthouse)
+
+
 [Back to Top](#table-of-contents)
 ## Browser Compatibility test
 

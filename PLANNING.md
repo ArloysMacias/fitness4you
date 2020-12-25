@@ -1,6 +1,6 @@
 # Fitness4You: An E-commerce site planning
 
-[MAIN README](https://github.com/ArloysMacias/fitness4you/blob/master/README.md)
+[MAIN README](https://github.com/ArloysMacias/fitness4you#table-of-contents)
 
 ## Table of Contents
 - [UX](#ux)

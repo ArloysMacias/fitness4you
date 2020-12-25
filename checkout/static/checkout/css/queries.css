@@ -7,6 +7,9 @@
     .extra-button{
         padding-top: 82px!important;
     }
+  .button-checkout{;
+      width: auto!important;
+  }
 
 }
 /** Large devices (desktops, 992px and up) */

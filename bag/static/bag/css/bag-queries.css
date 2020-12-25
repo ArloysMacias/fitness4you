@@ -22,6 +22,10 @@
         color: #f16868!important;
     }
 
+    .button-checkout{;
+        width: auto!important;
+    }
+
 }
 
 /** Extra large devices (large desktops, 1200px and up) */

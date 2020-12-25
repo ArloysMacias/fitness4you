@@ -40,7 +40,7 @@ It is a web-based store where users can view and purchase fitness and nutritiona
 - [Browser Compatibility test](#browser-compatibility-test)
 - [Deployment](#deployment)
   * [How to run this project locally](#how-to-run-this-project-locally)
-    + [Instaled:](#instaled-)
+    + [Installed:](#installed-)
     + [Accounts in:](#accounts-in-)
     + [Instructions:](#instructions-)
   * [Deploy to heroku](#deploy-to-heroku)

@@ -1,6 +1,7 @@
 # Fitness4You: An E-commerce site
 This e-commerce site is was created as a Full-Stack Mile stone project with Code Institute.
 It is a web-based store where users can view and purchase fitness and nutritional supplements as a part of their fitness routine. They can search and filter the offered products dynamically Users can interact with the site as a guest, including purchasing or users can create a profile, log in and interact with the site through his or her own account. This also allows the user to keep track of his or her information and purchase history.
+[Open app](https://fitness4you.herokuapp.com/)
 
 ## Table of Contents
 - [Demo](#demo)
@@ -320,6 +321,8 @@ In order to run this project on your computer/IDE, you firstly need to have thes
     4. Instructions on how to do these steps can be found in the heroku devcenter documentation.
 * Go to your dashboard in heroku and click "Deploy". Scroll down to "Manual Deploy", select the master branch then click "Deploy Branch".
 * Once the build is complete, go back to Heroku and click on `Open App`
+
+[Open app](https://fitness4you.herokuapp.com/)
 
 [Back to Top](#table-of-contents)
 ## Credits

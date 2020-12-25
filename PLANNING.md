@@ -103,19 +103,19 @@ For all fonts I used Roboto, from Google Fonts. This font works well with the de
 
 #### After:
 ##### Desktop
-* ![Home page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Home%20page%20desktop%20view.png =100x20)
-* ![Products page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Products%20page%20desktop%20view.png =100x20)
-* ![My profile page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/My%20profile%20page%20desktop%20view.png =100x20)
-* ![Edit products page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Edit%20products%20page%20desktop%20view.png =100x20)
-* ![Add products page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Add%20products%20page%20desktop%20view.png =100x20)
+* ![Home page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Home%20page%20desktop%20view.png)
+* ![Products page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Products%20page%20desktop%20view.png)
+* ![My profile page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/My%20profile%20page%20desktop%20view.png)
+* ![Edit products page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Edit%20products%20page%20desktop%20view.png)
+* ![Add products page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Add%20products%20page%20desktop%20view.png)
 
 
 ##### Mobile
-* ![Home page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Home%20page%20mobile%20view.png =100x20)
-* ![Products page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Products%20page%20mobile%20view.png =100x20)
-* ![My profile page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/My%20profile%20page%20mobile%20view.png =100x20)
-* ![Edit products page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Eddit%20and%20add%20products%20mobile%20view.png =100x20)
-* ![Add products page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Eddit%20and%20add%20products%20mobile%20view%20(1).png =100x20)
+* <img src="media/wireframes/New%20Project%201/Home%20page%20mobile%20view.png" width="45%" height="60%" />
+* <img src="media/wireframes/New%20Project%201/Products%20page%20mobile%20view.png" width="45%" height="60%" />
+* <img src="media/wireframes/New%20Project%201/My%20profile%20page%20mobile%20view.png" width="45%" height="60%" />
+* <img src="media/wireframes/New%20Project%201/Eddit%20and%20add%20products%20mobile%20view.png" width="45%" height="60%" />
+* <img src="media/wireframes/New%20Project%201/Eddit%20and%20add%20products%20mobile%20view%20(1).png" width="45%" height="60%" />
 
 [Back to Top](#table-of-contents)
 

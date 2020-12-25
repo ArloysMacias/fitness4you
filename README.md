@@ -278,7 +278,8 @@ In order to run this project on your idea, you firstly need to have these tools:
 4. Install the necessary modules with this command:
     * `pip -r requirements.txt.`
 5. Set up environment variables:
-    ![Enviroment variables](https://github.com/ArloysMacias/fitness4you/blob/master/media/deployment/Captura%20de%20pantalla%202020-12-25%20a%20las%201.44.53.png)
+    * <img src="media/deployment/enviromentvariablesintellij.png" width="75%" height="80%" />
+    
 6. Migrate the models in the admin panel to make your database template like so:
     * `python manage.py migrate`
 7. Create a superuser in order to be able to use the admin panel:
@@ -292,7 +293,8 @@ In order to run this project on your idea, you firstly need to have these tools:
 * Click `new` and `create new app`.
 * Choose a unique name for your app, select region and click on `Create App`
 * Under the `Settings` click `Reveal Config Vars` and set 
-    ![Enviroment variables](https://github.com/ArloysMacias/fitness4you/blob/master/media/deployment/Captura%20de%20pantalla%202020-12-25%20a%20las%202.17.18.png)
+    * <img src="media/deployment/enviromentvariablesheroku.png" width="75%" height="80%" />
+        
 * Go to the CLI and type `$ sudo snap install --classic heroku`
 * Type `$ heroku login` command into the terminal
 * Create `requirements.txt` ($ sudo pip3 freeze --local > requirements.txt)

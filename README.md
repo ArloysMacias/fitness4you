@@ -2,6 +2,7 @@
 This e-commerce site is was created as a fourth Mile stone project with Code Institute.
 It is a web-based store where users can view and purchase fitness and nutritional supplements as a part of their fitness routine. They can search and filter the offered products dynamically Users can interact with the site as a guest, including purchasing or users can create a profile, log in and interact with the site through his or her own account. This also allows the user to keep track of his or her information and purchase history.
 
+## Table of Contents
 - [Demo](#demo)
 - [Planning Fitness4You](#planning-fitness4you)
 - [Features](#features)
@@ -46,7 +47,7 @@ It is a web-based store where users can view and purchase fitness and nutritiona
 
 
 ## Demo
-![Demo](https://github.com/ArloysMacias/fitness4you/blob/master/media/demo/speed2.gif)
+![Demo](https://github.com/ArloysMacias/fitness4you/blob/master/media/demo/perfect.gif)
 
 ## Planning Fitness4You
 The planning done prior to developing the project can be found in the document below:
@@ -134,6 +135,7 @@ To achieve this the following features would need to be implemented:
 * The option to sign up for a gym membership
 * The option for users to leave product reviews
 
+[Back to Top](#table-of-contents)
 ## Languages and Technologies
 
 ### Languages
@@ -175,6 +177,7 @@ To achieve this the following features would need to be implemented:
 * [Django-filter](https://django-filter.readthedocs.io/en/stable/)
     * Django-filter is a generic, reusable application to alleviate writing some of the more mundane bits of view code. Specifically, it allows users to filter down a queryset based on a model’s fields, displaying the form to let them do this.
 
+[Back to Top](#table-of-contents)
 ## Model:
 
 ### Database Schema
@@ -182,6 +185,7 @@ To achieve this the following features would need to be implemented:
 ![Data Base](https://github.com/ArloysMacias/fitness4you/blob/master/media/DataBaseDiagram/DataBase.png)
 
 
+[Back to Top](#table-of-contents)
 ## Main problems and their solutions
 
 | No | Name                                                            | Description                                                                                                                                                                                                                                                           | Solutions                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
@@ -192,7 +196,7 @@ To achieve this the following features would need to be implemented:
 | 4  | Webhook not working                                             | When doing the webhook, because I am using intellij idea (and I am working locally) I am not able to obtain the address of the webhook to pass it to stripe                                                                                                           | I look for a tool that allows me to expose a my local development server to the Internet https://www.pubnub.com/learn/glossary/what-is-ngrok/ ngrok https://ngrok.com/  1. The setting.py allowed the address provided by Ngrok: ALLOWED_HOSTS = ['2a0d946fed40.ngrok.io'] 2. Copy the address in Stripe / Webhooks / Webhooks Data: http://2a0d946fed40.ngrok.io/checkout/wh/ 3. Write the Stripe WebHooks key for the local development environment: STRIPE_WH_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'.  (Should not be in environment STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')) |
 | 5  | Pagination and drop-down from materialize cancel each other out | When I enter this jquery version: <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> The pagination works but the drop-down from materialize does not work.   When I delete it the drop-down works but the pagination does not. | In jQuery 3 size() was deprecated and completely removed The norm is to use length property instead. So I changed the function size to length in children.length from :http://cdn.rawgit.com/pinzon1992/materialize_table_pagination/f9a8478f/js/pagination.js                                                                                                                                                                                                                                                                                                                                |
 
-
+[Back to Top](#table-of-contents)
 ## Testing
 
 This site was tested with the inspection function of Chrome and Firefox and the featured mobile view that they provide (iphone 6, 7, 8 plus and ipad). No issues were detected during the testing. Neither were any issues found when tests were performed in devices with high contrast.
@@ -246,7 +250,7 @@ I used [BautyTools](http://beautifytools.com/javascript-validator.php) (Javascri
 |     |                               | The superuser should be able to see the option to add products                                                                                                                                                                                                          | When a superuser click in the navbar dropdown (Add products) they are redirected to the 'Add products' page with an empty form to add the new product information                               | Pass      | The superuser will also be redirected to the add product page if clicking the 'back' button in a 'Product page'                                                                                                                                                          |
 | 7   | User goes to the Product page | The user should be able to choose how many products they want to add to the cart and if they are a superuser and come from clicking on a specific product in the management table they should also have the option (buttons) to come back and edit the specific product | When a user clicks 'add to cart' the chosen number of products will go straight to the cart and when a superuser clicks 'Back' or 'Edit' they will be redirected to the 'Management' page       | Pass      |                                                                                                                                                                                                                                                                          |
 
-
+[Back to Top](#table-of-contents)
 ## Browser Compatibility test
 
 | Browser       | Name | Pass/Fail |
@@ -255,6 +259,7 @@ I used [BautyTools](http://beautifytools.com/javascript-validator.php) (Javascri
 | <img src="media/images/navegatorsicons/compass-151722_1280.png" width="45px" height="53px%" /> | Safari| Pass |
 | <img src="media/images/navegatorsicons/firefox-303322_1280.png" width="45px" height="45px%" /> | Firefox| Pass |
 
+[Back to Top](#table-of-contents)
 ## Deployment
 ### How to run this project locally
 In order to run this project on your idea, you firstly need to have these tools: - An IDE like Visual Studio Code
@@ -316,9 +321,12 @@ In order to run this project on your idea, you firstly need to have these tools:
 * Go to your dashboard in heroku and click "Deploy". Scroll down to "Manual Deploy", select the master branch then click "Deploy Branch".
 * Once the build is complete, go back to Heroku and click on `Open App`
 
+[Back to Top](#table-of-contents)
 ## Credits
 To my mentor Rahul Lakhanpal and all the team in Code Institute / Students Support. 
 To the full-stack-frameworks in the Code Institute Slack-channel in particular for being so kind and responding super quickly to students' questions.
 A big thank you to my colleagues at work for allowing me to finish this project on time and with minimal stress.
 
 A million thanks to the best wife EVER !!!
+
+[Back to Top](#table-of-contents)

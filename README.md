@@ -30,13 +30,18 @@ It is a web-based store where users can view and purchase fitness and nutritiona
 - [Main problems and their solutions](#main-problems-and-their-solutions)
 - [Testing](#testing)
   * [Unit tests](#unit-tests)
-    + [CSS Validation](#css-validation)
+    + [Python Validation](#python-validation)
     + [HTML Validation](#html-validation)
-    + [PHP Validation](#php-validation)
+    + [CSS Validation](#css-validation)
     + [JavaScrip Validation](#javascrip-validation)
   * [Functional tests](#functional-tests)
 - [Browser Compatibility test](#browser-compatibility-test)
 - [Deployment](#deployment)
+  * [How to run this project locally](#how-to-run-this-project-locally)
+    + [Instaled:](#instaled-)
+    + [Accounts in:](#accounts-in-)
+    + [Instructions:](#instructions-)
+  * [Deploy to heroku](#deploy-to-heroku)
 - [Credits](#credits)
 
 
@@ -273,7 +278,7 @@ In order to run this project on your idea, you firstly need to have these tools:
 4. Install the necessary modules with this command:
     * `pip -r requirements.txt.`
 5. Set up environment variables:
-    ![Enviroment variables](media/deployment/Captura de pantalla 2020-12-25 a las 1.44.53.png)
+    ![Enviroment variables](https://github.com/ArloysMacias/fitness4you/blob/master/media/deployment/Captura%20de%20pantalla%202020-12-25%20a%20las%201.44.53.png)
 6. Migrate the models in the admin panel to make your database template like so:
     * `python manage.py migrate`
 7. Create a superuser in order to be able to use the admin panel:
@@ -287,7 +292,7 @@ In order to run this project on your idea, you firstly need to have these tools:
 * Click `new` and `create new app`.
 * Choose a unique name for your app, select region and click on `Create App`
 * Under the `Settings` click `Reveal Config Vars` and set 
-    ![Enviroment variables](media/deployment/Captura de pantalla 2020-12-25 a las 2.17.18.png)
+    ![Enviroment variables](https://github.com/ArloysMacias/fitness4you/blob/master/media/deployment/Captura%20de%20pantalla%202020-12-25%20a%20las%202.17.18.png)
 * Go to the CLI and type `$ sudo snap install --classic heroku`
 * Type `$ heroku login` command into the terminal
 * Create `requirements.txt` ($ sudo pip3 freeze --local > requirements.txt)

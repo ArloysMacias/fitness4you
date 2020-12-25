@@ -46,7 +46,7 @@ It is a web-based store where users can view and purchase fitness and nutritiona
 
 
 ## Demo
-![Demo](media/demo/speed.gif)
+![Demo](https://github.com/ArloysMacias/fitness4you/blob/master/media/demo/speed.gif)
 
 ## Planning Fitness4You
 The planning done prior to developing the project can be found in the document below:

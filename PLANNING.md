@@ -1,5 +1,25 @@
 # Fitness4You: An E-commerce site planning
 
+[MAIN README](https://github.com/ArloysMacias/fitness4you#table-of-contents)
+
+## Table of Contents
+- [UX](#ux)
+  * [Vision Statement](#vision-statement)
+    + [Feature list:](#feature-list-)
+      - [Product display:](#product-display-)
+      - [Users can filter for products by:](#users-can-filter-for-products-by-)
+      - [Site functionalities:](#site-functionalities-)
+      - [General:](#general-)
+  * [User Stories](#user-stories)
+  * [Design and Colors](#design-and-colors)
+    + [Colors](#colors)
+    + [Fonts](#fonts)
+  * [Wireframes](#wireframes)
+      - [Before:](#before-)
+    + [After:](#after-)
+      - [Desktop](#desktop)
+      - [Mobile](#mobile)
+
 ## UX
 The project's target audience is adults who are interested in enhancing their fitness routines or seeking dietary supplements and looking for a simple place where their are able to purchase this without hassle. The rating system on Fitness4You helps customers choose the best products to purchase and the login gives the customer his or her own private place to store the information and history.
 
@@ -96,3 +116,7 @@ For all fonts I used Roboto, from Google Fonts. This font works well with the de
 * ![My profile page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/My%20profile%20page%20mobile%20view.png)
 * ![Edit products page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Eddit%20and%20add%20products%20mobile%20view.png)
 * ![Add products page](https://github.com/ArloysMacias/fitness4you/blob/master/wireframes/New%20Project%201/Eddit%20and%20add%20products%20mobile%20view%20(1).png)
+
+[Back to Top](#table-of-contents)
+
+[MAIN README](https://github.com/ArloysMacias/fitness4you#table-of-contents)

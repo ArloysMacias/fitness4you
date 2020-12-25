@@ -1,5 +1,5 @@
 # Fitness4You: An E-commerce site
-This e-commerce site is was created as a fourth Mile stone project with Code Institute.
+This e-commerce site is was created as a Full-Stack Mile stone project with Code Institute.
 It is a web-based store where users can view and purchase fitness and nutritional supplements as a part of their fitness routine. They can search and filter the offered products dynamically Users can interact with the site as a guest, including purchasing or users can create a profile, log in and interact with the site through his or her own account. This also allows the user to keep track of his or her information and purchase history.
 
 ## Table of Contents
@@ -65,14 +65,14 @@ Each page on the site has the navbar accessible on the very top of the page. In 
     * Home
     * Products
     * Account (Dropdown: Login / Register)
-    * Shopping cart (with number indication items inside)
+    * Shopping cart (with number indicating items inside)
 
 * The following options are presented on the navbar when the user is logged in:
     * Home
     * Products
     * Account (Dropdown: My profile / Logout)
     * User name
-    * Shopping cart (with number indication items inside)
+    * Shopping cart (with number indicating items inside)
 
 * The following options are presented on the navbar when a superuser is logged in:
     * Home
@@ -106,13 +106,13 @@ Created with the intent on drawing the interest of the user with bold colors and
 #### Register Page
 This template is from django's inbuilt allauth.
 
-* The register page allows new users to be added to the database. This consists of a registration form where the user enters the information needed in order to successfully register as a user on the page. When the user clicks 'Sign up' a new user is added into the database.
+* The register page allows new users to be added to the database. This consists of a registration form where the user enters the information needed in order to successfully register as a user on the page. When the user clicks 'Sign up' a new user is added into the database and a successful registration message is shown. 
 
 #### Login Page
-* When the user click the 'login' button they are redirected to the login page where they have to input user name and password in order to successfully log in. If an incorrect user name or password is entered the page is refreshed, the user is informed and asked to submit again. After successful login the user is redirected to 'Home' page.
+* When the user clicks the 'login' button they are redirected to the login page where they have to input user name and password in order to successfully log in. If an incorrect user name or password is entered the page is refreshed, the user is informed and asked to submit again. After successful login the user is redirected to 'Home' page.
 
 #### Logout Page
-* When the user click on the 'logout' button they are redirected to a confirmation page where the user is asked to confirm if they want to complete the log out. Once logged out the user will be redirected to the 'Home' page.
+* When the user clicks on the 'logout' button they are redirected to a confirmation page where the user is asked to confirm if they want to complete the log out. Once logged out the user will be redirected to the 'Home' page.
 
 #### Admin Page
 * The admin page gives the superuser the option of modifying the products, delete and add new. In the 'Product list' the superuser can view individual products, delete, or modify them with the click of a button. The super user also has an added 'Management' option in the navbar where they can choose 'Add product' or 'Edit product' which takes the superuser to a form where all products can be accessed. 
@@ -155,7 +155,7 @@ To achieve this the following features would need to be implemented:
     * Is a cloud platform as a service (PaaS) supporting several programming languages (Java, Node.js, Scala, Clojure, Python, PHP, and Go).
 * [Cloudinary](https://pypi.org/project/cloudinary/)
     * Is a cloud service that offers a solution to a web application’s entire image management pipeline.
-      Easily upload images to the cloud. Automatically perform smart image resizing, cropping and conversion without installing any complex software
+      Users can easily upload images to the cloud and automatically perform smart image resizing, cropping and conversion without installing any complex software
 * [Whitenoise](https://pypi.org/project/whitenoise/)
     * Allows your web app to serve its own static files, making it a self-contained unit that can be deployed anywhere without relying on nginx, Amazon S3 or any other external service
 * [Materialize (0.100.2)](http://archives.materializecss.com/0.100.2/)
@@ -164,10 +164,10 @@ To achieve this the following features would need to be implemented:
     * NoUiSlider is a lightweight range slider with multi-touch support and a ton of features. It supports non-linear ranges, requires no external dependencies, has keyboard support, and it works great in responsive designs
 * [Wnumb](https://refreshless.com/wnumb/)
     * WNumb is a formatting library with a dead-simple interface. It has two methods: to and from. Licensed MIT, so free for personal and commercial use.
-* [Django-Crispy-Forms](https://django-crispy-forms.readthedocs.io/en/latest/index.html)django-crispy-forms)
+* [Django-Crispy-Forms](https://django-crispy-forms.readthedocs.io/en/latest/index.html)
     * Is a pluggable Django app that helps to write DRY forms by providing additional capability to configure and control the rendered HTML.
 * [Gunicorn](https://en.wikipedia.org/wiki/Gunicorn) 
-    * Green Unicorn is a Python Web Server Gateway Interface (WSGI) HTTP server. It is a pre-fork worker model, ported from Ruby's Unicorn project.he Gunicorn server is broadly compatible with a number of web frameworks, simply implemented, light on server resources and fairly fast.
+    * Green Unicorn is a Python Web Server Gateway Interface (WSGI) HTTP server. It is a pre-fork worker model, ported from Ruby's Unicorn project. The Gunicorn server is broadly compatible with a number of web frameworks, simply implemented, light on server resources and fairly fast.
 * [Pillow](https://en.wikipedia.org/wiki/Python_Imaging_Library)
     * Python Imaging Library (abbreviated as PIL) (in newer versions known as Pillow) is a free and open-source additional library for the Python programming language that adds support for opening, manipulating, and saving many different image file formats
 * [Requests](https://www.django-rest-framework.org/api-guide/requests/)
@@ -192,7 +192,7 @@ To achieve this the following features would need to be implemented:
 |----|-----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | Loading files                                                   | Files in the media folder do not load properly                                                                                                                                                                                                                        | I included the following line of code in the setting.py file   ...  ...  ...   ...  'django.contrib.messages.context_processors.messages',  'django.template.context_processors.media', ],  ‘django.template.context_processors.media’,  in your settings.py  ... ... ...                                                                                                                                                                                                                                                                                                                     |
 | 2  | I can't login to the admin section                              |                                                                                                                                                                                                                                                                       | I deleted the 3 points in the following line of code       space             ... ... ... ... AUTHENTICATION_BACKENDS = [ # Needed to login by username in Django admin, regardless of   allauth  'django.contrib.auth.backends.ModelBackend', # `allauth` specific authentication methods, such as login by e-mail 'allauth.account.auth_backends.AuthenticationBackend', ... ... ... ]                                                                                                                                                                                                       |
-| 3  | Link in materializecss checkboxes                               | I couldn't figure out how to capture the event (onchange or onclick) in a materializecss checkbox and send the url to the view                                                                                                                                        | I changed the element and decided to develop the filters with a collapsible and with radio buttons                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| 3  | Link in materializecss checkboxes                               | I couldn't figure out how to capture the event (onchange or onclick) in a materializecss checkbox and send the url to the view                                                                                                                                        | I changed the element and decided to develop the filters with a collapsible accordion from [materializecss](https://materializecss.com/collapsible.html)  and with radio buttons                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | 4  | Webhook not working                                             | When doing the webhook, because I am using intellij idea (and I am working locally) I am not able to obtain the address of the webhook to pass it to stripe                                                                                                           | I look for a tool that allows me to expose a my local development server to the Internet https://www.pubnub.com/learn/glossary/what-is-ngrok/ ngrok https://ngrok.com/  1. The setting.py allowed the address provided by Ngrok: ALLOWED_HOSTS = ['2a0d946fed40.ngrok.io'] 2. Copy the address in Stripe / Webhooks / Webhooks Data: http://2a0d946fed40.ngrok.io/checkout/wh/ 3. Write the Stripe WebHooks key for the local development environment: STRIPE_WH_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'.  (Should not be in environment STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')) |
 | 5  | Pagination and drop-down from materialize cancel each other out | When I enter this jquery version: <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> The pagination works but the drop-down from materialize does not work.   When I delete it the drop-down works but the pagination does not. | In jQuery 3 size() was deprecated and completely removed The norm is to use length property instead. So I changed the function size to length in children.length from :http://cdn.rawgit.com/pinzon1992/materialize_table_pagination/f9a8478f/js/pagination.js                                                                                                                                                                                                                                                                                                                                |
 
@@ -262,9 +262,9 @@ I used [BautyTools](http://beautifytools.com/javascript-validator.php) (Javascri
 [Back to Top](#table-of-contents)
 ## Deployment
 ### How to run this project locally
-In order to run this project on your idea, you firstly need to have these tools: - An IDE like Visual Studio Code
+In order to run this project on your computer/IDE, you firstly need to have these tools: - An IDE like Visual Studio Code
 
-#### Instaled:
+#### Installed:
 * An [IDE](https://realpython.com/python-ides-code-editors-guide/) (or Integrated Development Environment)for work with Python
 * [Python3](https://www.python.org/download/releases/3.0/)
 
@@ -277,7 +277,7 @@ In order to run this project on your idea, you firstly need to have these tools:
     * You can do this through clicking the "download zip" button at the top of the page and extracting the zip file to your chosen folder. 
     If you have Git installed on your system, you can clone the repository with the following command: 
       *   `git clone git@github.com:ArloysMacias/fitness4you.git`      
-2. Open your IDE and a terminal session in the unzip folder or cd to the correct location.
+2. Open your IDE and in the terminal session unzip the folder or cd to the correct location.
 3. Configure a virtual environment:
     * [Example for Intellij PYCharm](https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html)
 4. Install the necessary modules with this command:
@@ -302,13 +302,13 @@ In order to run this project on your idea, you firstly need to have these tools:
         
 * Go to the CLI and type `$ sudo snap install --classic heroku`
 * Type `$ heroku login` command into the terminal
-* Create `requirements.txt` ($ sudo pip3 freeze --local > requirements.txt)
-* Create a `Procfile` (`$ echo web: python app.py > Procfile`)
+* Create requirements.txt `$ sudo pip3 freeze --local > requirements.txt`
+* Create a Procfile file `$ echo web: python app.py > Procfile`
 * Go back to Heroku, under `Deploy` find `Existing Git repository` and copy the command:`$ heroku git:remote -a <app_name>` Paste this into the terminal.
-* (If repository was not created already, type:
+* If repository was not created already, type:
 * `$ cd my-project/`
 * `$ git init`
-* `$ heroku git:remote -a <app_name>`)
+* `$ heroku git:remote -a <app_name>`
 * Type `$ heroku ps:scale web=1` into the terminal.
 * Go back to Heroku, and at `Settings` copy `https://<app_name>.herokuapp.com/` 
 * In the terminal type `git remote add http://<app_name>.herokuapp.com/`

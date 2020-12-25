@@ -103,16 +103,14 @@ For all fonts I used Roboto, from Google Fonts. This font works well with the de
 
 #### After:
 ##### Desktop
-* <img src="media/wireframes/New%20Project%201/Home%20page%20desktop%20view.png" width="45%" height="60%" />
-* <img src="media/wireframes/New%20Project%201/Products%20page%20desktop%20view.png" width="45%" height="60%" />
-* <img src="media/wireframes/New%20Project%201/My%20profile%20page%20desktop%20view.png" width="45%" height="60%" />
-* <img src="media/wireframes/New%20Project%201/Edit%20products%20page%20desktop%20view.png" width="45%" height="60%" />
-* <img src="media/wireframes/New%20Project%201/Add%20products%20page%20desktop%20view.png" width="45%" height="60%" />
+  <img src="media/wireframes/New%20Project%201/Home%20page%20desktop%20view.png" width="45%" height="60%" />   <img src="media/wireframes/New%20Project%201/Products%20page%20desktop%20view.png" width="45%" height="60%" />
+  <img src="media/wireframes/New%20Project%201/My%20profile%20page%20desktop%20view.png" width="45%" height="60%" />   <img src="media/wireframes/New%20Project%201/Edit%20products%20page%20desktop%20view.png" width="45%" height="60%" />   
+  <img src="media/wireframes/New%20Project%201/Add%20products%20page%20desktop%20view.png" width="45%" height="60%" />
 
 ##### Mobile
-* <img src="media/wireframes/New%20Project%201/Home%20page%20mobile%20view.png" width="45%" height="60%" />   <img src="media/wireframes/New%20Project%201/Products%20page%20mobile%20view.png" width="45%" height="60%" />
-
-* <img src="media/wireframes/New%20Project%201/My%20profile%20page%20mobile%20view.png" width="45%" height="60%" />    <img src="media/wireframes/New%20Project%201/Eddit%20and%20add%20products%20mobile%20view.png" width="45%" height="60%" />    <img src="media/wireframes/New%20Project%201/Eddit%20and%20add%20products%20mobile%20view%20(1).png" width="45%" height="60%" />
+  <img src="media/wireframes/New%20Project%201/Home%20page%20mobile%20view.png" width="45%" height="60%" />   <img src="media/wireframes/New%20Project%201/Products%20page%20mobile%20view.png" width="45%" height="60%" />
+  <img src="media/wireframes/New%20Project%201/My%20profile%20page%20mobile%20view.png" width="45%" height="60%" />    <img src="media/wireframes/New%20Project%201/Eddit%20and%20add%20products%20mobile%20view.png" width="45%" height="60%" />    
+  <img src="media/wireframes/New%20Project%201/Eddit%20and%20add%20products%20mobile%20view%20(1).png" width="45%" height="60%" />
 
 [Back to Top](#table-of-contents)
 

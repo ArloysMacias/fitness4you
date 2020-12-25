@@ -46,7 +46,7 @@ It is a web-based store where users can view and purchase fitness and nutritiona
 
 
 ## Demo
-
+![Demo](media/demo/speed.gif)
 
 ## Planning Fitness4You
 The planning done prior to developing the project can be found in the document below:
@@ -293,7 +293,7 @@ In order to run this project on your idea, you firstly need to have these tools:
 * Click `new` and `create new app`.
 * Choose a unique name for your app, select region and click on `Create App`
 * Under the `Settings` click `Reveal Config Vars` and set 
-    * <img src="media/deployment/enviromentvariablesheroku.png" width="75%" height="80%" />
+    * <img src="media/deployment/enviromentvariablesheroku.png" width="45%" height="60%" />
         
 * Go to the CLI and type `$ sudo snap install --classic heroku`
 * Type `$ heroku login` command into the terminal

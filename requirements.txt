@@ -71,5 +71,5 @@ tensorflow @ https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.0.0-
 toml==0.10.1
 urllib3==1.25.7
 virtualenv==20.0.31
-Werkzeug==1.0.1
+Werkzeug==2.2.3
 whitenoise==5.2.0

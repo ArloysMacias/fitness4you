@@ -69,7 +69,7 @@ sqlparse==0.3.0
 stripe==2.42.0
 tensorflow @ https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.0.0-py3-none-any.whl
 toml==0.10.1
-urllib3==1.25.7
+urllib3==1.26.5
 virtualenv==20.0.31
 Werkzeug==1.0.1
 whitenoise==5.2.0

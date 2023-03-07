@@ -13,7 +13,7 @@ crispy-forms-materialize==0.2
 defusedxml==0.6.0
 distlib==0.3.1
 dj-database-url==0.5.0
-Django==3.0.1
+Django==3.1.14
 django-allauth==0.41.0
 django-bootstrap-form==3.4
 django-cloudinary-storage==0.3.0

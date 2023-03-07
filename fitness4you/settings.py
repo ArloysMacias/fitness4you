@@ -31,7 +31,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 print(DEBUG)
 # DEBUG = True
 
-ALLOWED_HOSTS = ['fitness4you.herokuapp.com', '127.0.0.1:8000', '127.0.0.1', '4d317cc4e698.ngrok.io']
+ALLOWED_HOSTS = ['fitness4you.herokuapp.com', 'fitness4you.onrender.com/', '127.0.0.1:8000', '127.0.0.1', '4d317cc4e698.ngrok.io']
 
 # Application definition
 

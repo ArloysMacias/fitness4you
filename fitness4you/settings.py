@@ -234,3 +234,4 @@ else:
 #Super User
 SU_USERNAME=os.getenv('SU_USERNAME')
 SU_EMAIL=os.getenv('SU_EMAIL')
+SU_PASSWORD=os.getenv('SU_PASSWORD')

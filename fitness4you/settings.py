@@ -230,3 +230,7 @@ else:
 # EMAIL_HOST_PASSWORD = os.getenv('SENDGRID_API_KEY')
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
+
+#Super User
+SU_USERNAME=os.getenv('SU_USERNAME')
+SU_EMAIL=os.getenv('SU_EMAIL')

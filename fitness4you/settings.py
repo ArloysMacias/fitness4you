@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'materializecssform',
     'profiles',
     'cloudinary',
+    'core',
 ]
 
 MIDDLEWARE = [

@@ -17,10 +17,7 @@ import cloudinary.api
 from django.conf import settings
 from pathlib import Path
 
-from dotenv import load_dotenv
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-#load_dotenv(BASE_DIR / '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -35,7 +32,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 print(DEBUG)
 # DEBUG = True
 
-ALLOWED_HOSTS = ['fitness4you.herokuapp.com', 'fitness4you.onrender.com', '127.0.0.1:8000', '127.0.0.1', '4d317cc4e698.ngrok.io']
+ALLOWED_HOSTS = ['fitness4you.herokuapp.com', 'fitness4you.onrender.com','localhost', '127.0.0.1:8000', '127.0.0.1', '4d317cc4e698.ngrok.io']
 
 # Application definition
 
